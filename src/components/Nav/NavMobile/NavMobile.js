@@ -79,7 +79,7 @@ function NavMobile() {
         .to(".m-nav__vertical-title", { duration: 0.25, color: "black" }, "start")
 
       menuTimeline.current
-        .to(".m-nav__bg", { duration: 0.8, height: "100vh", ease: "expo.inOut" }, "menu")
+        .to(".m-nav__bg", { duration: 0.8, height: "100dvh", ease: "expo.inOut" }, "menu")
         .to(".m-nav__menu-name", { duration: 0.8, stagger: 0.04, transform: "translate3d(0px, 0%, 0px)" }, "menu+=0.4")
         .to(".m-nav__menu", { pointerEvents: "all" }, "menu+=0.4")
         .to(".m-nav__menu-noc", { duration: 0.8, stagger: 0.04, transform: "translate3d(0px, 0%, 0px)" }, "menu+=0.4")

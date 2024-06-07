@@ -103,20 +103,10 @@
 .m-nav__bg{
     position: absolute;
     width: 100%;
-    height: 0%;
+    height: 0dvh;
     left: 0;
     background-color: #678846;
     will-change: background-color;
-}
-  
-.m-nav__menu-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    height: 100dvh;
-    z-index: 99;
 }
 
 .m-nav__menu-list{
