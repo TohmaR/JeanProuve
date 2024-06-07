@@ -172,7 +172,6 @@
 
 .m-nav-menu__credits-w{
     overflow: hidden;
-    margin-bottom: 4.65116vh;
     padding-left: 13.77778vw;
 }
 .m-nav-menu__credits{
@@ -186,6 +185,6 @@
 
 .m-nav-menu__compas{
     opacity: 0;
-    width: 50vw;
     transform: translate3d(0px, 50%, 0px);
+    padding-left: 13.77778vw;
 }
