@@ -8,7 +8,7 @@ import './App.css';
 function App() {
   useEffect(() => {
     // Si la propriété scrollRestoration est disponible
-    
+      document.body.style.overflow = 'hidden';
         // Désactiver la restauration du scroll
         window.history.scrollRestoration = 'manual';
 
