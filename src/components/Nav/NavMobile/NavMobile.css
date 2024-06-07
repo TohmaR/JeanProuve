@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 18.13333vw;
-    border-bottom: 2px solid ;
+    border-bottom: 1px solid ;
     z-index: 100;
     transform: translate3d(0px, -102%, 0px);
     will-change: background-color, border;

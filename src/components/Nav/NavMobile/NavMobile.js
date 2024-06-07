@@ -93,8 +93,10 @@ function NavMobile() {
       document.body.style.overflowY = toggleMenu ? "hidden" : "scroll";
       if (menuTimeline.current.reversed()) {
         menuTimeline.current.invalidate().play();
+        document.body.style.overflow = 'hidden';
       } else {
         menuTimeline.current.reverse();
+        document.body.style.overflow = 'auto';
       }
     };
 
