@@ -1,0 +1,201 @@
+.m-nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 18.13333vw;
+    border-bottom: 2px solid ;
+    z-index: 100;
+    transform: translate3d(0px, -102%, 0px);
+    will-change: background-color, border;
+    background-color: white;
+}
+
+.m-nav__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 4.88889vw;
+}
+
+.m-nav__vertical-title{
+    line-height: 17.77778vw;
+    font-family: "MaelstromSansBold";
+    letter-spacing: .14em;
+    font-size: 7.64444vw;
+    pointer-events: none;
+    will-change: color;
+}
+
+.m-nav__burger{
+    cursor: pointer;
+}
+
+.m-nav__burger .burger{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 18.13333vw;
+    height: 17.77778vw;
+}
+
+
+.m-nav__burger .burger__toggleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 50%;
+    height: 16px;
+    z-index: 100;
+    box-sizing: content-box;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.m-nav__burger .burger__toggleBtn span{
+    width: 100%;
+    height: 2px;
+    transition: transform .4s ease-in-out;
+    will-change: background-color;
+}
+
+.m-nav__burger .burger__toggleBtn:hover{
+   z-index: 1000;
+}
+
+.m-nav__burger .burger__toggleBtn span:nth-child(2) {
+    transform:translateX(8px);
+}
+
+
+.m-nav__burger .burger__toggleBtn.open span:nth-child(1) {
+    transform:rotate(45deg)translate(5px,5px);
+    transition-delay: 0.15s;
+}
+
+.m-nav__burger .burger__toggleBtn.open span:nth-child(2) {
+    transform: translateX(15px);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.m-nav__burger .burger__toggleBtn.open span:nth-child(3) {
+    transform:rotate(-45deg)translate(5px,-5px);
+    transition-delay: 0.15s;
+}
+
+.m-nav__menu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100vw;
+    transform: translateY(18.13333vw);
+    max-height: calc(100vh - 18.13333vw);
+    top: 0;
+    pointer-events: none;
+}
+
+.m-nav__bg{
+    position: absolute;
+    width: 100%;
+    height: 0%;
+    left: 0;
+    background-color: #678846;
+    will-change: background-color;
+}
+  
+.m-nav__menu-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 100dvh;
+    z-index: 99;
+}
+
+.m-nav__menu-list{
+    height: fit-content;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    padding: 6.97674vh 4.88889vw;
+}
+
+.m-nav__menu-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.m-nav__menu-item:hover .nav__menu-noc{
+    color: white;
+    transition: 0.3s;
+}
+
+.m-nav__menu-name{
+    overflow: hidden;
+    pointer-events: none;
+    padding-left: 10vw;
+    font-size: 11vh;
+    line-height: 10vh;
+    font-family: "GrifinitoL";
+    transform: translate3d(0px, 100%, 0px);
+}
+
+.m-nav__menu-no{
+    pointer-events: none;
+    position: absolute;
+    top: 0.7vh;
+    left: 0;
+    font-family: "MaelstromSansBold";
+    font-size: 2.32558vh;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.m-nav__menu-noc{
+    transform: translate3d(0px, 100%, 0px);
+}
+
+.m-nav-menu__texte{
+    position: relative;
+    width: 100%;
+}
+.m-nav-menu__line{
+    margin: 3.53488vh 0 4.65116vh;
+    width: 0%;
+    height: 1px;
+    background: #000;
+    transform-origin: 0 50%;
+}
+
+.m-nav-menu__credits-w{
+    overflow: hidden;
+    margin-bottom: 4.65116vh;
+    padding-left: 13.77778vw;
+}
+.m-nav-menu__credits{
+    font-size: 1.39535vh;
+    line-height: 1.86047vh;
+    letter-spacing: .06em;
+    overflow: hidden;
+    font-family: "GraphikRegular";
+    transform: translate3d(0px, 100%, 0px);
+}
+
+.m-nav-menu__compas{
+    opacity: 0;
+    width: 50vw;
+    transform: translate3d(0px, 50%, 0px);
+}

@@ -1,0 +1,291 @@
+nav{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4.16667vw;
+    z-index: 99;
+    user-select: none;
+}
+
+.nav__container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-right: solid 1px rgba(255, 255, 255, 0.7);
+    color: white;
+    z-index: 9999;
+    will-change: border, background-color;
+    opacity: 0;
+}
+
+.nav__burger{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 1px);
+    height: 12.22222vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-bottom: solid 1px rgba(255, 255, 255, 0.7);
+    will-change: border;
+}
+
+.nav__burger .burger{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 200px;
+    height: 65px;
+    padding: 0 15px;
+}
+
+
+.nav__burger .burger__toggleBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 1.9vw;
+    height: 16px;
+    z-index: 100;
+    box-sizing: content-box;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav__burger .burger__toggleBtn span{
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: transform .4s ease-in-out;
+    will-change: background-color;
+}
+
+.nav__burger .burger__toggleBtn:hover{
+   z-index: 1000;
+}
+
+.nav__burger .burger__toggleBtn span:nth-child(2) {
+    transform:translateX(8px);
+}
+
+
+.nav__burger .burger__toggleBtn.open span:nth-child(1) {
+    transform:rotate(45deg)translate(5px,5px);
+    transition-delay: 0.15s;
+}
+
+.nav__burger .burger__toggleBtn.open span:nth-child(2) {
+    transform: translateX(15px);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.nav__burger .burger__toggleBtn.open span:nth-child(3) {
+    transform:rotate(-45deg)translate(5px,-5px);
+    transition-delay: 0.15s;
+}
+
+.nav__vertical{
+    position: absolute;
+    top: 12.22222vh;
+    left: 4.16667vw;
+    height: 4.16667vw;
+    width: calc(79.30556vh - 3.30729vw);
+    transform-origin: 0 0;
+    transform: rotate(90deg);
+
+}
+
+.nav__vertical-credits{
+    display: flex;
+    line-height: 1.25vw;
+    margin-top: 1.5625vw;
+    float: left;
+    margin-left: 3.56481vh;
+    font-size: 0.4vw;
+    color: white;
+    will-change: color;
+    font-family: "GraphikRegular";
+}
+
+.nav__vertical-title{
+    position: absolute;
+    top: 1.30208vw;
+    left: 32.96296vh;
+    line-height: 1.5625vw;
+    font-family: "MaelstromSansBold";
+    font-size: 2vh;
+    letter-spacing: .14em;
+    color: white;
+    will-change: color;
+    
+}
+
+.nav__vertical-separator{
+    position: absolute;
+    top: 1.5625vw;
+    right: 0;
+    height: 1.04167vw;
+    width: 1px;
+    background-color: white;
+    will-change: background-color;
+}
+
+.nav__vertical-compas{
+    
+    position: absolute;
+    bottom: 4.2vh;
+    width: 3vw;
+    height: 3.30729vw;
+    left: 50%;
+    transform: translateX(-50%);
+    will-change: fill, stroke;
+}
+
+.nav__menu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    transform: translateX(4.16667vw);
+    max-width: calc(100vw - 4.16667vw);
+    min-height: 100vh;
+    pointer-events: none;
+}
+
+.nav__bg{
+    position: absolute;
+    width: 0%;
+    height: 100vh;
+    left: 0;
+    background-color: #678846;
+    will-change: background-color;
+}
+  
+.nav__menu-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 100dvh;
+    z-index: 99;
+}
+
+.nav__menu-list{
+    padding: calc(4.9537vh - 1.06481vw) 0 0 4.34783vw;
+    height: calc(90.13889vh + 1.2963vw);
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.nav__menu-item{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 67.3913vw;
+    height: fit-content;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.nav__menu-item:hover .nav__menu-noc{
+    color: white;
+    transition: 0.3s;
+}
+
+.nav__menu-name{
+    overflow: hidden;
+    pointer-events: none;
+    padding: 0 0 0 3.52174vw;
+    font-size: 15.09239vw;
+    line-height: 12.77174vw;
+    font-family: "GrifinitoL";
+    transform: translate3d(0px, 100%, 0px);
+}
+
+.nav__menu-no{
+    pointer-events: none;
+    position: absolute;
+    top: 0.7vh;
+    left: 0;
+    font-family: "GrifinitoL";
+    font-size: 4vw;
+    line-height: 4vw;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.nav__menu-noc{
+    transform: translate3d(0px, 100%, 0px);
+}
+
+.progress__container{
+    position: absolute;
+    width: 4px;
+    height: 100vh;
+    background-color: transparent;
+}
+.progress__thumb{
+    position: absolute;
+    width: 100%;
+    height: 12.25vh;
+    background-color: #678846;
+}
+
+.close{
+    position: absolute;
+    right: 7.40741vh;
+    width: 19.49074vh;
+    height: 19.49074vh;
+    top: 4.90741vh;
+    cursor: pointer;
+}
+
+.close-circle-w{
+    position: absolute;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    height: 100%;
+    transform-origin: "center center";
+}
+
+.close-circle{
+    stroke-dasharray: 1281.77; 
+    opacity: 1;
+    fill: transparent;
+    stroke: black;
+    stroke-width: 12px;
+}
+
+.close-circle, .close-circle-w {
+    will-change: transform, stroke-dashoffset;
+}
+
+.close-cross{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+}
+
+.close-cross-top, .close-cross-bottom{
+    visibility: hidden;
+}
+
+
+
+

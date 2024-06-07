@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "Sk-Modernist-Bold";
+    src: local("Sk-Modernist-Bold"),
+    url("./assets/fonts/Sk-Modernist-Bold.otf") format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GrifinitoL";
+    src: local("GrifinitoL"),
+    url("./assets/fonts/GrifinitoL.ttf") format("TrueType");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GraphikRegular";
+    src: local("GraphikRegular"),
+    url("./assets/fonts/GraphikRegular.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "GraphikRegularItalic";
+    src: local("GraphikRegularItalic"),
+    url("./assets/fonts/GraphikRegularItalic.woff2") format("woff2");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MaelstromSansBold";
+    src: local("MaelstromSansBold"),
+    url("./assets/fonts/MaelstromSansBold.woff2") format("woff2");
+    font-display: swap;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+a, a:visited, a:hover, a:focus {
+    text-decoration: none;
+    color: white;
+}
+
+li, ul {
+    list-style: none;
+}
