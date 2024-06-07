@@ -95,7 +95,7 @@
     align-items: center;
     min-width: 100vw;
     transform: translateY(18.13333vw);
-    max-height: calc(100vh - 18.13333vw);
+    max-height: calc(100dvh - 18.13333vw);
     top: 0;
     pointer-events: none;
 }
