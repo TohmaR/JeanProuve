@@ -56,13 +56,13 @@ function MainMobile() {
 
 
     useLayoutEffect(() => {
-        const offsetSection1 = section1.current.getBoundingClientRect().top;
-        const offsetSection3 = section3.current.getBoundingClientRect().top;
-        const offsetSection5 = section5.current.getBoundingClientRect().top;
-        const offsetSection7 = section7.current.getBoundingClientRect().top;
-        const offsetSection9 = section9.current.getBoundingClientRect().top;
-        const offsetSection11 = section11.current.getBoundingClientRect().top;
-        const offsetSection13 = section13.current.getBoundingClientRect().top ;
+        const offsetSection1 = section1.current.offsetTop;
+        const offsetSection3 = section3.current.offsetTop;
+        const offsetSection5 = section5.current.offsetTop;
+        const offsetSection7 = section7.current.offsetTop;
+        const offsetSection9 = section9.current.offsetTop;
+        const offsetSection11 = section11.current.offsetTop;
+        const offsetSection13 = section13.current.offsetTop ;
 
         const handleScroll = () => {
            const scrollY = window.scrollY + (window.innerWidth * 0.1813333);
@@ -129,7 +129,7 @@ function MainMobile() {
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-            ctx.revert();
+            ctx.kill();
             window.removeEventListener('scroll', handleScroll);
         };
     })
