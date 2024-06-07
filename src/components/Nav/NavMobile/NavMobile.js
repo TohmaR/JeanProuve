@@ -90,7 +90,11 @@ function NavMobile() {
     }
 
     const toggleAnimation = () => {
-      document.body.style.overflow = toggleMenu ? "hidden" : "auto";
+      if (toggleMenu) {
+        document.body.classList.add("no-scroll");
+      } else {
+        document.body.classList.remove("no-scroll");
+      }
       if (menuTimeline.current.reversed()) {
         menuTimeline.current.invalidate().play();
       } else {

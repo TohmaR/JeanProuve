@@ -8,3 +8,8 @@ body{
   background-color: black;
   overflow-y: hidden;
 }
+
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none; /* Désactive les actions tactiles */
+}
