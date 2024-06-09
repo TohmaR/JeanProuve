@@ -129,7 +129,7 @@ function MainMobile() {
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-            ctx.kill();
+            ctx.revert();
             window.removeEventListener('scroll', handleScroll);
         };
     })

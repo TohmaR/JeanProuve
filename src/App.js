@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import LoadingPage from './components/Loader/Loader';
 import Main from './components/Main/Main';
 import Nav from './components/Nav/Nav';
@@ -6,7 +6,7 @@ import Nav from './components/Nav/Nav';
 import './App.css';
 
 function App() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     // Si la propriété scrollRestoration est disponible
       document.body.style.overflow = 'hidden';
         // Désactiver la restauration du scroll
@@ -20,7 +20,7 @@ function App() {
             window.scrollTo(0, 0);
         });
    
-  });
+  }, []);
 
   return (
     <div className="App">

@@ -1,6 +1,5 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { MorphSVGPlugin } from '../../../gsap/MorphSVGPlugin.min.js';
 import { InertiaPlugin } from '../../../gsap/InertiaPlugin.min.js';
@@ -32,7 +31,7 @@ import s11maisondemontableplan from "../../../assets/images/s11maisondemountable
 import s12maison6x6 from "../../../assets/images/s12Maison6x6.jpg";
 import s13academic from "../../../assets/images/s13academic.jpg";
 
-gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin, Draggable, InertiaPlugin, ScrollToPlugin, useGSAP);
+gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin, Draggable, InertiaPlugin, ScrollToPlugin);
 
 const MainDesktop = () => {
     const horizontalContainer = useRef(null);
@@ -42,6 +41,7 @@ const MainDesktop = () => {
     const navTimelineGreen = useRef(gsap.timeline({ paused: true }));
     const navTimelineBlack = useRef(gsap.timeline({ paused: true }));
     const dragInstance = useRef(null);
+    let mm = gsap.matchMedia();
     const scrollTriggerRef = useRef(null);
     const [totalWidth, setTotalWidth] = useState(0);
     const [savedProgress, setSavedProgress] = useState(0);
@@ -72,7 +72,7 @@ const MainDesktop = () => {
     const revealTextEffectRefs = useRef([]);
     const animationsRevealTextEffect = useRef([]);
 
-    const CircleArrowTimeline = useRef();
+    const CircleArrowTimeline = useRef(null);
     const [isShownArrow, setIsShownArrow] = useState(null);
     const svgWave = useRef(null);
     const svgArrow = useRef(null);
@@ -83,6 +83,8 @@ const MainDesktop = () => {
 
 
     useEffect(() => {
+        const totalWidth = horizontalContainer__sm.current.scrollWidth;
+        setTotalWidth(totalWidth);
         const handleResize = () => {
             if (scrollTriggerRef.current) {
                 const progress = scrollTriggerRef.current.progress;
@@ -100,7 +102,7 @@ const MainDesktop = () => {
         };
     }, []);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const scrollableWidth = totalWidth - window.innerWidth;
         const offsetSection1 = section1.current.getBoundingClientRect().left ;
         const offsetSection3 = section3.current.getBoundingClientRect().left ;
@@ -109,18 +111,19 @@ const MainDesktop = () => {
         const offsetSection9 = section9.current.getBoundingClientRect().left ;
         const offsetSection11 = section11.current.getBoundingClientRect().left ;
         const offsetSection13 = section13.current.getBoundingClientRect().left ;
+
+        mm.add("(min-width: 1025px)", () => {
         
-        let ctx = gsap.context(() => {
             navTimelineWhite.current
-                .to(".nav__container", { duration: 0.25, backgroundColor: "white", borderColor: "black" }, "start")
-                .to(".burger__toggleBtn span", { duration: 0.25, backgroundColor: "black" }, "start")
-                .to(".nav__burger", { duration: 0.25, borderBottomColor: "black" }, "start")
-                .to(".nav__vertical-credits", { duration: 0.25, color: "black" }, "start")
-                .to(".nav__vertical-credits a", { duration: 0.25, color: "black" }, "start")
-                .to(".nav__vertical-title", { duration: 0.25, color: "black" }, "start")
-                .to(".nav__vertical-separator", { duration: 0.25, backgroundColor: "black" }, "start")
-                .to(".nav__vertical-compas path", { duration: 0.25, fill: "#678846", stroke: "#678846" }, "start")
-                .to(".progress__thumb", { duration: 0.25, backgroundColor: "#678846" }, "start");
+            .to(".nav__container", { duration: 0.25, backgroundColor: "white", borderColor: "black" }, "start")
+            .to(".burger__toggleBtn span", { duration: 0.25, backgroundColor: "black" }, "start")
+            .to(".nav__burger", { duration: 0.25, borderBottomColor: "black" }, "start")
+            .to(".nav__vertical-credits", { duration: 0.25, color: "black" }, "start")
+            .to(".nav__vertical-credits a", { duration: 0.25, color: "black" }, "start")
+            .to(".nav__vertical-title", { duration: 0.25, color: "black" }, "start")
+            .to(".nav__vertical-separator", { duration: 0.25, backgroundColor: "black" }, "start")
+            .to(".nav__vertical-compas path", { duration: 0.25, fill: "#678846", stroke: "#678846" }, "start")
+            .to(".progress__thumb", { duration: 0.25, backgroundColor: "#678846" }, "start");
 
             navTimelineBlack.current
                 .to(".nav__container", { duration: 0.25, backgroundColor: "black", borderColor: "white" }, "start")
@@ -247,7 +250,6 @@ const MainDesktop = () => {
             });
 
             titleTranformEffectRefs.current.forEach((title, index) => {
-
                 const animation = gsap.to(title, 
                     {
                         transform: "translate3d(0px, 0%, 0px)",
@@ -257,7 +259,6 @@ const MainDesktop = () => {
                             start: "left 80%",
                             end: "right left",
                             horizontal: true,
-                            markers: true,
                             containerAnimation: horizontalScroll,
                         },
                         immediateRender: false,
@@ -283,7 +284,6 @@ const MainDesktop = () => {
                             start: "left 80%",
                             end: "right left",
                             horizontal: true,
-                            markers: true,
                             containerAnimation: horizontalScroll,
                         },
                         immediateRender: false,
@@ -315,10 +315,10 @@ const MainDesktop = () => {
                 },
             });
         });
-
+        
         // Clean-up function
         return () => {
-            ctx.revert();
+            mm.revert();
         };
     }, [totalWidth]);
 
@@ -339,6 +339,11 @@ const MainDesktop = () => {
                 CircleArrowTimeline.current.reverse();
             }
         }
+        return () => {
+            if(CircleArrowTimeline.current){
+                CircleArrowTimeline.current.revert();
+            }
+        };
     }, [isShownArrow]);
     
     return (  
@@ -375,7 +380,7 @@ const MainDesktop = () => {
                         </div>
                     </div>
                 </section>
-                <section className="s1 p1" ref={section1} id="biography">
+                <section className="s1" ref={section1} id="biography">
                     <div className="s1-biography">
                         <h2 className="p-title">
                             <span ref={el => titleTranformEffectRefs.current[0] = el}>Biography</span>
@@ -420,17 +425,20 @@ const MainDesktop = () => {
                             <div>c. 1901.</div>
                         </div>
                     </div>
-                    <div className="s3-texte border-left">In 1902, the Prouve family moved to Nancy, a dynamic center of Art Nouveau. Jean Prouve grew up in this environment rich in works of art and artisanal creations, nourished by the artistic influences of his parents. His mother, Marie Duhamel, a talented pianist, added a musical dimension to this setting already steeped in visual arts and intellectual discussions.From an early age, Jean observed the work of his father, Victor Prouve, an eminent artist and educator of the Art Nouveau movement, who transmitted to him a holistic vision of art. These experiences shape his aesthetic sense and practical approach, marrying engineering and design with a philosophy where aesthetics and functionality are inseparable. This intense artistic and intellectual education prepares Jean for a career marked by innovation and humanism.</div>
-                    <div className="s3-image__container2" >
-                        <img className="s3-image2" ref={el => zoomOutEffectRefs.current[1] = el}  src={s3VictorProuve}/>
-                    </div>
                     <div>
-                        <div className="s3-texte">The foundations of Jean Prouve's career were laid very early, in an atmosphere where art and innovation were omnipresent. Growing up in an artistic and intellectual family environment, he was immersed in a world where visual arts, music and architecture constantly coexisted. This immersion allowed him to develop a unique sensitivity which will mark all his future work.</div>
+                        <div className="s3-texte border-left">In 1902, the Prouvé family moved to Nancy, a dynamic center of Art Nouveau. Growing up in this vibrant setting, Jean Prouvé was deeply influenced by the artistic and intellectual milieu around him. His father, Victor, a pivotal figure in the Art Nouveau movement, imparted to Jean a holistic vision of art that seamlessly integrated aesthetics with functionality. This ideology was further enriched by his mother, Marie Duhamel, whose musical talents added another layer of cultural depth to their home. Jean’s exposure to his parents' diverse artistic disciplines played a crucial role in shaping his understanding of art and design.</div>
                         <div className="s3-caption">
                             <div>LEFT</div>
                             <div>'Jean Prouve on the shoulders of his father Victor Prouve'</div>
                         </div>
                     </div>
+                    <div className="s3-image__container2" >
+                        <img className="s3-image2" ref={el => zoomOutEffectRefs.current[1] = el}  src={s3VictorProuve}/>
+                    </div>
+             
+                        <div className="s3-texte">The foundations of Jean Prouvé's career were laid very early, in an atmosphere where art and innovation were omnipresent. Immersed in a world where visual arts, music, and architecture constantly coexisted, Jean developed a unique sensitivity that would characterize his future work. He observed and participated in the creative processes of his father's art and his mother's music, fostering a practical approach to artistic creation. This broad exposure enabled him to envision and execute designs that married engineering and aesthetics, emphasizing a philosophy where form and function are inseparable. His early experiences equipped him with the tools to innovate in ways that resonated with both his artistic sensibilities and practical needs.</div>
+            
+                
                     <h2 className="bottom-title" ref={el => revealTextEffectRefs.current[0] = el}>
                         <span>A</span>
                         <span>R</span>
@@ -454,28 +462,30 @@ const MainDesktop = () => {
 
                 <section className="s4 parallax">
                     <div className="parallax-image__container" ref={el => containerParallaxRefs.current[1] = el} >
-                        <div className="parallax-caption">
-                            <div>IMAGE</div>
-                            <div>'Jean Prouve and his father Victor'</div>
-                            <div>c. 1911.</div>
-                        </div>
                         <img className="parallax-image" ref={el => imageParallaxRefs.current[1] = el} src={s3VictorProuve2} alt="Image Parallaxe"/>
                     </div>
                 </section>
                 <section className="s5" ref={section5}>
                     <div className="s5-container">
-                        <div className='s5-texte-b'>Jean Prouve began his apprenticeship in ironwork in 1916 with Emile Robert in Enghien, where he acquired the basics of the trade. He continued his training with Adalbert Szabo in Paris, perfecting his skills in the traditional techniques of artistic metalwork. In 1921, he returned to Nancy and worked for the artistic ironworker Emile Brandt, where he refined his know-how and developed a personal style. These experiences allow him to master artisanal techniques while promoting innovation and quality in his work.</div>
+                        <div className="s5-texte__container">
+                            <div className='s5-texte-b'>Jean Prouve began his apprenticeship in ironwork in 1916 with Emile Robert in Enghien, where he acquired the basics of the trade. He continued his training with Adalbert Szabo in Paris, perfecting his skills in the traditional techniques of artistic metalwork. In 1921, he returned to Nancy and worked for the artistic ironworker Emile Brandt, where he refined his know-how and developed a personal style. These experiences allow him to master artisanal techniques while promoting innovation and quality in his work.</div>
+                            <div className="s5-caption">
+                                <div>LEFT</div>
+                                <div>'Jean Prouve and his father Victor'</div>
+                                <div>c. 1911.</div>
+                            </div>
+                        </div>
+                        <div className="s5-texte__container">
+                            <div className='s5-texte'>In 1924, Jean Prouve opened his own ironwork workshop in Nancy. He began by creating wrought iron banisters, gates and doors, demonstrating his skill at transforming metal into functional works of art. He quickly became interested in the design of furniture and architectural elements in metal. His first creations, influenced by Art Nouveau, evolved towards a more modern aesthetic, characterized by simplicity, functionality and the use of new materials such as steel and aluminum. His works combine beauty and practicality, establishing his workshop as a place of innovation in metal design.</div>
+                            <div className="s5-caption">
+                                <div>RIGHT</div>
+                                <div>'Jean Prouve at the workshop of emile Robert'</div>
+                                <div>c. 1917.</div>
+                            </div>
+                        </div>
                         <div className='s5-image__container'>
                             <img className="s5-image" ref={el => zoomOutEffectRefs.current[2] = el} src={s5atelier} />
-                        </div>   
-                        <div className='s5-texte'>In 1924, Jean Prouve opened his own ironwork workshop in Nancy. He began by creating wrought iron banisters, gates and doors, demonstrating his skill at transforming metal into functional works of art. He quickly became interested in the design of furniture and architectural elements in metal. His first creations, influenced by Art Nouveau, evolved towards a more modern aesthetic, characterized by simplicity, functionality and the use of new materials such as steel and aluminum. His works combine beauty and practicality, establishing his workshop as a place of innovation in metal design.</div>
-                    </div>
-                    <div className="s5-caption__container">
-                        <div className="s5-caption">
-                            <div>RIGHT</div>
-                            <div>'Jean Prouve at the workshop of emile Robert'</div>
-                            <div>c. 1917.</div>
-                        </div>
+                        </div> 
                     </div>
                     <h2 className="bottom-title" ref={el => revealTextEffectRefs.current[1] = el}>
                         <span>W</span>
@@ -489,7 +499,7 @@ const MainDesktop = () => {
                         <span>S</span>
                     </h2>
                 </section>
-
+                
                 <section className="s6 parallax">
                     <div className="parallax-image__container" ref={el => containerParallaxRefs.current[2] = el} >
                         <img className="parallax-image" ref={el => imageParallaxRefs.current[2] = el} src={s6atelier} alt="Image Parallaxe"/>
@@ -540,7 +550,7 @@ const MainDesktop = () => {
                                 <div>Clichy, 1935-1939.</div>
                             </div>
                         </div>
-                        <div className='s7-image__container'>
+                        <div className='s7-image__container2'>
                             <img className="s7-image__maison" ref={el => zoomOutEffectRefs.current[4] = el} src={s7maisondupeuple} />
                         </div>
                         <div className='s7-texte__container-b'>

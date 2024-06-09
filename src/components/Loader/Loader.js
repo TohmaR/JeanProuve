@@ -16,15 +16,17 @@ function LoadingPage() {
 
   useGSAP(() => {
     LoadingPageTimeline.current
-      .to(".nav__container", { delay: 0.8, duration: 2, opacity: 1}, "start")
+      .fromTo(".nav__container", { opacity: 0 },{ delay: 0.8, duration: 2, opacity: 1}, "start")
       .to(".loader-date-item", { stagger: 0.06, duration: 0.5, transform: "translate3d(0px, 0%, 0px"},"start+=1")
       .to(".loader-text", { stagger: 0.06, duration: 0.6, transform: "translate3d(0px, 0%, 0px"}, "start+=1.2")
       .to(".loader-span", { duration: 0.6, opacity: 1}, "start+=1." )
       .to(".loader-date-item",  { delay : 1.2 ,duration: 0.6, transform: "translate3d(0px, -150%, 0px"})
-      .to(".loader-text", { duration: 0.6, transform: "translate3d(0px, -150%, 0px"}, "<" )
+      .to(".loader-text", { duration: 0.6, transform: "translate3d(0px, -100%, 0px"}, "<" )      
+      .to(".loader-text", { opacity: 0, display: "none"}, ">" )
+      .to(".loader-date-item", { opacity: 0, display: "none"}, "<" )
       .to(".loader-title__item", {  stagger: 0.06, delay: -.2,duration: 0.5, transform: "translate3d(0px, 0%, 0px"})
       .to(".loader-bg", { duration: 0.7, transform: "translate3d(0px, -150%, 0px"})
-      .to(".hero-text__container p", { delay: .2, duration: 0.6, transform : "translate3d(0px, 0%, 0px"}, "<")
+      .fromTo(".hero-text__container p", {transform : "translate3d(0px, 100%, 0px)"}, { delay: .2, duration: 0.6, transform : "translate3d(0px, 0%, 0px)"}, "<")
       .to(".m-hero-text__item", { duration: 0.6, transform : "translate3d(0px, 0%, 0px"}, "<")
       .to(".loader-span", { duration: 0.3, opacity: 0, delay: isTabletOrMobile ? -1 : 0}, "<")
       .to(".loader", { pointerEvents: "none"}, "<")

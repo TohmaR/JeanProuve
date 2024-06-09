@@ -52,10 +52,6 @@
     overflow: hidden;
 }
 
-.hero-text__container p{
-    transform: translate3d(0px, 100%, 0px)
-}
-
 .hero-text span{
     font-size: 0.9vh;
     letter-spacing: .12em;
@@ -223,11 +219,9 @@
 .s1-prv__title{
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
     height: auto;
     font-family: "MaelstromSansBold";
-    font-size: 6.9vw;
+    font-size: 5.8vw;
     line-height: 12vw;
     color: #678846;
 }
@@ -248,10 +242,8 @@
 }
 
 .s2 .parallax-image{
-    width: 150vw;
-    min-height: 100vh;
+    max-width: 140vw;
     max-height:115vh;
-    width: auto;
     height: auto;
     position: absolute; 
     top: 0;
@@ -261,7 +253,7 @@
 .s3{
     display: flex ;
     flex-direction: row;
-    width: 315vh;
+    width: fit-content;
     height: 100vh;
     background-color: #678846;
     padding: 4.21296vh 14.81481vh;
@@ -270,8 +262,9 @@
 .s3-image__container{
     position: relative;
     overflow: hidden;
-    height:95%;
-    transform: rotate(-1.5deg);
+    min-width: 62vh;
+    height:100%;
+    transform: rotate(-1deg);
 }
 
 .s3-image{
@@ -281,7 +274,8 @@
 .s3-texte-b{
     color: white;
     margin: 0 8vh;
-    max-width: 65vh;
+    width: 60vh;
+    min-width: 60vh;
     text-indent: 2.68519vh;
     font-family: "GrifinitoL";
     font-size: 5.55556vh;
@@ -291,16 +285,17 @@
 .s3-image__container2{
     position: relative;
     overflow: hidden;
-    height: 83%;
+    width: 50vh;
+    height: 65vh;
 }
 
 .s3-image2{
-    max-width: 50vh;
+   max-width: 50vh;
 }
 
 .s3-texte{
-    text-indent: 2.68519vh;
     width: 30vh;
+    min-width: 30vh;
     height: fit-content;
     color: white;
     font-size: 1.6vh;
@@ -316,7 +311,7 @@
 
 
 .s3-caption{
-    margin: 3vh 8vh 0 8vh;
+    margin: 6vh 8vh 0 8vh;
 }
 
 .s3-caption div{
@@ -411,8 +406,7 @@
 
 .s5-texte-b{
     color: white;
-    margin: 0 0 8vh 0;
-    max-width: 65vh;
+    width: 65vh;
     text-indent: 2.68519vh;
     font-family: "GrifinitoL";
     font-size: 5.55556vh;
@@ -420,9 +414,8 @@
 }
 
 .s5-caption{
-    position: absolute;
-    left: 14.81481vh;
-    bottom: 35vh;
+    position: relative;
+   padding-top: 5vh;
 }
 
 .s5-caption div{
@@ -444,16 +437,26 @@
 .s5-image__container{
     position: relative;
     overflow: hidden;
-    height: 87%;
+    height: 65%;
+    width: 60vh;
     margin: 0 14.81481vh;
-    z-index: 2;
+}
+.s5-image{
+   width: 100%;
 }
 
+.s5-texte__container{
+    width: fit-content;;
+    position: relative;
+    padding-left: 10vh;
+    height: fit-content;
+}
 
-.s5-image{
-    height: 100%;
-    max-height: 100%;
-    align-self: flex-end;
+.s5-texte__container:nth-child(1){
+    width: fit-content;
+    position: relative;
+    padding: 0;
+    height: fit-content;
 }
 
 .bottom-title{
@@ -550,6 +553,10 @@
     height: 100%;
 }
 
+.s7-image__container2{
+    width: 60vh;
+}
+
 .s7-image__cite{
     width: 130vh;
     height: fit-content;
@@ -562,7 +569,7 @@
 }
 
 .s7-image__maison{
-    width: 70vh;
+    width: 100%;
 }
 
 .s7 .bottom-title{
@@ -652,8 +659,8 @@
 
 
 .s9-texte-b{
-    color: WHITE;
-    max-width: 110vh;
+    color: white;
+    width: 85vh;
     text-indent: 2.68519vh;
     font-family: "GrifinitoL";
     font-size: 5.55556vh;
