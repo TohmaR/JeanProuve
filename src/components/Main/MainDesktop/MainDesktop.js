@@ -54,6 +54,7 @@ const MainDesktop = () => {
     const section9 = useRef(null);
     const section11 = useRef(null);
     const section13 = useRef(null);
+    const section14 = useRef(null);
 
     //Parallax Effect
     const containerParallaxRefs = useRef([]);
@@ -104,13 +105,14 @@ const MainDesktop = () => {
 
     useEffect(() => {
         const scrollableWidth = totalWidth - window.innerWidth;
-        const offsetSection1 = section1.current.getBoundingClientRect().left ;
-        const offsetSection3 = section3.current.getBoundingClientRect().left ;
-        const offsetSection5 = section5.current.getBoundingClientRect().left ;
-        const offsetSection7 = section7.current.getBoundingClientRect().left ;
-        const offsetSection9 = section9.current.getBoundingClientRect().left ;
-        const offsetSection11 = section11.current.getBoundingClientRect().left ;
-        const offsetSection13 = section13.current.getBoundingClientRect().left ;
+        const offsetSection1 = section1.current.getBoundingClientRect().left;
+        const offsetSection3 = section3.current.getBoundingClientRect().left;
+        const offsetSection5 = section5.current.getBoundingClientRect().left;
+        const offsetSection7 = section7.current.getBoundingClientRect().left;
+        const offsetSection9 = section9.current.getBoundingClientRect().left;
+        const offsetSection11 = section11.current.getBoundingClientRect().left;
+        const offsetSection13 = section13.current.getBoundingClientRect().left;
+        const offsetSection14 = section14.current.getBoundingClientRect().left;
 
         mm.add("(min-width: 1025px)", () => {
         
@@ -178,7 +180,7 @@ const MainDesktop = () => {
                         console.log("scrollLeft section3 : ", offsetSection3);
                 
                         //timeline background white
-                        if (((pxProgress >= offsetSection1 && pxProgress <= offsetSection3) || (pxProgress > offsetSection7 && pxProgress < offsetSection9) || (pxProgress > offsetSection11 )) && !navTimelineWhite.current.isActive()) {
+                        if (((pxProgress >= offsetSection1 && pxProgress <= offsetSection3) || (pxProgress > offsetSection7 && pxProgress < offsetSection9) || (pxProgress > offsetSection11 && pxProgress < offsetSection13 )) && !navTimelineWhite.current.isActive()) {
                             navTimelineWhite.current.invalidate().seek(0).play();
                         }
 
@@ -188,7 +190,7 @@ const MainDesktop = () => {
                         }
 
                         //timeline background green
-                        else if (pxProgress > offsetSection3 && pxProgress < offsetSection5 && !navTimelineGreen.current.isActive()) {
+                        else if (((pxProgress > offsetSection3 && pxProgress < offsetSection5) || (pxProgress > offsetSection13 && pxProgress < offsetSection14)) && !navTimelineGreen.current.isActive()) {
                             navTimelineGreen.current.invalidate().seek(0).play();
                         }
 
@@ -758,7 +760,7 @@ const MainDesktop = () => {
                     </h2>
                 </section>
                 
-                <section className="p p2">
+                <section className="p p2" ref={section14}>
                     <div className="p-container">
                         <h2 className="p-title">
                             <span ref={el => titleTranformEffectRefs.current[1] = el} >Furnitures</span>
