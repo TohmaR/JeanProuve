@@ -65,7 +65,7 @@ function MainMobile() {
         const offsetSection13 = section13.current.offsetTop ;
 
         const handleScroll = () => {
-           const scrollY = window.scrollY + (window.innerWidth * 0.1813333);
+            const scrollY = window.pageYOffset + (window.innerWidth * 0.1813333);
       
             if (((scrollY >= offsetSection1 && scrollY <= offsetSection3) || (scrollY > offsetSection7 && scrollY < offsetSection9) || (scrollY > offsetSection11 && scrollY < offsetSection13)) && !navTimelineWhite.current.isActive()) {
                 navTimelineWhite.current.invalidate().seek(0).play();

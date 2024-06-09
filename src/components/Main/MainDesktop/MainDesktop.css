@@ -12,7 +12,7 @@
 .hero{
     position: relative;
     min-width: 100vw;
-    height: 100vh;
+    height: 100svh;
     background-image: url("../../../assets/images/hero-banner.jpeg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */

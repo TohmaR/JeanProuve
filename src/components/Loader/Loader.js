@@ -20,8 +20,8 @@ function LoadingPage() {
       .to(".loader-date-item", { stagger: 0.06, duration: 0.5, transform: "translate3d(0px, 0%, 0px"},"start+=1")
       .to(".loader-text", { stagger: 0.06, duration: 0.6, transform: "translate3d(0px, 0%, 0px"}, "start+=1.2")
       .to(".loader-span", { duration: 0.6, opacity: 1}, "start+=1." )
-      .to(".loader-date-item",  { delay : 1.2 ,duration: 0.6, transform: "translate3d(0px, -100%, 0px"})
-      .to(".loader-text", { duration: 0.6, transform: "translate3d(0px, -100%, 0px"}, "<" )
+      .to(".loader-date-item",  { delay : 1.2 ,duration: 0.6, transform: "translate3d(0px, -150%, 0px"})
+      .to(".loader-text", { duration: 0.6, transform: "translate3d(0px, -150%, 0px"}, "<" )
       .to(".loader-title__item", {  stagger: 0.06, delay: -.2,duration: 0.5, transform: "translate3d(0px, 0%, 0px"})
       .to(".loader-bg", { duration: 0.7, transform: "translate3d(0px, -150%, 0px"})
       .to(".hero-text__container p", { delay: .2, duration: 0.6, transform : "translate3d(0px, 0%, 0px"}, "<")
@@ -37,9 +37,9 @@ function LoadingPage() {
     const timeout = setTimeout(() => {
       setStartAnimation(true);
     }, initialDelay);
-
+    
     return () => clearTimeout(timeout);
-  }, []);
+  }, []);                             
   
   useEffect(() => {
     if (startAnimation) {
