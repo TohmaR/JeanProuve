@@ -7,9 +7,9 @@ gsap.registerPlugin(ScrollToPlugin);
 
 const menuList = [
   { no: "1", text: "BIOGRAPHY", target: "biography" },
-  { no: "2", text: "WORKSHOPS", target: "workshops" },
-  { no: "3", text: "FURNITURE", target: "furniture" },
-  { no: "4", text: "ARCHITECTURE", target: "architecture" },
+  { no: "2", text: "FURNITURE", target: "furniture" },
+  // { no: "3", text: "FURNITURE", target: "furniture" },
+  // { no: "4", text: "ARCHITECTURE", target: "architecture" },
 ];
 
 function MenuLink({ no, text, target, onClick }) {
@@ -47,8 +47,6 @@ function NavMobile() {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log("scrollY : ", window.scrollY);
-
       if (window.scrollY >= window.innerHeight) {
         transformNavTimeline.current.play();
       } else {
@@ -119,6 +117,10 @@ function NavMobile() {
   }, []);
 
   const scrollToLink = useCallback((target) => {
+    const targetElement = document.getElementById(target);
+    const offsetTarget = targetElement.offsetTop - (window.innerWidth * 0.17);
+
+    gsap.to(window, {duration: 1, scrollTo: {y: offsetTarget, autoKill: false}});
     setToggleMenu(false);
   }, []);
 

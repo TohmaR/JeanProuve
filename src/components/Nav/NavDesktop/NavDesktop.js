@@ -4,13 +4,15 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { MorphSVGPlugin } from '../../../gsap/MorphSVGPlugin.min.js';
 import "./NavDesktop.css";
 
+
+
 gsap.registerPlugin(ScrollToPlugin, MorphSVGPlugin);
 
 const menuList = [
     { no: "1", text: "BIOGRAPHY", target: "biography" },
-    { no: "2", text: "WORKSHOPS", target: "workshops" },
-    { no: "3", text: "FURNITURE", target: "furniture" },
-    { no: "4", text: "ARCHITECTURE", target: "architecture" },
+    { no: "2", text: "FURNITURE", target: "furniture" },
+    // { no: "3", text: "FURNITURE", target: "furniture" },
+    // { no: "4", text: "ARCHITECTURE", target: "architecture" },
 ];
 
 function MenuLink({ no, text, target, onClick }) {
@@ -29,7 +31,7 @@ function MenuLink({ no, text, target, onClick }) {
 function NavDesktop () {
     const [toggleMenu, setToggleMenu] = useState(null);
     const menuTimeline = useRef();
-    const [scrollTop, setScrollTop] = useState(0);
+    const [scrollTop, setScrollTop] = useState(12.24);
     const crossTop = useRef(null);
     const crossBottom = useRef(null);
     const crossTopOut = useRef(null);    
@@ -46,7 +48,13 @@ function NavDesktop () {
             document.documentElement.scrollHeight -
             document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
-        setScrollTop(scrolled);
+        const minHeight = 12.24;
+        const maxHeight = 100;
+        const heightRange = maxHeight - minHeight;
+    
+        const scrollTop = minHeight + (scrolled * heightRange / 100);
+    
+        setScrollTop(scrollTop);
     };
 
     useEffect(() => {
@@ -108,6 +116,12 @@ function NavDesktop () {
 
     const scrollToLink = useCallback((target) => {
         setToggleMenu(false);
+
+        const element = document.getElementById(target);
+        const elementOffsetLeft = element.offsetLeft;
+
+
+        gsap.to(window, {duration: 1, scrollTo: {y: elementOffsetLeft, autoKill: false}});
     }, []);
 
     return (
@@ -138,7 +152,7 @@ function NavDesktop () {
                 <div className="progress__container">
                     <div
                         className="progress__thumb"
-                        style={{ height: `${12.24 + + scrollTop}vh` }}
+                        style={{ height: `${scrollTop}vh` }}
                     ></div>
                 </div>
                 <svg

@@ -8,7 +8,7 @@ main{
     position: relative;
     min-width: 100vw;
     height: 100svh!important;
-    background-image: url("../../../assets/images/hero-banner.jpeg");
+    background-image: url("../../../assets/images/hero-banner.webp");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
@@ -301,4 +301,101 @@ main{
 
 .m-s13 > div:nth-of-type(1) {
     height: 112vw;
+}
+
+.m-s14{
+    display: flex;
+    flex-direction: column;
+    padding: 0 4.88889vw 11.02222vw 4.88889vw;
+    background-color: white;
+}   
+
+.m-s14{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.m-s14__no{
+    padding: 28.44444vw 0 0;
+    font-size: 132.88889vw;
+    line-height: 106.66667vw;
+    text-align: center;
+    font-family: "MaelstromSansBold";
+    color: #678846;
+}
+
+.m-s14-line{
+    width: 100%;
+    height: .35556vw;
+    background: #000;
+    margin: 9.77778vw 0 0;
+}
+
+.m-s14-title{
+    font-family: "GrifinitoL";
+    font-size: 10.31111vw;
+    line-height: 9.77778vw;
+    letter-spacing: .005em;
+    padding: 10.66667vw 0 0 0;
+    color: #678846;
+}
+
+.m-s15{
+    display: flex;
+    flex-direction: column;
+    padding: 0 4.88889vw 11.02222vw 4.88889vw;
+    background-color: white;
+    height: 100vh;
+}
+
+.m-furniture{
+    background-color: white;
+    padding: 0 4.88889vw 11.02222vw 4.88889vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.m-furniture-section{
+  
+}
+
+.m-furniture-item{
+    margin: 5vh 0 ;
+}
+
+.m-furniture-item div{
+    padding: 0.3vh 0;
+}
+.m-furniture-image{
+    width: 100%;
+}
+.m-furniture-info{
+    margin: 3vh 0 ;
+    font-size: 1.6vh;
+    line-height: 2.2vh;
+    font-family: "GraphikRegular";
+}
+.m-furniture-ld{
+    color: #678846;
+    letter-spacing: .16em;
+    font-weight: 800;
+}
+.m-furniture-name{
+font-weight: 800;
+}
+.m-furniture-year{
+    font-weight: 800;
+    color:rgba(0, 0, 0, 0.683) ;
+}
+.m-furniture-description{
+
+}
+
+.m-furniture-decade{
+    font-family: "MaelstromSansBold";
+    font-size: 30vw;
+    color: #678846;
+    margin-top: 5vh;
 }

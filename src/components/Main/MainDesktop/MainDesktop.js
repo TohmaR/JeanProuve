@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { MorphSVGPlugin } from '../../../gsap/MorphSVGPlugin.min.js';
@@ -6,32 +6,55 @@ import { InertiaPlugin } from '../../../gsap/InertiaPlugin.min.js';
 import Draggable from 'gsap/Draggable';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
+import { furnitureList } from '../FurnitureList.js';
+
 //import css
 import './MainDesktop.css';
 
 //import assets
-import ProuvePortrait from '../../../assets/images/ProuvePortrait.jpeg';
-import s3MarieDuhamel from '../../../assets/images/s3MarieDuhamel.jpg';
-import s3VictorProuve from "../../../assets/images/s3VictorProuve.jpg";
-import s3VictorProuve2 from "../../../assets/images/s3VictorProuve2.jpg";
-import s5atelier from '../../../assets/images/s5atelier.jpg';
-import s6atelier from '../../../assets/images/s6atelier.jpg';
-import s7Collab from "../../../assets/images/s7Collab.jpg";
-import s7citeUniversitaire from "../../../assets/images/s7citeUniversitaire.jpg";
-import s7metaldoor from "../../../assets/images/s7metaldoor.jpg";
-import s7maisondupeuple from "../../../assets/images/s7maisondupeuple.jpg";
-import s8habitattropical from "../../../assets/images/s8HabitatTropical.jpg";
-import s9bureauMaxeville from "../../../assets/images/s9BureauxdetudesMaxeville.jpg";
-import s9maison10x12 from "../../../assets/images/s9maison10x12.jpg";
-import s9maison10x12indoor from "../../../assets/images/s9maison10x12indoor.jpg";
-import s10baraquemilitaire from "../../../assets/images/s10baraquemilitaire.jpg";
-import s11maisondemontable from "../../../assets/images/s11maisondemountable6x6.jpg";
-import s11maisondemontable2 from "../../../assets/images/s11maisondemountable6x62.jpg";
-import s11maisondemontableplan from "../../../assets/images/s11maisondemountableplan.jpg";
-import s12maison6x6 from "../../../assets/images/s12Maison6x6.jpg";
-import s13academic from "../../../assets/images/s13academic.jpg";
+import ProuvePortrait from '../../../assets/images/ProuvePortrait.webp';
+import s3MarieDuhamel from '../../../assets/images/s3MarieDuhamel.webp';
+import s3VictorProuve from "../../../assets/images/s3VictorProuve.webp";
+import s3VictorProuve2 from "../../../assets/images/s3VictorProuve2.webp";
+import s5atelier from '../../../assets/images/s5atelier.webp';
+import s6atelier from '../../../assets/images/s6atelier.webp';
+import s7Collab from "../../../assets/images/s7Collab.webp";
+import s7citeUniversitaire from "../../../assets/images/s7citeUniversitaire.webp";
+import s7metaldoor from "../../../assets/images/s7metaldoor.webp";
+import s7maisondupeuple from "../../../assets/images/s7maisondupeuple.webp";
+import s8habitattropical from "../../../assets/images/s8HabitatTropical.webp";
+import s9bureauMaxeville from "../../../assets/images/s9BureauxdetudesMaxeville.webp";
+import s9maison10x12 from "../../../assets/images/s9maison10x12.webp";
+import s9maison10x12indoor from "../../../assets/images/s9maison10x12indoor.webp";
+import s10baraquemilitaire from "../../../assets/images/s10baraquemilitaire.webp";
+import s11maisondemontable from "../../../assets/images/s11maisondemountable6x6.webp";
+import s11maisondemontable2 from "../../../assets/images/s11maisondemountable6x62.webp";
+import s11maisondemontableplan from "../../../assets/images/s11maisondemountableplan.webp";
+import s12maison6x6 from "../../../assets/images/s12Maison6x6.webp";
+import s13academic from "../../../assets/images/s13academic.webp"
 
 gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin, Draggable, InertiaPlugin, ScrollToPlugin);
+
+const FurnitureNavList = [
+    { text: "1920" },
+    { text: "1930" },
+    { text: "1940" },
+    { text: "1950" },
+];
+
+function FurnitureItem({ name, year, description, image }){
+    return(
+        <div className="furniture-item">
+            <img className="furniture-image" src={image} alt={name} />
+            <div className="furniture-info">
+                <div className="furniture-ld">LEFT</div>
+                <div className="furniture-name">{name}</div>
+                <div className="furniture-year">{year}</div>
+                <div className="furniture-description">{description}</div>
+            </div>
+        </div>
+    )
+}
 
 const MainDesktop = () => {
     const horizontalContainer = useRef(null);
@@ -56,22 +79,26 @@ const MainDesktop = () => {
     const section13 = useRef(null);
     const section14 = useRef(null);
 
+    //Furniture Effect
+    const FurnitureContainer = useRef()
+    const FurnitureOverlay = useRef();
+    const FurnitureHorizontal = useRef()
+    const FurnitureSectionRef = useRef([]);
+    const FurnitureNavItems = useRef([]);
+    const [FurnitureYear, setFurnitureYear] = useState(1920);
+
     //Parallax Effect
     const containerParallaxRefs = useRef([]);
     const imageParallaxRefs = useRef([]);
-    const animationsParallax = useRef([]);
 
     //Transform Effect Title p
     const titleTranformEffectRefs = useRef([]);
-    const animationsTranformEffect = useRef([]);
 
     //ZoomOut Effect
     const zoomOutEffectRefs = useRef([]);
-    const animationszoomOutEffect = useRef([]);
 
     //Reveal Text Effect
     const revealTextEffectRefs = useRef([]);
-    const animationsRevealTextEffect = useRef([]);
 
     const CircleArrowTimeline = useRef(null);
     const [isShownArrow, setIsShownArrow] = useState(null);
@@ -79,7 +106,8 @@ const MainDesktop = () => {
     const svgArrow = useRef(null);
 
     const onClickArrow = () => {
-        gsap.to(window, {duration: 1, scrollTo: {y: section1.current.offsetLeft * 1.04, autoKill: false}});
+        scrollTriggerRef.current.scroll(section1.current.offsetLeft);
+
     };
 
 
@@ -113,6 +141,11 @@ const MainDesktop = () => {
         const offsetSection11 = section11.current.getBoundingClientRect().left;
         const offsetSection13 = section13.current.getBoundingClientRect().left;
         const offsetSection14 = section14.current.getBoundingClientRect().left;
+        const offsetFurniture1 = FurnitureSectionRef.current[1].getBoundingClientRect().left;
+        const offsetFurniture2 = FurnitureSectionRef.current[2].getBoundingClientRect().left;
+        const offsetFurniture3 = FurnitureSectionRef.current[3].getBoundingClientRect().left;
+      
+        
 
         mm.add("(min-width: 1025px)", () => {
         
@@ -170,33 +203,58 @@ const MainDesktop = () => {
                     start: 'top top',
                     end: `+=${totalWidth}`, // Assurez-vous que la fin est correctement configuree
                     pin: true,
+                    anticipatePin: 1,
                     scrub: 1,
                     onUpdate: (self) => {
                         const progress = self.progress; // Progression du ScrollTrigger
                         const pxProgress = (progress * scrollableWidth) + (window.innerWidth * 0.0416667); // Progression en pixels
-                        const vwProgress = (pxProgress / window.innerWidth) * 100; // Conversion en vw
-                        console.log("px progress :", pxProgress);
-                        console.log("scrollLeft section1 : ", offsetSection1);
-                        console.log("scrollLeft section3 : ", offsetSection3);
-                
+                    
                         //timeline background white
-                        if (((pxProgress >= offsetSection1 && pxProgress <= offsetSection3) || (pxProgress > offsetSection7 && pxProgress < offsetSection9) || (pxProgress > offsetSection11 && pxProgress < offsetSection13 )) && !navTimelineWhite.current.isActive()) {
+                        if (((pxProgress >= offsetSection1 && pxProgress <= offsetSection3) || (pxProgress > offsetSection7 && pxProgress < offsetSection9) || (pxProgress > offsetSection11 && pxProgress < offsetSection13 ) || (pxProgress > offsetSection14 && pxProgress < offsetFurniture1) || (pxProgress > offsetFurniture3)) && !navTimelineWhite.current.isActive()) {
                             navTimelineWhite.current.invalidate().seek(0).play();
+                            if((pxProgress < offsetFurniture1) || (pxProgress > offsetFurniture3)){
+                                gsap.to(FurnitureContainer.current, { backgroundColor: "white", color: "black", duration : .25 });
+                                if(pxProgress < offsetFurniture1){
+                                    setFurnitureYear(1920);
+                                    const activeItem = document.querySelector('.furniture-nav-item.active');
+                                    if (activeItem) activeItem.classList.remove('active');
+                                    if (FurnitureNavItems.current[0]) FurnitureNavItems.current[0].classList.add('active');
+                                } else {
+                                    setFurnitureYear(1950);
+                                    const activeItem = document.querySelector('.furniture-nav-item.active');
+                                    if (activeItem) activeItem.classList.remove('active');
+                                    if (FurnitureNavItems.current[3]) FurnitureNavItems.current[3].classList.add('active');
+                                }
+                            }
                         }
-
+                    
                         //timeline background transparent
                         else if (pxProgress < offsetSection1 && !navTimelineTransparent.current.isActive()) { 
                             navTimelineTransparent.current.invalidate().seek(0).play();
                         }
-
+                    
                         //timeline background green
-                        else if (((pxProgress > offsetSection3 && pxProgress < offsetSection5) || (pxProgress > offsetSection13 && pxProgress < offsetSection14)) && !navTimelineGreen.current.isActive()) {
+                        else if (((pxProgress > offsetSection3 && pxProgress < offsetSection5) || (pxProgress > offsetSection13 && pxProgress < offsetSection14) || (pxProgress > offsetFurniture2 && pxProgress < offsetFurniture3)) && !navTimelineGreen.current.isActive()) {
                             navTimelineGreen.current.invalidate().seek(0).play();
+                            if(pxProgress > offsetFurniture2 && pxProgress < offsetFurniture3){
+                                gsap.to(FurnitureContainer.current, { backgroundColor: "#678846", color: "black", duration : .25 });
+                                setFurnitureYear(1940);
+                                const activeItem = document.querySelector('.furniture-nav-item.active');
+                                if (activeItem) activeItem.classList.remove('active');
+                                if (FurnitureNavItems.current[2]) FurnitureNavItems.current[2].classList.add('active');
+                            }
                         }
-
+                    
                         //timeline background black
-                        else if ((pxProgress > offsetSection5 && pxProgress < offsetSection7 ) || (pxProgress > offsetSection9 && pxProgress < offsetSection11) && !navTimelineBlack.current.isActive()){
+                        else if (((pxProgress > offsetSection5 && pxProgress < offsetSection7 ) || (pxProgress > offsetSection9 && pxProgress < offsetSection11) || (pxProgress > offsetFurniture1 && pxProgress < offsetFurniture2 )) && !navTimelineBlack.current.isActive()){
                             navTimelineBlack.current.invalidate().seek(0).play();
+                            if(pxProgress > offsetFurniture1 && pxProgress < offsetFurniture2){
+                                gsap.to(FurnitureContainer.current, { backgroundColor: "black", color: "white", duration : .25 });
+                                setFurnitureYear(1930);
+                                const activeItem = document.querySelector('.furniture-nav-item.active');
+                                if (activeItem) activeItem.classList.remove('active');
+                                if (FurnitureNavItems.current[1]) FurnitureNavItems.current[1].classList.add('active');
+                            }
                         }
                     },
                     onRefresh: () => {
@@ -207,10 +265,34 @@ const MainDesktop = () => {
                 },
             });
 
+            gsap.to(FurnitureOverlay.current, {
+                x: () => {
+                    const scrollWidth = FurnitureContainer.current.scrollWidth - window.innerWidth;
+                    return scrollTriggerRef.current ? +scrollWidth * scrollTriggerRef.current.progress : 0;
+                },
+                scrollTrigger: {
+                    trigger: FurnitureContainer.current,
+                    start: "left left",
+                    end: () => `+=${FurnitureContainer.current.scrollWidth}`,
+                    scrub: true,
+                    horizontal: true,
+                    containerAnimation: horizontalScroll,
+                    onUpdate: self => {
+                        // Verifier si scrollTriggerRef.current est disponible avant d'acceder à progress
+                        if (scrollTriggerRef.current) {
+                            const progress = self.progress; // Notez ici l'utilisation sans parenthèses
+                            const scrollWidth = FurnitureContainer.current.scrollWidth;
+                            gsap.set(FurnitureOverlay.current, {
+                                x: +progress * scrollWidth
+                            });
+                        }
+                    }
+                }
+            });
 
             zoomOutEffectRefs.current.forEach((container, index) => {
 
-                const animation = gsap.fromTo(container, 
+                gsap.fromTo(container, 
                     { 
                         scale: 1.15, 
                     },
@@ -227,13 +309,12 @@ const MainDesktop = () => {
                         immediateRender: false, 
                     }
                 );
-                animationszoomOutEffect.current.push(animation);
             });
 
             containerParallaxRefs.current.forEach((container, index) => {
                 const image = imageParallaxRefs.current[index];
 
-                const animation = gsap.fromTo(image, 
+                gsap.fromTo(image, 
                     { xPercent: 0 },
                     {
                         xPercent: -25,
@@ -248,11 +329,10 @@ const MainDesktop = () => {
                         immediateRender: false,
                     }
                 );
-                animationsParallax.current.push(animation);
             });
 
             titleTranformEffectRefs.current.forEach((title, index) => {
-                const animation = gsap.to(title, 
+                gsap.to(title, 
                     {
                         transform: "translate3d(0px, 0%, 0px)",
                         duration: 0.75,
@@ -266,14 +346,13 @@ const MainDesktop = () => {
                         immediateRender: false,
                     }
                 );
-                animationsTranformEffect.current.push(animation);
             });
 
             revealTextEffectRefs.current.forEach((text, index) => {
 
                 const spans = text.querySelectorAll('span');
 
-                const animation = gsap.fromTo(spans, 
+                gsap.fromTo(spans, 
                     {
                         transform: "translate3d(0px, 100%, 0px)",
                     },
@@ -291,7 +370,6 @@ const MainDesktop = () => {
                         immediateRender: false,
                     }
                 );
-                animationsRevealTextEffect.current.push(animation);
             });
 
             // Save ScrollTrigger instance
@@ -302,7 +380,7 @@ const MainDesktop = () => {
                 type: 'x',
                 edgeResistance: 0.9,
                 inertia: true,
-                dragResistance: 0.80,
+                dragResistance: 0.87,
                 bounds: { minX: -scrollableWidth, maxX: 0 },
                 force3D: false,
                 onDrag: function() {
@@ -317,6 +395,7 @@ const MainDesktop = () => {
                 },
             });
         });
+
         
         // Clean-up function
         return () => {
@@ -324,32 +403,44 @@ const MainDesktop = () => {
         };
     }, [totalWidth]);
 
+    const scrollToDecade = useCallback((target) => {
+        const element = document.getElementById(target);
+        const containerOffset = (horizontalContainer__sm.current.offsetTop + element.getBoundingClientRect().left) * (horizontalContainer__sm.current.offsetWidth / (horizontalContainer__sm.current.offsetWidth - window.innerWidth));
+        gsap.to(window, {
+            scrollTo: {
+              y: containerOffset,
+              autoKill: false
+            },
+            duration: 1
+        });
+    }, []);
+
 
     useEffect(() => {
         if (!CircleArrowTimeline.current) {
             const wavePath = MorphSVGPlugin.convertToPath(svgWave.current);
             const arrowPath = MorphSVGPlugin.convertToPath(svgArrow.current);
 
-            CircleArrowTimeline.current = gsap.timeline({ paused: true, reversed: true });
+            CircleArrowTimeline.current = gsap.timeline({ paused: true });
             CircleArrowTimeline.current.to(wavePath, { duration: 0.3, morphSVG: arrowPath });
         }
 
         if (isShownArrow !== null) {
             if (isShownArrow) {
-                CircleArrowTimeline.current.play();
+                CircleArrowTimeline.current.invalidate().play();
             } else {
                 CircleArrowTimeline.current.reverse();
             }
         }
         return () => {
             if(CircleArrowTimeline.current){
-                CircleArrowTimeline.current.revert();
+                CircleArrowTimeline.current.kill();
             }
         };
     }, [isShownArrow]);
     
     return (  
-        <div className="mainDesktop horizontalContainer" ref={horizontalContainer}>
+        <div className="horizontalContainer" ref={horizontalContainer}>
             <div className="horizontalContainer__sm" ref={horizontalContainer__sm}>
                 <section className="hero">
                     <div className="hero-title__container">
@@ -411,13 +502,13 @@ const MainDesktop = () => {
 
                 <section className="s2 parallax">
                     <div className="parallax-image__container" ref={el => containerParallaxRefs.current[0] = el} >
-                        <img className="parallax-image" ref={el => imageParallaxRefs.current[0] = el} src={ProuvePortrait} alt="Image Parallaxe"/>
+                        <img className="parallax-image" ref={el => imageParallaxRefs.current[0] = el} src={ProuvePortrait} alt="Portrait of Jean Prouve"/>
                     </div>
                 </section>
 
                 <section className="s3" ref={section3}>
                     <div className="s3-image__container">
-                        <img className="s3-image" ref={el => zoomOutEffectRefs.current[0] = el}  src={s3MarieDuhamel}/>
+                        <img className="s3-image" ref={el => zoomOutEffectRefs.current[0] = el}  src={s3MarieDuhamel} alt="Jean Poruvé with his mother Marie Duhamel"/>
                     </div>
                     <div>
                         <div className="s3-texte-b">Jean Prouve was born on April 8, 1901 in Paris into a family deeply rooted in art and intellect. His father, Victor Prouve, was an emblematic figure of the Art Nouveau movement, both a painter, sculptor and president of the School of Nancy. This group of artists and architects, to which Victor was closely linked, advocated a harmonious integration of art and industry, strongly influencing young Jean. The family home, often frequented by renowned artists and intellectuals, constitutes a true hotbed of creativity.</div>
@@ -428,17 +519,17 @@ const MainDesktop = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="s3-texte border-left">In 1902, the Prouvé family moved to Nancy, a dynamic center of Art Nouveau. Growing up in this vibrant setting, Jean Prouvé was deeply influenced by the artistic and intellectual milieu around him. His father, Victor, a pivotal figure in the Art Nouveau movement, imparted to Jean a holistic vision of art that seamlessly integrated aesthetics with functionality. This ideology was further enriched by his mother, Marie Duhamel, whose musical talents added another layer of cultural depth to their home. Jean’s exposure to his parents' diverse artistic disciplines played a crucial role in shaping his understanding of art and design.</div>
+                        <div className="s3-texte border-left">In 1902, the Prouve family moved to Nancy, a dynamic center of Art Nouveau. Growing up in this vibrant setting, Jean Prouve was deeply influenced by the artistic and intellectual milieu around him. His father, Victor, a pivotal figure in the Art Nouveau movement, imparted to Jean a holistic vision of art that seamlessly integrated aesthetics with functionality. This ideology was further enriched by his mother, Marie Duhamel, whose musical talents added another layer of cultural depth to their home. Jean’s exposure to his parents' diverse artistic disciplines played a crucial role in shaping his understanding of art and design.</div>
                         <div className="s3-caption">
                             <div>LEFT</div>
                             <div>'Jean Prouve on the shoulders of his father Victor Prouve'</div>
                         </div>
                     </div>
                     <div className="s3-image__container2" >
-                        <img className="s3-image2" ref={el => zoomOutEffectRefs.current[1] = el}  src={s3VictorProuve}/>
+                        <img className="s3-image2" ref={el => zoomOutEffectRefs.current[1] = el}  src={s3VictorProuve} alt="Jean Poruvé with his father Victor Prouve"/>
                     </div>
              
-                        <div className="s3-texte">The foundations of Jean Prouvé's career were laid very early, in an atmosphere where art and innovation were omnipresent. Immersed in a world where visual arts, music, and architecture constantly coexisted, Jean developed a unique sensitivity that would characterize his future work. He observed and participated in the creative processes of his father's art and his mother's music, fostering a practical approach to artistic creation. This broad exposure enabled him to envision and execute designs that married engineering and aesthetics, emphasizing a philosophy where form and function are inseparable. His early experiences equipped him with the tools to innovate in ways that resonated with both his artistic sensibilities and practical needs.</div>
+                        <div className="s3-texte">The foundations of Jean Prouve's career were laid very early, in an atmosphere where art and innovation were omnipresent. Immersed in a world where visual arts, music, and architecture constantly coexisted, Jean developed a unique sensitivity that would characterize his future work. He observed and participated in the creative processes of his father's art and his mother's music, fostering a practical approach to artistic creation. This broad exposure enabled him to envision and execute designs that married engineering and aesthetics, emphasizing a philosophy where form and function are inseparable. His early experiences equipped him with the tools to innovate in ways that resonated with both his artistic sensibilities and practical needs.</div>
             
                 
                     <h2 className="bottom-title" ref={el => revealTextEffectRefs.current[0] = el}>
@@ -464,7 +555,7 @@ const MainDesktop = () => {
 
                 <section className="s4 parallax">
                     <div className="parallax-image__container" ref={el => containerParallaxRefs.current[1] = el} >
-                        <img className="parallax-image" ref={el => imageParallaxRefs.current[1] = el} src={s3VictorProuve2} alt="Image Parallaxe"/>
+                        <img className="parallax-image" ref={el => imageParallaxRefs.current[1] = el} src={s3VictorProuve2} alt="Jean Poruvé with his father Victor Prouve"/>
                     </div>
                 </section>
                 <section className="s5" ref={section5}>
@@ -486,7 +577,7 @@ const MainDesktop = () => {
                             </div>
                         </div>
                         <div className='s5-image__container'>
-                            <img className="s5-image" ref={el => zoomOutEffectRefs.current[2] = el} src={s5atelier} />
+                            <img className="s5-image" ref={el => zoomOutEffectRefs.current[2] = el} src={s5atelier} alt="Jean Prouve at the workshop of emile Robert"/>
                         </div> 
                     </div>
                     <h2 className="bottom-title" ref={el => revealTextEffectRefs.current[1] = el}>
@@ -504,7 +595,7 @@ const MainDesktop = () => {
                 
                 <section className="s6 parallax">
                     <div className="parallax-image__container" ref={el => containerParallaxRefs.current[2] = el} >
-                        <img className="parallax-image" ref={el => imageParallaxRefs.current[2] = el} src={s6atelier} alt="Image Parallaxe"/>
+                        <img className="parallax-image" ref={el => imageParallaxRefs.current[2] = el} src={s6atelier} alt="Jean Prouve during his apprenticeship with emile Robert"/>
                         <div className="parallax-caption">
                             <div>IMAGE</div>
                             <div>'Jean Prouve during his apprenticeship with emile Robert'</div>
@@ -515,7 +606,7 @@ const MainDesktop = () => {
 
                 <section className="s7" ref={section7}>
                     <div className="s7-container">
-                        <img className="s7-image__collab" src={s7Collab} />
+                        <img className="s7-image__collab" src={s7Collab} alt="Steph Simon, Martha Villiger, Jean Prouve and Charlotte Perriand"/>
                         <div className='s7-texte__container'>
                             <div className='s7-texte'>In the 1930s, Jean Prouve began to collaborate with major figures in architecture and design, including Le Corbusier, Charlotte Perriand and Pierre Jeanneret. These collaborations mark a particularly fruitful period of his career. Le Corbusier, famous for his revolutionary theories on urban planning and architecture, found in Prouve an ideal partner to materialize his avant-garde ideas. Charlotte Perriand, an influential designer, shares with Prouve a common vision of modernity, focused on functionality and refined aesthetics.</div>
                             <div className="s7-caption">
@@ -533,11 +624,11 @@ const MainDesktop = () => {
                             </div>
                         </div>
                         <div className='s7-image__container'>
-                            <img className="s7-image__cite" ref={el => zoomOutEffectRefs.current[3] = el} src={s7citeUniversitaire} />
+                            <img className="s7-image__cite" ref={el => zoomOutEffectRefs.current[3] = el} src={s7citeUniversitaire} alt="Reproduction of a student room from the 1950s" />
                         </div>
                         <div className='s7-texte__container'>
                             <div className='s7-texte'>Alongside his collaborations, Jean Prouve focuses on technical innovation, particularly in the field of modular construction. He developed manufacturing techniques using industrial materials such as aluminum and steel, pioneers at the time. One of its major innovations is the development of modular metal panels which make it possible to create light, strong and easily transportable structures. These panels can be assembled quickly on site, reducing construction time and costs.</div>
-                            <img className="s7-image__door" src={s7metaldoor} />
+                            <img className="s7-image__door" src={s7metaldoor} alt="Chamberlain I Prouve” exhibition at the Gagosian Gallery"/>
                         </div>
                         <div className='s7-texte__container'>
                             <div className='s7-texte'>These advances opened the way to prefabrication and the industrialization of construction, concepts which would become pillars of his work. Prouve applies these techniques in various projects, such as the Maison du Peuple in Clichy and schools in Africa, demonstrating the effectiveness and flexibility of his methods. Prefabrication not only makes it possible to respond quickly to housing and infrastructure needs, but also to ensure consistent quality and savings in resources.</div>
@@ -553,7 +644,7 @@ const MainDesktop = () => {
                             </div>
                         </div>
                         <div className='s7-image__container2'>
-                            <img className="s7-image__maison" ref={el => zoomOutEffectRefs.current[4] = el} src={s7maisondupeuple} />
+                            <img className="s7-image__maison" ref={el => zoomOutEffectRefs.current[4] = el} src={s7maisondupeuple} alt="Maison du peuple (Jean Prouve, with E. Beaudouin and M. Lods, arch., V. Bodiansky, ing."/>
                         </div>
                         <div className='s7-texte__container-b'>
                             <div className='s7-texte-b'>Prouve's innovations have greatly influenced construction, making it more accessible and sustainable, and aligned with current needs for speed, mobility, and functionality. He foresaw future developments in architecture, inspiring many generations of architects and designers. His modular construction techniques are now recognized as essential to the development of modern architecture, demonstrating his creative genius and vision.</div>
@@ -605,7 +696,7 @@ const MainDesktop = () => {
                             <div className='s9-texte'>In 1947, Jean Prouve transferred his workshops to Maxeville, near Nancy. This place is quickly becoming a nerve center for innovation in metallurgy and architectural design. The workshops are distinguished by their ability to produce not only furniture, but also complex metal structures for architecture. Jean Prouve develops metal facades, partitions, doors and windows, while continuing to create furniture that combines aesthetics and functionality.Prouve’s approach is based on industrialization and prefabrication, using materials like steel and aluminum to create modular parts. This method makes it possible to standardize and streamline production, reducing costs and manufacturing times while ensuring high quality. Its innovations in modular construction open up new perspectives in the field of architecture, notably by facilitating the rapid and efficient construction of buildings.</div>
                         </div>
                         <div className='s9-image__container'>
-                            <img className="s9-image__maxevilleBureaux" ref={el => zoomOutEffectRefs.current[4] = el} src={s9bureauMaxeville} />
+                            <img className="s9-image__maxevilleBureaux" ref={el => zoomOutEffectRefs.current[4] = el} src={s9bureauMaxeville} alt="Design office of Ateliers Jean Prouve"/>
                         </div>
                         <div className='s9-texte__container'>
                             <div className='s9-texte-b'>With the Second World War, the Ateliers Jean Prouve adapted their production to military needs, manufacturing bicycles, components for aircraft and military equipment. This reconversion demonstrates the flexibility and innovation of the workshops. Despite material shortages, Jean Prouve continues to experiment and perfect his construction techniques, maintaining his commitment to functional and accessible architecture. This period reinforces his pragmatic approach and humanist vision of architecture, highlighting his ability to adapt and innovate under pressure.</div>
@@ -622,7 +713,7 @@ const MainDesktop = () => {
                             </div>
                         </div>
                         <div className='s9-image__container2'>
-                            <img className="s9-image__maison" ref={el => zoomOutEffectRefs.current[5] = el} src={s9maison10x12} />
+                            <img className="s9-image__maison" ref={el => zoomOutEffectRefs.current[5] = el} src={s9maison10x12} alt="Prototype demountable house 10×12 m, with its 2×12 m awning"/>
                         </div>
                         <div className='s9-texte__container'>
                             <div className='s9-texte'>One of the most ambitious projects developed during this period was the model of a 10x12 meter demountable house, complete with a 2x12 meter awning, designed in 1948. This model was designed as a demonstration vehicle to demonstrate the merits of construction pre-made to a wider audience. The architecture of the house is based on the use of axial load-bearing porticos, which not only structure the space but also allow remarkable flexibility in the interior layout. The partitions and facade panels, whether glazed or solid, are designed to be interchangeable, allowing occupants to modify the layout according to their evolving needs.</div>
@@ -631,7 +722,7 @@ const MainDesktop = () => {
                                 <div>'Interior view of prototype of a 10×12 m demountable house'</div>
                             </div>
                         </div>
-                        <img className="s9-image__maisonindoor" src={s9maison10x12indoor} />
+                        <img className="s9-image__maisonindoor" src={s9maison10x12indoor} alt="Interior view of prototype of a 10×12 m demountable house"/>
                     </div>
                     <h2 className="bottom-title" ref={el => revealTextEffectRefs.current[3] = el}>
                         <span>M</span>
@@ -670,7 +761,7 @@ const MainDesktop = () => {
 
                 <section className="s11" ref={section11}>
                     <div className="s11-container">
-                        <img className="s11-image__maison" src={s11maisondemontable} />
+                        <img className="s11-image__maison" src={s11maisondemontable} alt="Interior view of 6x6 demountable house"/>
                         <div className='s11-texte__container'>
                             <div className='s11-texte__collab'>After the Second World War, Jean Prouve played a crucial role in the reconstruction of France. The country, ravaged by bombings and fighting, is in urgent need of housing and infrastructure. Prouve, with its innovative vision of modular construction and prefabrication, finds itself at the forefront of this reconstruction effort. In 1947, he designed Demountable Houses, modular structures designed to be quickly assembled on site. These houses, made of prefabricated metal panels, respond to urgent needs for temporary housing while offering durable and aesthetically pleasing solutions.</div>
                             <div className="s11-caption">
@@ -683,11 +774,11 @@ const MainDesktop = () => {
                             <div className='s11-texte__collab'>These projects mark a turning point in his career and allow him to demonstrate the effectiveness of his construction methods in crisis conditions. His pragmatic approach and attention to detail attract the attention of architects and urban planners internationally. He begins to receive orders not only from France, but also from other European countries and North America. Prouve's techniques, which combine speed of execution, low cost and structural quality, are seen as ideal solutions to the problems of rapid urbanization and housing shortages. His fame grew, and he became a central figure in the post-war reconstruction movement, working on international projects and collaborating with other renowned architects to export his technical innovations around the world.</div>
                         </div>
                         <div className='s11-image__container'>
-                            <img className="s11-image__maison2" ref={el => zoomOutEffectRefs.current[6] = el} src={s11maisondemontable2} />
+                            <img className="s11-image__maison2" ref={el => zoomOutEffectRefs.current[6] = el} src={s11maisondemontable2} alt="demountable house"/>
                         </div>
                         <div className='s11-texte__container'>
                             <div className='s11-texte__collab'>True architectural performances that can be transported and dismantled, these “barracks” were made exclusively of wood and metal (taking into account the shortage of metal). They were directly transported in spare parts to the villages devastated by the bombings. They could be assembled in one day by 3 people on the very site of the destruction, thus allowing populations deprived of roofs to stay in their villages</div>
-                            <img className="s11-image__plan" src={s11maisondemontableplan} />
+                            <img className="s11-image__plan" src={s11maisondemontableplan} alt="Construction methods, types of housing created by the Ateliers Jean Prouve”. Advertising brochure for the Ateliers Jean Prouve Studal"/>
                         </div>
                         <div className='s11-texte__container'>
                             <div className='s11-texte__collab'>The expansion of its international influence does not stop with simple orders. Prouve actively participates in exhibitions and conferences across the globe, sharing his ideas on modularity and prefabrication. He is invited to collaborate on iconic projects, contributing to exhibition pavilions and public buildings that showcase his innovative construction techniques. This period of his career was marked by growing recognition of his creative genius, placing him among the most respected architects and designers of his time. Its innovations are not only technical, they are also philosophical, embodying a vision of architecture where each component is designed to maximize efficiency and beauty.</div>
@@ -733,19 +824,17 @@ const MainDesktop = () => {
 
                 <section className="s13" ref={section13}>
                     <div className="s13-container">
-                        <div className='s13-texte__container'>
-                            <div className='s13-texte'>In 1957, Jean Prouve was appointed professor at the National School of Decorative Arts (ENSAD) in Paris. This position allows him to pass on his vast experience and innovative ideas to a new generation of designers and architects. At ENSAD, Prouve does not just teach construction techniques; he inspires his students to rethink architecture and design in terms of functionality, sustainability and social responsibility. It encourages a holistic approach, where aesthetics and technique are inseparable, and where each project must respond to real needs while being accessible and ethical.</div>
-                            <div className="s13-caption two">
-                                <div>LEFT</div>
-                                <div>Construction methods, types of housing created by the Ateliers Jean Prouve”. Advertising brochure for the Ateliers Jean Prouve Studal</div>
-                                <div>Paris, c. 1950.</div>
-                            </div>
-                        </div>
+                        <div className='s13-texte-b'>In 1957, Jean Prouve became a professor at the National School of Decorative Arts in Paris. There, he passed on his experience and innovative ideas to a new generation of designers and architects. Prouve did not limit himself to teaching construction techniques; he inspired his students to rethink architecture and design in terms of functionality, sustainability, and social responsibility. He promoted a holistic approach where aesthetics and technique are inseparable, and where each project must meet real needs while being accessible and ethical.</div>
                         <div className='s13-image__container'>
-                            <img className="s13-image" ref={el => zoomOutEffectRefs.current[7] = el} src={s13academic} />
+                            <img className="s13-image" ref={el => zoomOutEffectRefs.current[7] = el} src={s13academic} alt="Jean Prouve gives a course at the Conservatory of Arts and Crafts"/>
                         </div>
                         <div className='s13-texte__container'>
                             <div className='s13-texte'>His influence as a teacher is considerable. He trained several generations of creators who would carry his avant-garde ideas into their own work. Many of Prouve's students would go on to become influential figures in the world of architecture and design, continuing his legacy. In recognition of his exceptional contributions to architecture and design, Prouve received several prestigious honors. In 1981, he was honored with the Grand Prix National de l'Architecture, recognition of his lasting impact and pioneering role. His works are exhibited in world-renowned museums, and he is regularly invited to give lectures, actively participating in architectural competition juries and sharing his expertise within the international design community.</div>
+                            <div className="s13-caption">
+                                <div>LEFT</div>
+                                <div>Jean Prouve gives a course at the Conservatory of Arts and Crafts,</div>
+                                <div>c. 1967.</div>
+                            </div>
                         </div>
                     </div>
                     <h2 className="bottom-title" ref={el => revealTextEffectRefs.current[5] = el}>
@@ -772,6 +861,34 @@ const MainDesktop = () => {
                         </div>
                     </div>
                 </section>
+                <div className="furniture" id="furniture" ref={FurnitureContainer}>
+                    <div className="furniture-overlay" ref={FurnitureOverlay}>
+                        <div className="furniture-nav">
+                            <div>— Decades</div>
+                            <ul>
+                            {FurnitureNavList.map((decade, index) => (
+                                <li className="furniture-nav-item" ref={el => FurnitureNavItems.current[index] = el} key={index} onClick={() => scrollToDecade(decade.text)}>{decade.text}</li>
+                            ))}
+                            </ul>
+                        </div>
+                        <div className="furniture-overlay-year">{FurnitureYear}</div>
+                    </div>
+                    <div className='furniture-horizontal' ref={FurnitureHorizontal}>
+                        {Object.entries(furnitureList).map(([decade, items], index) => (
+                            <section className="furniture-section" ref={el => FurnitureSectionRef.current[index] = el} id={decade} key={decade}>
+                                {items.map((item) => (
+                                    <FurnitureItem 
+                                        key={item.name}
+                                        name={item.name}
+                                        year={item.year}
+                                        description={item.description}
+                                        image={item.image}
+                                    />
+                                ))}
+                            </section>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>  
     );

@@ -2,35 +2,49 @@ import React, { useRef, useState, useEffect, useLayoutEffect } from 'react'
 import gsap from "gsap";
 import { MorphSVGPlugin } from '../../../gsap/MorphSVGPlugin.min.js';
 
+import { furnitureList } from '../FurnitureList.js';
+
 //import css
 import "./MainMobile.css"
 
-//import assets
-import s2image from "../../../assets/images/ProuvePortrait.jpeg";
-import s3MarieDuhamel from "../../../assets/images/s3MarieDuhamel.jpg";
-import s3VictorProuve from "../../../assets/images/s3VictorProuve.jpg";
-import s3VictorProuve2 from "../../../assets/images/s3VictorProuve2.jpg";
-import s5Atelier from "../../../assets/images/s5atelier.jpg";
-import s6Atelier from "../../../assets/images/s6atelier.jpg";
-import s7Collab from "../../../assets/images/s7Collab.jpg";
-import s7CiteUniversitaire from "../../../assets/images/s7citeUniversitaire.jpg"
-import s7MetalDoor from "../../../assets/images/s7metaldoor.jpg"
-import s7maisondupeuple from "../../../assets/images/s7maisondupeuple.jpg";
-import s8habitattropical from "../../../assets/images/s8HabitatTropical.jpg";
-import s9bureauMaxeville from "../../../assets/images/s9BureauxdetudesMaxeville.jpg";
-import s9maison10x12indoor from "../../../assets/images/s9maison10x12indoor.jpg";
-import s10baraquemilitaire from "../../../assets/images/s10baraquemilitaire.jpg"
-import s11maisondemontable from "../../../assets/images/s11maisondemountable6x6.jpg"
-import s11maisondemontable2 from "../../../assets/images/s11maisondemountable6x62.jpg"
-import s11maisondemontableplan from "../../../assets/images/s11maisondemountableplan.jpg"
-import s12maison6x6 from "../../../assets/images/s12Maison6x6.jpg";
-import s13academic from "../../../assets/images/s13academic.jpg";
+//import assets Biography
+import s2image from "../../../assets/images/ProuvePortrait.webp";
+import s3MarieDuhamel from "../../../assets/images/s3MarieDuhamel.webp";
+import s3VictorProuve from "../../../assets/images/s3VictorProuve.webp";
+import s3VictorProuve2 from "../../../assets/images/s3VictorProuve2.webp";
+import s5Atelier from "../../../assets/images/s5atelier.webp";
+import s6Atelier from "../../../assets/images/s6atelier.webp";
+import s7Collab from "../../../assets/images/s7Collab.webp";
+import s7CiteUniversitaire from "../../../assets/images/s7citeUniversitaire.webp"
+import s7MetalDoor from "../../../assets/images/s7metaldoor.webp"
+import s7maisondupeuple from "../../../assets/images/s7maisondupeuple.webp";
+import s8habitattropical from "../../../assets/images/s8HabitatTropical.webp";
+import s9bureauMaxeville from "../../../assets/images/s9BureauxdetudesMaxeville.webp";
+import s9maison10x12indoor from "../../../assets/images/s9maison10x12indoor.webp";
+import s10baraquemilitaire from "../../../assets/images/s10baraquemilitaire.webp"
+import s11maisondemontable from "../../../assets/images/s11maisondemountable6x6.webp"
+import s11maisondemontable2 from "../../../assets/images/s11maisondemountable6x62.webp"
+import s11maisondemontableplan from "../../../assets/images/s11maisondemountableplan.webp"
+import s12maison6x6 from "../../../assets/images/s12Maison6x6.webp";
+import s13academic from "../../../assets/images/s13academic.webp";
 
 gsap.registerPlugin(MorphSVGPlugin);
 
+function FurnitureItem({ name, year, description, image }){
+    return(
+        <div className="m-furniture-item">
+            <img className="m-furniture-image" src={image} alt={name} />
+            <div className="m-furniture-info">
+                <div className="m-furniture-ld">ABOVE</div>
+                <div className="m-furniture-name">{name}</div>
+                <div className="m-furniture-year">{year}</div>
+                <div className="m-furniture-description">{description}</div>
+            </div>
+        </div>
+    )
+}
 
-
-function MainMobile() {
+const MainMobile = () => {
     const section1 = useRef(null);
     const section3 = useRef(null);
     const section5 = useRef(null);
@@ -38,6 +52,7 @@ function MainMobile() {
     const section9 = useRef(null);
     const section11 = useRef(null);
     const section13 = useRef(null);
+    const section14 = useRef(null);
 
     const zoomOutEffectRefs = useRef([]);
 
@@ -62,17 +77,19 @@ function MainMobile() {
         const offsetSection7 = section7.current.offsetTop;
         const offsetSection9 = section9.current.offsetTop;
         const offsetSection11 = section11.current.offsetTop;
-        const offsetSection13 = section13.current.offsetTop ;
+        const offsetSection13 = section13.current.offsetTop;
+        const offsetSection14 = section14.current.offsetTop ;
 
         const handleScroll = () => {
-            const scrollY = window.pageYOffset + (window.innerWidth * 0.1813333);
-      
-            if (((scrollY >= offsetSection1 && scrollY <= offsetSection3) || (scrollY > offsetSection7 && scrollY < offsetSection9) || (scrollY > offsetSection11 && scrollY < offsetSection13)) && !navTimelineWhite.current.isActive()) {
+            const scrollY = window.scrollY + (window.innerWidth * 0.1813333);
+
+            //timeline background white
+            if (((scrollY >= offsetSection1 && scrollY <= offsetSection3) || (scrollY > offsetSection7 && scrollY < offsetSection9) || (scrollY > offsetSection11 && scrollY < offsetSection13) || (scrollY > offsetSection14)) && !navTimelineWhite.current.isActive()) {
                 navTimelineWhite.current.invalidate().seek(0).play();
             }
 
             //timeline background green
-            else if (((scrollY > offsetSection3 && scrollY < offsetSection5) || (scrollY > offsetSection13)) && !navTimelineGreen.current.isActive()) {
+            else if (((scrollY > offsetSection3 && scrollY < offsetSection5) || (scrollY > offsetSection13 && scrollY < offsetSection14)) && !navTimelineGreen.current.isActive()) {
                 navTimelineGreen.current.invalidate().seek(0).play();
             }
 
@@ -184,7 +201,7 @@ function MainMobile() {
             </div>
         </section>
 
-        <section className="m-s1" ref={section1}>
+        <section className="m-s1" ref={section1} id="biography">
             <div className="m-s1__no">1</div>
             <div className="m-s1-line"> </div>
             <div className="m-s1-title">Biography</div>
@@ -338,6 +355,29 @@ function MainMobile() {
             </div>
             <p className='texte'>His influence as a teacher is considerable. He trained several generations of creators who would carry his avant-garde ideas into their own work. Many of Prouvé's students would go on to become influential figures in the world of architecture and design, continuing his legacy. In recognition of his exceptional contributions to architecture and design, Prouvé received several prestigious honors. In 1981, he was honored with the Grand Prix National de l'Architecture, recognition of his lasting impact and pioneering role. His works are exhibited in world-renowned museums, and he is regularly invited to give lectures, actively participating in architectural competition juries and sharing his expertise within the international design community.</p>
         </section>
+
+        <section className="m-s14" ref={section14} id="furniture">
+            <div className="m-s14__no">2</div>
+            <div className="m-s14-line"> </div>
+            <div className="m-s14-title">Furniture</div>
+        </section>
+
+        <div className='m-furniture'>
+            {Object.entries(furnitureList).map(([decade, items], index) => (
+                <section className="m-furniture-section" id={decade} key={decade}>
+                    <h2 className='m-furniture-decade'>{decade}</h2>
+                    {items.map((item) => (
+                        <FurnitureItem 
+                            key={item.name}
+                            name={item.name}
+                            year={item.year}
+                            description={item.description}
+                            image={item.image}
+                        />
+                    ))}
+                </section>
+            ))}
+        </div>
     </main>
   )
 }

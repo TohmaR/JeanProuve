@@ -1,5 +1,4 @@
-.horizontal__container {
-    min-width: fit-content;
+.horizontalContainer {
     height: 100vh;
 }
 
@@ -13,7 +12,7 @@
     position: relative;
     min-width: 100vw;
     height: 100svh;
-    background-image: url("../../../assets/images/hero-banner.jpeg");
+    background-image: url("../../../assets/images/hero-banner.webp");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
@@ -91,7 +90,7 @@
 
 .p{
    
-    width: 103.7037vh;
+    min-width: 103.7037vh;
     height: 100vh;
     background-color: white;
 }  
@@ -228,8 +227,8 @@
 
 .s2{
     position: relative;
-    width: 150vh;
-    min-width: 150vh;
+    width: 130vh;
+    min-width: 130vh;
     height: 100vh;
     overflow: hidden;
 }
@@ -242,8 +241,8 @@
 }
 
 .s2 .parallax-image{
-    max-width: 140vw;
-    max-height:115vh;
+    max-width: 150vw;
+    max-height: 100vh;
     height: auto;
     position: absolute; 
     top: 0;
@@ -510,8 +509,8 @@
     display: flex;
 }
 .s7-image__collab{
-    width: 85vh;
-    transform: rotate(-2deg);
+    width: auto;
+    height: 80vh;
 }
 
 .s7-texte__container{
@@ -541,7 +540,7 @@
 
 .s7-texte-b{
     color: black;
-    max-width: 50vh;
+    max-width: 90vh;
     text-indent: 2.68519vh;
     font-family: "GrifinitoL";
     font-size: 5.55556vh;
@@ -550,17 +549,19 @@
 
 .s7-image__container{
     overflow: hidden;
-    height: 100%;
-}
-
-.s7-image__container2{
-    width: 60vh;
+    width: 210vh;
+    height: 68vh;
 }
 
 .s7-image__cite{
-    width: 130vh;
-    height: fit-content;
+
+    width: 100%;
 }
+
+.s7-image__container2{
+    width: 120vh;
+}
+
 
 .s7-image__door{
     width: 40vh;
@@ -845,7 +846,7 @@
 
 .s13-texte__container{
     position: relative;
-    margin: 0 10vh;
+    margin-left: 10vh;
 }
 
 .s13-texte{
@@ -856,14 +857,25 @@
     font-family: "GraphikRegular";
 }
 
+.s13-texte-b{
+    color: white;
+    width: 55vh;
+    text-indent: 2.68519vh;
+    font-family: "GrifinitoL";
+    font-size: 5.55556vh;
+    line-height: 4.90741vh;
+    margin-right: 10vh;
+}
+
 .s13-image__container{
     overflow: hidden;
-    height: 100%;
+    width: 45vh;
+    height: 55vh;
 }
 
 .s13-image{
-    width: 55vh;
-    height: fit-content;
+    width: 100%;
+    
 }
 
 .s13 .bottom-title{
@@ -871,8 +883,8 @@
 }
 
 .s13-caption{
-   position: absolute;
-   bottom: 12vh;
+   position: relative;
+   margin-top: 3vh;
 }
 
 
@@ -916,4 +928,130 @@
     position: absolute; 
     bottom: 0;
     left: 0 !important;
+}
+
+.furniture{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    background-color: white;
+    padding: 4.21296vh 14.81481vh;
+}
+
+.furniture-overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+}
+
+.furniture-nav{
+    display: flex;
+    position: absolute;
+    top: 3.7vh;
+    left: 13.8vh;
+    font-family: "GrifinitoL";
+    font-size: 5.09259vh;
+    line-height: 5.09259vh;
+    letter-spacing: .005em;
+}
+.furniture-nav ul{
+  display: flex;
+  margin-left: 1vh;
+}
+.furniture-nav-item{
+    position: relative;
+    display: flex;
+    margin: 0 1vh;
+}
+
+.furniture-nav-item:nth-child(3).active{
+    color: white;
+}
+
+.furniture-nav-item::after{
+   content: '';
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 0%;
+   height: 2px;
+   background-color: #678846;
+   transition: 400ms all ease-in-out;
+}
+
+.furniture-nav-item:nth-child(3):after{
+    background-color: white;
+ }
+
+.furniture-nav-item.active{
+    color: #678846;
+}
+
+.furniture-nav-item.active.furniture-nav-item::after{
+    width: 100%;
+}
+.furniture-overlay-year{
+    position: absolute;
+    font-family: "MaelstromSansBold";
+    font-size: 30vh;
+    left: 13.8vh;
+    bottom: -1vh;
+}
+.furniture-horizontal{
+    display: flex;
+    overflow-x: scroll;
+    min-width: fit-content;
+}
+
+.furniture-horizontal::-webkit-scrollbar{
+   display: none;
+}
+
+.furniture-section{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.furniture-item{
+    display: flex;
+    align-items: center;
+    margin: 0 15vh;
+    z-index: 2;
+}
+
+.furniture-image{
+    width: 40vh;
+}
+
+.furniture-info{
+    padding-left: 3vh;
+    font-size: 1.2667vh;
+    line-height: 2.2vh;
+    font-family: "GraphikRegular";
+    min-width: 25vh;
+}
+
+.furniture-ld{
+    color: #678846;
+    letter-spacing: .16em;
+    font-weight: 800;
+}
+
+.furniture-name{
+    white-space: nowrap;
+    font-weight: 800;
+}
+
+.furniture-year{
+    font-weight: 800;
+}
+
+.furniture-description{
+    margin-top: 15px;
 }
