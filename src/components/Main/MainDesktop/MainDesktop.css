@@ -1,5 +1,7 @@
 .horizontalContainer {
+    width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 .horizontalContainer__sm {
@@ -628,6 +630,7 @@
     position: relative;
     width: fit-content;
     padding: 4.21296vh 14.81481vh;
+    background-color: black;
 }
 
 .s9-container{
@@ -931,7 +934,6 @@
 }
 
 .furniture{
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -946,17 +948,38 @@
     top: 0;
     width: 50vw;
     height: 100vh;
+    user-select: none;
+    pointer-events: none;
+    color: black;
+}
+
+.furniture-overlay-year-container{
+    position: absolute;
+    left: 13.8vh;
+    bottom: 0;
+    overflow: hidden;
+}
+.furniture-overlay-year{
+    font-family: "MaelstromSansBold";
+    font-size: 30vh;
+    transform: translate3d(0px, 100%, 0px);
+}
+
+.furniture-nav-container{
+    overflow: hidden;
+    position: absolute;
+    top: 3.7vh;
+    left: 13.8vh;
 }
 
 .furniture-nav{
     display: flex;
-    position: absolute;
-    top: 3.7vh;
-    left: 13.8vh;
     font-family: "GrifinitoL";
     font-size: 5.09259vh;
     line-height: 5.09259vh;
     letter-spacing: .005em;
+    pointer-events: all;
+    transform: translate3d(0px, 100%, 0px);
 }
 .furniture-nav ul{
   display: flex;
@@ -966,6 +989,7 @@
     position: relative;
     display: flex;
     margin: 0 1vh;
+    cursor: pointer;
 }
 
 .furniture-nav-item:nth-child(3).active{
@@ -994,13 +1018,7 @@
 .furniture-nav-item.active.furniture-nav-item::after{
     width: 100%;
 }
-.furniture-overlay-year{
-    position: absolute;
-    font-family: "MaelstromSansBold";
-    font-size: 30vh;
-    left: 13.8vh;
-    bottom: -1vh;
-}
+
 .furniture-horizontal{
     display: flex;
     overflow-x: scroll;

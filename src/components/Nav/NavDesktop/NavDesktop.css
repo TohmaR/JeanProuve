@@ -21,6 +21,13 @@ nav{
     will-change: border, background-color;
 }
 
+.nav__bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
 .nav__burger{
     position: absolute;
     top: 0;
@@ -161,7 +168,7 @@ nav{
     pointer-events: none;
 }
 
-.nav__bg{
+.nav__menu-bg{
     position: absolute;
     width: 0%;
     height: 100vh;
@@ -197,6 +204,8 @@ nav{
     height: fit-content;
     overflow: hidden;
     cursor: pointer;
+    width: fit-content;
+    padding-right: 30px;
 }
 
 .nav__menu-item:hover .nav__menu-noc{
@@ -214,6 +223,22 @@ nav{
     transform: translate3d(0px, 100%, 0px);
 }
 
+.nav__menu-item .nav__menu-name .nav__menu-line{
+    content: "";
+    position: absolute;
+    top: 51%;
+    right: 0;
+    background: white;
+    height: 0.32609vw;
+    width: 100%;
+    transition: all 0.5s;
+    transform: translate3d(-105%, 0px, 0px);
+    will-change: transform;
+}
+.nav__menu-item.active .nav__menu-name .nav__menu-line{
+    transform: translate3d(0%, 0px, 0px);
+}
+
 .nav__menu-no{
     pointer-events: none;
     position: absolute;
@@ -225,6 +250,11 @@ nav{
     height: fit-content;
     overflow: hidden;
 }
+
+.nav__menu-item.active .nav__menu-no{
+    color: white;
+}
+
 
 .nav__menu-noc{
     transform: translate3d(0px, 100%, 0px);

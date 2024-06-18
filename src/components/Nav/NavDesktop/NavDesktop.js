@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { MorphSVGPlugin } from '../../../gsap/MorphSVGPlugin.min.js';
 import "./NavDesktop.css";
+import { transform } from 'lodash';
 
 
 
@@ -20,6 +21,7 @@ function MenuLink({ no, text, target, onClick }) {
         <li className="nav__menu-item" onClick={() => onClick(target)}>
             <div className="nav__menu-name">
                 {text}
+                <div className="nav__menu-line"></div>
             </div>
             <div className="nav__menu-no">
                 <div className="nav__menu-noc">{no}</div>
@@ -32,6 +34,7 @@ function NavDesktop () {
     const [toggleMenu, setToggleMenu] = useState(null);
     const menuTimeline = useRef();
     const [scrollTop, setScrollTop] = useState(12.24);
+    const furnitureSection = useRef();
     const crossTop = useRef(null);
     const crossBottom = useRef(null);
     const crossTopOut = useRef(null);    
@@ -51,11 +54,21 @@ function NavDesktop () {
         const minHeight = 12.24;
         const maxHeight = 100;
         const heightRange = maxHeight - minHeight;
-    
         const scrollTop = minHeight + (scrolled * heightRange / 100);
-    
         setScrollTop(scrollTop);
+        
     };
+
+    useEffect(() => {
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onResize, { passive: true });
+        furnitureSection.current = document.querySelector(".furniture");
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onResize);
+        };
+    }, []);
+
 
     useEffect(() => {
         if (!menuTimeline.current) {
@@ -65,9 +78,10 @@ function NavDesktop () {
             const crossTopOutPath = MorphSVGPlugin.convertToPath(crossTopOut.current);
             const crossBottomOutPath = MorphSVGPlugin.convertToPath(crossBottomOut.current);
             menuTimeline.current = gsap.timeline({ paused: true, reversed: true });
-
+    
             menuTimeline.current
                 .to(".nav__container", { duration: 0.25, backgroundColor: "#678846", borderColor: "black" }, "start")
+                .to(".nav__bg", { duration: 0.25, backgroundColor: "#678846" }, "start")
                 .to(".burger__toggleBtn span", { duration: 0.25, backgroundColor: "black" }, "start")
                 .to(".nav__burger", { duration: 0.25, borderBottomColor: "black" }, "start")
                 .to(".nav__vertical-credits", { duration: 0.25, color: "black" }, "start")
@@ -76,28 +90,29 @@ function NavDesktop () {
                 .to(".nav__vertical-separator", { duration: 0.25, backgroundColor: "black" }, "start")
                 .to(".nav__vertical-compas path", { duration: 0.25, fill: "black", stroke: "black" }, "start")
                 .to(".progress__thumb", { duration: 0.25, backgroundColor: "white" }, "start");
-
+    
             menuTimeline.current
-                .to(".nav__bg", { duration: 0.8, width: "100vw", ease: "expo.inOut" }, "menu")
-                .to(".nav__menu-name", { duration: 0.8, stagger: 0.04, transform: "translate3d(0px, 0%, 0px)" }, "menu+=0.4")
-                .to(".nav__menu", { pointerEvents: "all" }, "menu+=0.4")
-                .to(".nav__menu-noc", { duration: 0.8, stagger: 0.04, transform: "translate3d(0px, 0%, 0px)" }, "menu+=0.4")
+                .to(".nav__menu-bg", { duration: 0.8, width: "100vw", ease: "expo.inOut" }, "menu")
+                .to(".nav__menu-name", { duration: 0.8, stagger: 0.04, transform: "translate3d(0px, 0%, 0px)" }, "menu+=0.6")
+                .to(".nav__menu", { pointerEvents: "all" }, "menu+=0.6")
+                .to(".nav__menu-noc", { duration: 0.8, stagger: 0.04, transform: "translate3d(0px, 0%, 0px)" }, "menu+=0.6")
                 .to(".close-circle-w", { duration: .6, rotation: -180}, "menu+=0.6")
                 .fromTo(".close-circle", {strokeDashoffset : "1281.77"}, { duration: 0.5, strokeDashoffset : "0"}, "menu+=0.6")
                 .to(crossTopOutPath, { duration: 0.3, morphSVG: crossTopPath}, "menu+=0.6")
-                .to(crossBottomOutPath, { duration: 0.3, morphSVG: crossBottomPath},"menu+=0.6");
+                .to(crossBottomOutPath, { duration: 0.3, morphSVG: crossBottomPath},"menu+=0.6")
         }
-
+    
+       
+    
         const toggleAnimation = () => {
-
             document.body.style.overflowY = toggleMenu ? "hidden" : "scroll";
-            if (menuTimeline.current.reversed()) {
+            if (toggleMenu) {
                 menuTimeline.current.invalidate().play();
             } else {
                 menuTimeline.current.reverse();
             }
         };
-
+    
         if (toggleMenu !== null) {
             toggleAnimation();
         }
@@ -105,28 +120,42 @@ function NavDesktop () {
     }, [toggleMenu]);
 
 
-    useEffect(() => {
-        window.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", onResize, { passive: true });
-        return () => {
-            window.removeEventListener("scroll", onScroll);
-            window.removeEventListener("resize", onResize);
-        };
-    }, []);
-
     const scrollToLink = useCallback((target) => {
-        setToggleMenu(false);
-
         const element = document.getElementById(target);
-        const elementOffsetLeft = element.offsetLeft;
-
-
-        gsap.to(window, {duration: 1, scrollTo: {y: elementOffsetLeft, autoKill: false}});
+        const horizontalContainer = document.querySelector(".horizontalContainer__sm");
+        const biographyMenuItem = document.querySelector(".nav__menu-item:nth-child(1)");
+        const furnitureMenuItem = document.querySelector(".nav__menu-item:nth-child(2)");
+        if (element && horizontalContainer) {
+            if(target == "biography"){
+                furnitureMenuItem.classList.remove("active");
+                biographyMenuItem.classList.add("active");
+            }
+            else if(target == "furniture"){
+                furnitureMenuItem.classList.add("active");
+                biographyMenuItem.classList.remove("active");
+            }
+            setToggleMenu(false);
+            const containerOffset =
+                (horizontalContainer.offsetTop + element.offsetLeft) *
+                (horizontalContainer.offsetWidth /
+                    (horizontalContainer.offsetWidth - window.innerWidth)) - (window.innerWidth * 0.038);
+    
+            gsap.to(window, {
+                duration: 0.00001,
+                scrollTo: {
+                    y: containerOffset,
+                    autoKill: false,
+                },
+            });
+        } else {
+            console.error(`Element with selector "${target}" not found.`);
+        }
     }, []);
 
     return (
         <nav>
             <div className="nav__container">
+                <div className="nav__bg"></div>
                 <div className="nav__burger">
                     <div className="burger">
                         <div className={toggleMenu ? "burger__toggleBtn open" : "burger__toggleBtn"} onClick={() => setToggleMenu(!toggleMenu)}>
@@ -185,7 +214,7 @@ function NavDesktop () {
                 </svg>
             </div>
             <div className="nav__menu">
-                <div className="nav__bg"></div>
+                <div className="nav__menu-bg"></div>
                 <ul className="nav__menu-list">
                     {menuList.map((linkData, index) => (
                         <MenuLink

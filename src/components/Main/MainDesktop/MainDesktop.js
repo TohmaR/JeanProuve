@@ -141,6 +141,7 @@ const MainDesktop = () => {
         const offsetSection11 = section11.current.getBoundingClientRect().left;
         const offsetSection13 = section13.current.getBoundingClientRect().left;
         const offsetSection14 = section14.current.getBoundingClientRect().left;
+        const offsetFurniture0 = FurnitureSectionRef.current[0].getBoundingClientRect().left;
         const offsetFurniture1 = FurnitureSectionRef.current[1].getBoundingClientRect().left;
         const offsetFurniture2 = FurnitureSectionRef.current[2].getBoundingClientRect().left;
         const offsetFurniture3 = FurnitureSectionRef.current[3].getBoundingClientRect().left;
@@ -203,17 +204,18 @@ const MainDesktop = () => {
                     start: 'top top',
                     end: `+=${totalWidth}`, // Assurez-vous que la fin est correctement configuree
                     pin: true,
-                    anticipatePin: 1,
                     scrub: 1,
                     onUpdate: (self) => {
                         const progress = self.progress; // Progression du ScrollTrigger
                         const pxProgress = (progress * scrollableWidth) + (window.innerWidth * 0.0416667); // Progression en pixels
-                    
+                        const biographyMenuItem = document.querySelector(".nav__menu-item:nth-child(1)");
+                        const furnitureMenuItem = document.querySelector(".nav__menu-item:nth-child(2)");
                         //timeline background white
                         if (((pxProgress >= offsetSection1 && pxProgress <= offsetSection3) || (pxProgress > offsetSection7 && pxProgress < offsetSection9) || (pxProgress > offsetSection11 && pxProgress < offsetSection13 ) || (pxProgress > offsetSection14 && pxProgress < offsetFurniture1) || (pxProgress > offsetFurniture3)) && !navTimelineWhite.current.isActive()) {
                             navTimelineWhite.current.invalidate().seek(0).play();
                             if((pxProgress < offsetFurniture1) || (pxProgress > offsetFurniture3)){
                                 gsap.to(FurnitureContainer.current, { backgroundColor: "white", color: "black", duration : .25 });
+                                gsap.to(".furniture-overlay", { color: "black", duration : .25 });
                                 if(pxProgress < offsetFurniture1){
                                     setFurnitureYear(1920);
                                     const activeItem = document.querySelector('.furniture-nav-item.active');
@@ -238,6 +240,7 @@ const MainDesktop = () => {
                             navTimelineGreen.current.invalidate().seek(0).play();
                             if(pxProgress > offsetFurniture2 && pxProgress < offsetFurniture3){
                                 gsap.to(FurnitureContainer.current, { backgroundColor: "#678846", color: "black", duration : .25 });
+                                gsap.to(".furniture-overlay", { color: "black", duration : .25 });
                                 setFurnitureYear(1940);
                                 const activeItem = document.querySelector('.furniture-nav-item.active');
                                 if (activeItem) activeItem.classList.remove('active');
@@ -250,11 +253,29 @@ const MainDesktop = () => {
                             navTimelineBlack.current.invalidate().seek(0).play();
                             if(pxProgress > offsetFurniture1 && pxProgress < offsetFurniture2){
                                 gsap.to(FurnitureContainer.current, { backgroundColor: "black", color: "white", duration : .25 });
+                                gsap.to(".furniture-overlay", { color: "white", duration : .25 });
                                 setFurnitureYear(1930);
                                 const activeItem = document.querySelector('.furniture-nav-item.active');
                                 if (activeItem) activeItem.classList.remove('active');
                                 if (FurnitureNavItems.current[1]) FurnitureNavItems.current[1].classList.add('active');
                             }
+                        }
+                        else if(pxProgress >= offsetFurniture0){
+                            gsap.to(".furniture-nav", { transform: "translate3d(0px, 0%, 0px)", duration : .6 });
+                            gsap.to(".furniture-overlay-year", { transform: "translate3d(0px, 0%, 0px)", duration : .6 });
+                        }
+                        else if(pxProgress < offsetFurniture0){
+                            gsap.to(".furniture-nav", { transform: "translate3d(0px, 100%, 0px)", duration : .6 });
+                            gsap.to(".furniture-overlay-year", { transform: "translate3d(0px, 100%, 0px)", duration : .6 });
+                        }
+
+                        if(pxProgress >= offsetSection14){
+                            furnitureMenuItem.classList.add("active");
+                            biographyMenuItem.classList.remove("active");
+                        }
+                        else if(pxProgress < offsetSection14){
+                            furnitureMenuItem.classList.remove("active");
+                            biographyMenuItem.classList.add("active");
                         }
                     },
                     onRefresh: () => {
@@ -265,30 +286,30 @@ const MainDesktop = () => {
                 },
             });
 
-            gsap.to(FurnitureOverlay.current, {
-                x: () => {
-                    const scrollWidth = FurnitureContainer.current.scrollWidth - window.innerWidth;
-                    return scrollTriggerRef.current ? +scrollWidth * scrollTriggerRef.current.progress : 0;
-                },
-                scrollTrigger: {
-                    trigger: FurnitureContainer.current,
-                    start: "left left",
-                    end: () => `+=${FurnitureContainer.current.scrollWidth}`,
-                    scrub: true,
-                    horizontal: true,
-                    containerAnimation: horizontalScroll,
-                    onUpdate: self => {
-                        // Verifier si scrollTriggerRef.current est disponible avant d'acceder à progress
-                        if (scrollTriggerRef.current) {
-                            const progress = self.progress; // Notez ici l'utilisation sans parenthèses
-                            const scrollWidth = FurnitureContainer.current.scrollWidth;
-                            gsap.set(FurnitureOverlay.current, {
-                                x: +progress * scrollWidth
-                            });
-                        }
-                    }
-                }
-            });
+            // gsap.to(FurnitureOverlay.current, {
+            //     x: () => {
+            //         const scrollWidth = FurnitureContainer.current.scrollWidth - window.innerWidth;
+            //         return scrollTriggerRef.current ? +scrollWidth * scrollTriggerRef.current.progress : 0;
+            //     },
+            //     scrollTrigger: {
+            //         trigger: FurnitureContainer.current,
+            //         start: "left left",
+            //         end: () => `+=${FurnitureContainer.current.scrollWidth}`,
+            //         scrub: true,
+            //         horizontal: true,
+            //         containerAnimation: horizontalScroll,
+            //         onUpdate: self => {
+            //             // Verifier si scrollTriggerRef.current est disponible avant d'acceder à progress
+            //             if (scrollTriggerRef.current) {
+            //                 const progress = self.progress; // Notez ici l'utilisation sans parenthèses
+            //                 const scrollWidth = FurnitureContainer.current.scrollWidth;
+            //                 gsap.set(FurnitureOverlay.current, {
+            //                     x: +progress * scrollWidth
+            //                 });
+            //             }
+            //         }
+            //     }
+            // });
 
             zoomOutEffectRefs.current.forEach((container, index) => {
 
@@ -403,17 +424,25 @@ const MainDesktop = () => {
         };
     }, [totalWidth]);
 
-    const scrollToDecade = useCallback((target) => {
+    const scrollToDecade = (target) => {
         const element = document.getElementById(target);
-        const containerOffset = (horizontalContainer__sm.current.offsetTop + element.getBoundingClientRect().left) * (horizontalContainer__sm.current.offsetWidth / (horizontalContainer__sm.current.offsetWidth - window.innerWidth));
-        gsap.to(window, {
-            scrollTo: {
-              y: containerOffset,
-              autoKill: false
-            },
-            duration: 1
-        });
-    }, []);
+        if (element) {
+            const containerOffset =
+                (horizontalContainer__sm.current.offsetTop + element.offsetLeft) *
+                (horizontalContainer__sm.current.offsetWidth /
+                    (horizontalContainer__sm.current.offsetWidth - window.innerWidth));
+    
+            gsap.to(window, {
+                scrollTo: {
+                    y: containerOffset,
+                    autoKill: false
+                },
+                duration: 1
+            });
+        } else {
+            console.error(`Element with selector "${target}" not found.`);
+        }
+    };
 
 
     useEffect(() => {
@@ -849,7 +878,7 @@ const MainDesktop = () => {
                     </h2>
                 </section>
                 
-                <section className="p p2" ref={section14}>
+                <section className="p p2" id="furniture" ref={section14}>
                     <div className="p-container">
                         <h2 className="p-title">
                             <span ref={el => titleTranformEffectRefs.current[1] = el} >Furnitures</span>
@@ -862,17 +891,6 @@ const MainDesktop = () => {
                     </div>
                 </section>
                 <div className="furniture" id="furniture" ref={FurnitureContainer}>
-                    <div className="furniture-overlay" ref={FurnitureOverlay}>
-                        <div className="furniture-nav">
-                            <div>— Decades</div>
-                            <ul>
-                            {FurnitureNavList.map((decade, index) => (
-                                <li className="furniture-nav-item" ref={el => FurnitureNavItems.current[index] = el} key={index} onClick={() => scrollToDecade(decade.text)}>{decade.text}</li>
-                            ))}
-                            </ul>
-                        </div>
-                        <div className="furniture-overlay-year">{FurnitureYear}</div>
-                    </div>
                     <div className='furniture-horizontal' ref={FurnitureHorizontal}>
                         {Object.entries(furnitureList).map(([decade, items], index) => (
                             <section className="furniture-section" ref={el => FurnitureSectionRef.current[index] = el} id={decade} key={decade}>
@@ -890,7 +908,22 @@ const MainDesktop = () => {
                     </div>
                 </div>
             </div>
-        </div>  
+            <div className="furniture-overlay" ref={FurnitureOverlay}>
+                <div className="furniture-nav-container">
+                    <div className="furniture-nav">
+                        <div>— Decades</div>
+                        <ul>
+                        {FurnitureNavList.map((decade, index) => (
+                            <li className="furniture-nav-item" ref={el => FurnitureNavItems.current[index] = el} key={index} onClick={() => scrollToDecade(decade.text)}>{decade.text}</li>
+                        ))}
+                        </ul>
+                    </div> 
+                </div>
+                <div className="furniture-overlay-year-container"> 
+                    <div className="furniture-overlay-year">{FurnitureYear}</div>
+                </div>
+            </div>
+    </div>  
     );
 };
 

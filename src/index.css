@@ -39,7 +39,10 @@ body::-webkit-scrollbar {
 
 a, a:visited, a:hover, a:focus {
     text-decoration: none;
-    color: white;
+}
+
+a:visited, a:hover, a:focus{
+    color: black;
 }
 
 li, ul {

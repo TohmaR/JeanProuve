@@ -35,7 +35,6 @@ function LoadingPage() {
   })
 
   useEffect(() => {
-    // Commencer l'animation après un délai initial
     const timeout = setTimeout(() => {
       setStartAnimation(true);
     }, initialDelay);
@@ -45,7 +44,7 @@ function LoadingPage() {
   
   useEffect(() => {
     if (startAnimation) {
-      const years = [1924, 1947, 1984]; // Les années de transition
+      const years = [1924, 1947, 1984];
       let index = 0;
 
       const interval = setInterval(() => {
@@ -57,11 +56,10 @@ function LoadingPage() {
         }
       }, animationDuration);
 
-      return () => clearInterval(interval); // Nettoyer l'intervalle à la désinscription
+      return () => clearInterval(interval);
     }
-  }, [startAnimation]); // Ce useEffect ne s'active que lorsque startAnimation change
-  
-  // Décompose l'année en chiffres individuels pour l'animation
+  }, [startAnimation]);
+
   const yearDigits = year.toString().split('').map((digit, i) => (
     <span key={i} className="loader-date-item">{digit}</span>
   ));
