@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import _ScrollTrigger, { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MorphSVGPlugin } from '../../../gsap/MorphSVGPlugin.min.js';
 import "./NavDesktop.css";
 import { transform } from 'lodash';
@@ -135,22 +135,26 @@ function NavDesktop () {
                 furnitureMenuItem.classList.add("active");
                 biographyMenuItem.classList.remove("active");
             }
-            setToggleMenu(false);
             const containerOffset =
                 (horizontalContainer.offsetTop + element.offsetLeft) *
                 (horizontalContainer.offsetWidth /
-                    (horizontalContainer.offsetWidth - window.innerWidth)) - (window.innerWidth * 0.0416667);
+                    (horizontalContainer.offsetWidth - window.innerWidth)) - (window.innerWidth * 0.038);
     
             gsap.to(window, {
-                duration: 0.00001,
+                duration: 0.01,
                 scrollTo: {
                     y: containerOffset,
                 },
                 onComplete: () => {
-                    // Mettre à jour les déclencheurs après le défilement
+                    setToggleMenu(false);
+                    ScrollTrigger.update();
                     ScrollTrigger.refresh();
-                }
-            });
+                    setTimeout(() => {
+                    window.scrollTo(0, containerOffset + 1);
+                    
+                    }, 1450);
+                },
+                });
         } else {
             console.error(`Element with selector "${target}" not found.`);
         }

@@ -7,34 +7,28 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    // Masquer le défilement
-    document.documentElement.style.overflow = 'hidden';
-
-    // Réinitialiser le défilement à DOMContentLoaded
-    const handleDOMContentLoaded = () => {
-      window.scrollTo(0, 0);
-    };
-
-    // Restaurer le défilement après le chargement complet
-    const handleLoad = () => {
-      document.documentElement.style.overflow = "auto";
-    };
+    // Réinitialiser le défilement à 0
+    window.scrollTo(0, 0);
 
     // Pour les navigateurs qui supportent scrollRestoration
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
 
+    // Restaurer le défilement après le chargement complet
+    const handleLoad = () => {
+      document.documentElement.style.overflow = "auto";
+    };
+
     // Ajouter les écouteurs d'événements
-    document.addEventListener('DOMContentLoaded', handleDOMContentLoaded);
     window.addEventListener('load', handleLoad);
 
     // Nettoyage des écouteurs
     return () => {
-      document.removeEventListener('DOMContentLoaded', handleDOMContentLoaded);
       window.removeEventListener('load', handleLoad);
     };
   }, []);
+
   return (
     <div className="App">
       <LoadingPage />
