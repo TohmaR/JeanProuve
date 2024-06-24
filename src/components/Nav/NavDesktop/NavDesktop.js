@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MorphSVGPlugin } from '../../../gsap/MorphSVGPlugin.min.js';
 import "./NavDesktop.css";
 import { transform } from 'lodash';
 
 
 
-gsap.registerPlugin(ScrollToPlugin, MorphSVGPlugin);
+gsap.registerPlugin(ScrollToPlugin, MorphSVGPlugin, ScrollTrigger);
 
 const menuList = [
     { no: "1", text: "BIOGRAPHY", target: "biography" },
@@ -145,6 +146,10 @@ function NavDesktop () {
                 scrollTo: {
                     y: containerOffset,
                 },
+                onComplete: () => {
+                    // Mettre à jour les déclencheurs après le défilement
+                    ScrollTrigger.refresh();
+                }
             });
         } else {
             console.error(`Element with selector "${target}" not found.`);

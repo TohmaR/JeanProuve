@@ -30,7 +30,7 @@ function LoadingPage() {
       .to(".m-hero-text__item", { duration: 0.6, transform : "translate3d(0px, 0%, 0px"}, "<")
       .to(".loader-span", { duration: 0.3, opacity: 0, delay: isTabletOrMobile ? -1 : 0}, "<")
       .to(".loader", { pointerEvents: "none"}, "<")
-      .to(".loader-title", { delay: isTabletOrMobile ? 1.25 : 0.25, opacity: 0}, "<")
+      .to(".loader-title", { delay: isTabletOrMobile ? 1.25 : 0, opacity: 0}, "<")
       .to(".body", { delay: -.25, overflowY: "auto"}, ">")
   })
 

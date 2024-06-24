@@ -16,18 +16,13 @@
 
 .loader-title{
     position: absolute;
-    top: 4vw;
+    top: 0;
     left: 50%;
     transform: translate(-50%);
 }
 
 .loader-title__container{
     display: flex;
-    font-family: "MaelstromSansBold";
-    font-size: 10vw;
-    line-height: 8vw;
-    letter-spacing: .04em;
-    color: #678846;
     overflow: hidden;
 }
 
@@ -35,6 +30,12 @@
 .loader-title__item{
     display: block;
     transform: translate3d(0px, 100%, 0px);
+    letter-spacing: .04em;
+    font-family: "MaelstromSansBold";
+    font-size: 9.94vw;
+    line-height: 16vw;
+    color: #678846;
+    width: fit-content;
 }
 
 .loader-date__container{
