@@ -35,7 +35,17 @@ import Banc from "../../assets/images/Furniture/banc.jpg";
 import TabouretProto from "../../assets/images/Furniture/tabouret-proto.jpg";
 import BancMarcoule from "../../assets/images/Furniture/banc-marcoule.jpg";
 import BanquetteTypeN365 from "../../assets/images/Furniture/banquette-type-n356.jpg";
-
+import TableCité from "../../assets/images/Furniture/table-cité.jpg";
+import BureauCPDE from "../../assets/images/Furniture/bureau-CPDE.jpg";
+import BureauStandard from "../../assets/images/Furniture/bureau-standard.jpg";
+import BureauDactylo from "../../assets/images/Furniture/bureau-dactylo.jpg";
+import TableRelevable from "../../assets/images/Furniture/table-relevable.jpg";
+import BureauMetalique from "../../assets/images/Furniture/bureau-metalique.jpg";
+import TribuneProfesseur from "../../assets/images/Furniture/tribune-professeur.jpg";
+import BureauCompas from "../../assets/images/Furniture/bureau-compas.jpg";
+import LampeBureau from "../../assets/images/Furniture/lampe-bureau.jpg";
+import PotenceEclairage from "../../assets/images/Furniture/potence-eclairage.jpg";
+import RampeLumineuse from "../../assets/images/Furniture/rampe-lumineuse.jpg";
 
 export const furnitureList = {
     1920:[
@@ -66,6 +76,12 @@ export const furnitureList = {
             image: ChaiseCite,
         },  
         {
+            name: "City Table",
+            year: "1930",
+            description: "Originally intended for school and hospital environments, its use subsequently expanded to domestic use as a small desk or side table. The stable “one-piece” base allows adaptation to larger dimensions, and certain variants, with or without spacer, lead to large refectory or study tables.",
+            image: TableCité,
+        },  
+        {
             name: "Grand Repos Armchair",
             year: "1930",
             description: "The Grand Repos armchair was designed between 1928 and 1930, with only three known examples: the first in the permanent collection of the Centre Pompidou in Paris, the second in the Vitra Design Museum, and the third auctioned by Artcurial in 2006. It was first presented at the UAM exhibition in 1930 before furnishing Jean Prouve's apartment until the war.",
@@ -76,6 +92,12 @@ export const furnitureList = {
             year: "1930",
             description: "Originally designed for a furniture competition organized for the student residence of the Cite universitaire de Nancy, the armchair is one of his earliest models and has become a major piece of design. The backrest is relatively high, the armrests are made of leather straps, and the cushioned seat is relatively low.",
             image: FauteuilCite,
+        }, 
+         {
+            name: "Desk Lamp",
+            year: "1933",
+            description: "The 1933 desk lamp for the Nancy university campus focuses light with a single sheet of folded steel.",
+            image: LampeBureau,
         }, 
         {
             name: "Chair No. 4",
@@ -88,6 +110,12 @@ export const furnitureList = {
             year: "1934",
             description: "Office armchair designed for the Parisian Electricity Company, using folded sheet metal legs and crushed tube armrests, with cushioned leather seats. Produced in several hundred units, this model was not widely manufactured after the war, being replaced by the Bridge and Direction models.",
             image: FauteuilBureauCPDE,
+        },
+        {
+            name: "CPDE Desk",
+            year: "1934",
+            description: "Metal desks designed for the Compagnie parisienne d’électricité. With a folded sheet metal frame and perpendicular legs, these desks offer solidity and comfort. They include work surfaces covered in glass or linoleum and various practical features. Enameled in black or light yellow, about a thousand units were produced until 1939. The lighter BM model became popular after the war.",
+            image: BureauCPDE,
         },
         {
             name: "Garden Armchair with Jacques Andre",
@@ -116,12 +144,24 @@ export const furnitureList = {
         },    
     ], 
     1940:[
+         {
+            name: "lighting pole",
+            year: "1940",
+            description: "Originally made by Jean Prouvé for his personal use, the lamp support arm with a tube supported by a steel wire, mounted on the wall and pivoting on an axis, is an improvement on the principle developed with Pierre Jeanneret and Charlotte Perriand for the temporary SCAL pavilions in Issoire.",
+            image: PotenceEclairage,
+        }, 
         {
             name: "All-Wood Chair",
             year: "1941",
             description: "In response to the metal shortage during the war, the Ateliers Jean Prouve developed an all-wood chair model to maintain production, applying their expertise in demountable constructions to furniture. They also explored a hybrid wood/metal version of this chair.",
             image: ChaiseN4,
         },  
+        {
+            name: "Standard Desk",
+            year: "1941",
+            description: "The Standard desk features two porticoes with an open beam and a recessed crossbar. Optional side profiles reinforce the frame, accommodating interchangeable wood or wood-metal equipment. The tops are made of oak or Comblanchien stone. An elegant variant with a curved top and frame was developed in 1943. After the war, the Standard BS desk, along with the BM and BDM models, were produced in large quantities, increasingly using metal.",
+            image: BureauStandard,
+        }, 
         {
             name: "Tripod Stool",
             year: "1941",
@@ -133,6 +173,18 @@ export const furnitureList = {
             year: "1941",
             description: "Produced in small series, this lounge chair included variants with wooden slatted seats and adjustable backrests, as well as casters and a removable footrest. After some aesthetic and comfort improvements, this model was integrated into the emergency furniture collection of the Ateliers Jean Prouve in 1945, under the name FV 11.",
             image: FauteuilVisiteurLattes,
+        }, 
+        {
+            name: "Typewriter Desk",
+            year: "1941",
+            description: "A typewriter table, inspired by the 1935 CPDE desk with perpendicular legs and suspended drawers. This new model features tapered folded sheet metal legs joined by wide welded profiles extending beyond the oak top. Variants offer different top lengths (150, 120, 100 cm) and interchangeable metal and wood equipment made by Éts Vauconsant. During the war, this table was supplied to local businesses, with custom adaptations like a small accountant's desk for a bank in Nancy.",
+            image: BureauDactylo,
+        }, 
+        {
+            name: "Lifting Table",
+            year: "1943",
+            description: "Lifting Table with drawer. Unique model for Mr. Labourier, 1943. Origin: Labourier factory, Mouchard, Jura.",
+            image: TableRelevable,
         }, 
         {
             name: "Typist Chair",
@@ -157,7 +209,13 @@ export const furnitureList = {
             year: "1946",
             description: "This armchair is offered for furnishing offices and classrooms, hence its designation as the 'teacher's armchair'.",
             image: FauteuilBridgeFB11,
-        },  
+        },
+        {
+            name: "Metalic Desk",
+            year: "1946",
+            description: "The folded sheet metal frame, inspired by the 1934 CPDE model, features four perpendicular legs encircled by a rounded profile. The tapered legs can have stainless steel caps. The frame supports a top made of oak, glass, or Isorel, and suspended metal drawers of various sizes. Starting in 1947, these desks replaced the wartime models.",
+            image: BureauMetalique,
+        },    
         {
             name: "Demountable Wooden Chair CB 22",
             year: "1947",
@@ -251,10 +309,28 @@ export const furnitureList = {
             image: ChaiseMaternelleN805,
         },
         {
+            name: "Professor's Tribune",
+            year: "1953",
+            description: "To furnish the amphitheaters, special furniture was designed for professors. The curved lecterns created in 1952 for the universities of Aix-Marseille and Lille (probably the only ones made) use the principle of existing desk frames, adapted for lecture halls. The folded sheet metal frame features a large curved beam with two perpendicular half-porticoes connected by a crossbar, supporting a large curved wood-veneered top. The plywood front is attached to a welded metal frame on the front legs, protected by stainless steel caps. Three amphitheaters at the Lille Faculty of Letters were equipped with these large lecterns.",
+            image: TribuneProfesseur,
+        },
+        {
             name: "Prototype Stool in Folded and Embossed Aluminum Sheet",
             year: "1953",
             description: "This small kindergarten chair, No. 805, has a folded and tubular steel sheet base. The molded plywood seat and back are screwed to the structure, with their large heads visible. The continuous tube in a triangle supporting the back forms a slight curve. There are variants of this chair with arms.",
             image: TabouretProto,
+        },
+        {
+            name: "Compass Base Desk",
+            year: "1953",
+            description: "The desks come in various sizes with wooden, metal, or plastic drawers and cabinets, and solid or laminated wood tops. A version with tubular legs furnished the rooms at the Antony university campus. Distributed by Steph Simon, the Compas-leg desks remained available until 1965.",
+            image: BureauCompas,
+        },
+        {
+            name: "Light Bar",
+            year: "1954",
+            description: "Based on the design of the Kindergarten Chair No. 805 of 1951. With a folded sheet metal structure and light tubular legs supporting solid oak armrests, this model, upholstered in fabric or faux leather, was intended for offices and public buildings. Marketed by Steph Simon, it features a prototype aluminum version that was not mass-produced.",
+            image: RampeLumineuse,
         },
         {
             name: "Conference Armchair No. 355",

@@ -88,8 +88,8 @@ function NavDesktop () {
                 .to(".nav__vertical-credits a", { duration: 0.25, color: "black" }, "start")
                 .to(".nav__vertical-title", { duration: 0.25, color: "black" }, "start")
                 .to(".nav__vertical-separator", { duration: 0.25, backgroundColor: "black" }, "start")
-                .to(".nav__vertical-compas path", { duration: 0.25, fill: "black", stroke: "black" }, "start")
-                .to(".progress__thumb", { duration: 0.25, backgroundColor: "white" }, "start");
+                .to(".nav__vertical-compas2", { duration: 0.25, opacity : 1 }, "start")
+                .to(".progress__container2", { duration: 0.25, opacity: 1 }, "start");
     
             menuTimeline.current
                 .to(".nav__menu-bg", { duration: 0.8, width: "100vw", ease: "expo.inOut" }, "menu")
@@ -126,11 +126,11 @@ function NavDesktop () {
         const biographyMenuItem = document.querySelector(".nav__menu-item:nth-child(1)");
         const furnitureMenuItem = document.querySelector(".nav__menu-item:nth-child(2)");
         if (element && horizontalContainer) {
-            if(target == "biography"){
+            if(target === "biography"){
                 furnitureMenuItem.classList.remove("active");
                 biographyMenuItem.classList.add("active");
             }
-            else if(target == "furniture"){
+            else if(target === "furniture"){
                 furnitureMenuItem.classList.add("active");
                 biographyMenuItem.classList.remove("active");
             }
@@ -138,13 +138,12 @@ function NavDesktop () {
             const containerOffset =
                 (horizontalContainer.offsetTop + element.offsetLeft) *
                 (horizontalContainer.offsetWidth /
-                    (horizontalContainer.offsetWidth - window.innerWidth)) - (window.innerWidth * 0.038);
+                    (horizontalContainer.offsetWidth - window.innerWidth)) - (window.innerWidth * 0.0416667);
     
             gsap.to(window, {
                 duration: 0.00001,
                 scrollTo: {
                     y: containerOffset,
-                    autoKill: false,
                 },
             });
         } else {
@@ -184,6 +183,12 @@ function NavDesktop () {
                         style={{ height: `${scrollTop}vh` }}
                     ></div>
                 </div>
+                <div className="progress__container2">
+                    <div
+                        className="progress__thumb2"
+                        style={{ height: `${scrollTop}vh` }}
+                    ></div>
+                </div>
                 <svg
                     className="nav__vertical-compas"
                     version="1.1"
@@ -204,6 +209,34 @@ function NavDesktop () {
                                 strokeLinejoin: "miter",
                                 strokeMiterlimit: 4,
                                 fill: "#678846",
+                                opacity: 1
+                            }}
+                            transform=" translate(0.000005, 0.00001)"
+                            d="M -35.28354 39.69287 L 2.413269999999997 -41.15178 L 35.28353 41.151759999999996 L 32.126689999999996 41.151759999999996 L 1.5082899999999952 -22.90141 L -31.523380000000003 39.69286 z"
+                            strokeLinecap="round"
+                        />
+                    </g>
+                </svg>
+                <svg
+                    className="nav__vertical-compas2"
+                    version="1.1"
+                    width={100}
+                    height={100}
+                    viewBox="0 0 100 100"
+                    xmlSpace="preserve"
+                >
+
+                    <g transform="matrix(1 0 0 1 50 49.5982277521)" id="S7yeTbLhdG6OASSq7MgZO">
+                        <path
+                            style={{
+                                stroke: "black",
+                                strokeWidth: 1,
+                                strokeDasharray: "none",
+                                strokeLinecap: "butt",
+                                strokeDashoffset: 0,
+                                strokeLinejoin: "miter",
+                                strokeMiterlimit: 4,
+                                fill: "black",
                                 opacity: 1
                             }}
                             transform=" translate(0.000005, 0.00001)"
