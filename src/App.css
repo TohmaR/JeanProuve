@@ -5,7 +5,8 @@
 }
 
 body{
-background-color: black;
+  background-color: black;
+  overflow: hidden;
 }
 
 /* body.no-scroll {

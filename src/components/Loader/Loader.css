@@ -97,10 +97,11 @@
         top: 7vh;
     }
     
-    .loader-title__container{
+    .loader-title__item{
         font-size: 19vw;
         line-height: 16vw;
     }
+
 
     .loader-date__container{
         top: 7vh;

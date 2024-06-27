@@ -15,18 +15,7 @@ function App() {
       window.history.scrollRestoration = 'manual';
     }
 
-    // Restaurer le défilement après le chargement complet
-    const handleLoad = () => {
-      document.documentElement.style.overflow = "auto";
-    };
-
-    // Ajouter les écouteurs d'événements
-    window.addEventListener('load', handleLoad);
-
     // Nettoyage des écouteurs
-    return () => {
-      window.removeEventListener('load', handleLoad);
-    };
   }, []);
 
   return (

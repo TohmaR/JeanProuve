@@ -286,31 +286,6 @@ const MainDesktop = () => {
                 },
             });
 
-            // gsap.to(FurnitureOverlay.current, {
-            //     x: () => {
-            //         const scrollWidth = FurnitureContainer.current.scrollWidth - window.innerWidth;
-            //         return scrollTriggerRef.current ? +scrollWidth * scrollTriggerRef.current.progress : 0;
-            //     },
-            //     scrollTrigger: {
-            //         trigger: FurnitureContainer.current,
-            //         start: "left left",
-            //         end: () => `+=${FurnitureContainer.current.scrollWidth}`,
-            //         scrub: true,
-            //         horizontal: true,
-            //         containerAnimation: horizontalScroll,
-            //         onUpdate: self => {
-            //             // Verifier si scrollTriggerRef.current est disponible avant d'acceder à progress
-            //             if (scrollTriggerRef.current) {
-            //                 const progress = self.progress; // Notez ici l'utilisation sans parenthèses
-            //                 const scrollWidth = FurnitureContainer.current.scrollWidth;
-            //                 gsap.set(FurnitureOverlay.current, {
-            //                     x: +progress * scrollWidth
-            //                 });
-            //             }
-            //         }
-            //     }
-            // });
-
             zoomOutEffectRefs.current.forEach((container, index) => {
 
                 gsap.fromTo(container, 
@@ -431,13 +406,19 @@ const MainDesktop = () => {
                 (horizontalContainer__sm.current.offsetTop + element.offsetLeft) *
                 (horizontalContainer__sm.current.offsetWidth /
                     (horizontalContainer__sm.current.offsetWidth - window.innerWidth));
+
+            const currentScrollPosition = window.scrollY;
+            const distance = Math.abs(containerOffset - currentScrollPosition);
+    
+            const speed = 1000; // Pixels per second
+            const duration = distance / speed; // Duration in seconds
     
             gsap.to(window, {
                 scrollTo: {
                     y: containerOffset,
                     autoKill: false
                 },
-                duration: 1
+                duration: 1.5
             });
         } else {
             console.error(`Element with selector "${target}" not found.`);

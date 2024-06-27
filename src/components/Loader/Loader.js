@@ -7,7 +7,7 @@ import "./Loader.css"
 
 function LoadingPage() {
   const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
   const LoadingPageTimeline = useRef(gsap.timeline())
   const [year, setYear] = useState(1901);
   const [startAnimation, setStartAnimation] = useState(false);
@@ -28,9 +28,9 @@ function LoadingPage() {
       .to(".loader-bg", { duration: 0.7, transform: "translate3d(0px, -150%, 0px"})
       .fromTo(".hero-text__container p", {transform : "translate3d(0px, 100%, 0px)"}, { delay: .2, duration: 0.6, transform : "translate3d(0px, 0%, 0px)"}, "<")
       .to(".m-hero-text__item", { duration: 0.6, transform : "translate3d(0px, 0%, 0px"}, "<")
-      .to(".loader-span", { duration: 0.3, opacity: 0, delay: isTabletOrMobile ? -1 : 0}, "<")
+      .to(".loader-span", { duration: 0.3, opacity: 0, delay: isMobile ? -1 : 0}, "<")
       .to(".loader", { pointerEvents: "none"}, "<")
-      .to(".loader-title", { delay: isTabletOrMobile ? 1.25 : 0, opacity: 0}, "<")
+      .to(".loader-title", { delay: isMobile ? 1.25 : 0, opacity: 0}, "<")
       .to(".body", { delay: -.25, overflowY: "auto"}, ">")
   })
 

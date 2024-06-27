@@ -31,11 +31,12 @@ import FauteuilConferenceN355 from "../../assets/images/Furniture/fauteuil-confe
 import TabouretJardin from "../../assets/images/Furniture/tabouret-jardin.jpg";
 import TabouretTripod from "../../assets/images/Furniture/tabouret-tripod.jpg";
 import TabouretN306 from "../../assets/images/Furniture/tabouret-n306.jpg";
+import TabouretN307 from "../../assets/images/Furniture/tabouret-n307.jpg";
 import Banc from "../../assets/images/Furniture/banc.jpg";
 import TabouretProto from "../../assets/images/Furniture/tabouret-proto.jpg";
 import BancMarcoule from "../../assets/images/Furniture/banc-marcoule.jpg";
 import BanquetteTypeN365 from "../../assets/images/Furniture/banquette-type-n356.jpg";
-import TableCité from "../../assets/images/Furniture/table-cité.jpg";
+import TableCite from "../../assets/images/Furniture/table-cité.jpg";
 import BureauCPDE from "../../assets/images/Furniture/bureau-CPDE.jpg";
 import BureauStandard from "../../assets/images/Furniture/bureau-standard.jpg";
 import BureauDactylo from "../../assets/images/Furniture/bureau-dactylo.jpg";
@@ -46,6 +47,31 @@ import BureauCompas from "../../assets/images/Furniture/bureau-compas.jpg";
 import LampeBureau from "../../assets/images/Furniture/lampe-bureau.jpg";
 import PotenceEclairage from "../../assets/images/Furniture/potence-eclairage.jpg";
 import RampeLumineuse from "../../assets/images/Furniture/rampe-lumineuse.jpg";
+import LitCite from "../../assets/images/Furniture/lit-cite.jpg";
+import LitPaquebot from "../../assets/images/Furniture/lit-paquebot.jpg";
+import LitDivan from "../../assets/images/Furniture/lit-divan.jpg";
+import LitSCAL from "../../assets/images/Furniture/lit-scal.jpg";
+import LitFlavigny from "../../assets/images/Furniture/lit-flavigny.jpg";
+import TableRefectoire from "../../assets/images/Furniture/Table-réfectoire.jpg";
+import TableJardin from "../../assets/images/Furniture/table-jardin.jpg";
+import TableSAM from "../../assets/images/Furniture/table-SAM.jpg";
+import TableSAMBois from "../../assets/images/Furniture/table-SAM-bois.jpg";
+import TableSAMTropical from "../../assets/images/Furniture/table-SAM-tropical.jpg";
+import TableFlavigny from "../../assets/images/Furniture/table-flavigny.jpg";
+import TableBCC from "../../assets/images/Furniture/table-BCC.jpg";
+import GueridonBas from "../../assets/images/Furniture/gueridon-bas.jpg";
+import GueridonCafeteria from "../../assets/images/Furniture/gueridon-cafeteria.jpg";
+import TableTriennale from "../../assets/images/Furniture/table-triennale.jpg";
+import TableCentrale from "../../assets/images/Furniture/table-centrale.jpg";
+import TableDesserte from "../../assets/images/Furniture/table-desserte.jpg";
+import TableCafeteriaN512 from "../../assets/images/Furniture/table-cafeteria-N512.jpg";
+import EtagereCite from "../../assets/images/Furniture/etagere-cite.jpg";
+import EtagereENP from "../../assets/images/Furniture/etagere-ENP.jpg";
+import MeubleCremailleres from "../../assets/images/Furniture/meuble-cremailleres.jpg";
+import VitrineConsole from "../../assets/images/Furniture/vitrine-console.jpg";
+import MeubleSeparation from "../../assets/images/Furniture/meuble-separation.jpg";
+import EscabeauRoulant from "../../assets/images/Furniture/escabeau-roulant.jpg";
+import BibliothequeSpeciale from "../../assets/images/Furniture/bibliotheque-speciale.jpg";
 
 export const furnitureList = {
     1920:[
@@ -64,10 +90,10 @@ export const furnitureList = {
     ], 
     1930:[
         {
-            name: "Reclining Armchair",
+            name: "City Bed",
             year: "1930",
-            description: "Steel sheet, chrome tube, and leather. Presented at the Union of Modern Artists (UAM) exhibition, Paris, 1930.",
-            image: FauteuilInclinable,
+            description: "This daybed, named Cité after the war, is the most iconic model produced by Ateliers Jean Prouvé. Designed for the 1930 University City of Nancy competition, it included a sheet metal nightstand with wooden shelves. The nightstand's larger shelf extends from the headboard, featuring a drawer and an intermediate shelf. This asymmetrical design remained unchanged until production ended in 1953.",
+            image: LitCite,
         },    
         {
             name: "City Chair",
@@ -79,8 +105,14 @@ export const furnitureList = {
             name: "City Table",
             year: "1930",
             description: "Originally intended for school and hospital environments, its use subsequently expanded to domestic use as a small desk or side table. The stable “one-piece” base allows adaptation to larger dimensions, and certain variants, with or without spacer, lead to large refectory or study tables.",
-            image: TableCité,
+            image: TableCite,
         },  
+        {
+            name: "City shelf",
+            year: "1930",
+            description: "The shelf created for the furnishing of the new university city in Nancy meets the criteria of solidity and economy outlined in the 1930 call for tenders. Like the other furniture pieces in this program, it consists of a dark red enameled metal frame and waxed solid wood elements. The folded-edge sheet metal uprights, connected at the back by two flat bars, have welded notches to hold two slightly protruding shelves. This freestanding shelf was designed to be wall-mounted or placed directly on the floor.",
+            image: EtagereCite,
+        }, 
         {
             name: "Grand Repos Armchair",
             year: "1930",
@@ -93,7 +125,13 @@ export const furnitureList = {
             description: "Originally designed for a furniture competition organized for the student residence of the Cite universitaire de Nancy, the armchair is one of his earliest models and has become a major piece of design. The backrest is relatively high, the armrests are made of leather straps, and the cushioned seat is relatively low.",
             image: FauteuilCite,
         }, 
-         {
+        {
+            name: "Reclining Armchair",
+            year: "1930",
+            description: "Steel sheet, chrome tube, and leather. Presented at the Union of Modern Artists (UAM) exhibition, Paris, 1930.",
+            image: FauteuilInclinable,
+        }, 
+        {
             name: "Desk Lamp",
             year: "1933",
             description: "The 1933 desk lamp for the Nancy university campus focuses light with a single sheet of folded steel.",
@@ -104,6 +142,12 @@ export const furnitureList = {
             year: "1934",
             description: "This model (the fourth chronologically produced by the Ateliers Jean Prouve) is designed for the public market, particularly for offices and administrations. Designed with a folded and profiled sheet metal rear base, this chair has tubes for the seat and front legs assembled by arc welding, as well as curved plywood seat and backrest elements.",
             image: ChaiseN4,
+        },
+        {
+            name: "Ocean liner cabin",
+            year: "1934",
+            description: "Prototype de cabine de paquebot en acier inoxydable présenté par les Ateliers Jean Prouvé (avec M. Gascoin, décorateur) au Salon d’automne, Paris, 1934 (section organisée par l’OTUA et l’UAM). ",
+            image: LitPaquebot,
         },
         {
             name: "CPDE Office Armchair",
@@ -118,6 +162,27 @@ export const furnitureList = {
             image: BureauCPDE,
         },
         {
+            name: "Daybed n°10",
+            year: "1935",
+            description: "Provenance: Fabert High School boarding school, Metz.",
+            image: LitDivan,
+    
+        }, 
+        {
+            name: "Cafeteria Table with profiled legs",
+            year: "1936",
+            description: "In 1936, Ateliers Jean Prouvé developed a cafeteria table with four tapered, folded sheet metal legs and a welded tubular frame. In 1939, thirty of these tables were supplied to the Saint-Brévin-l’Océan health colony, with galvanized metal parts and fibrociment (Granipoli) tops. Similar tables were provided to an aerospace factory near Marseille, featuring lacquered metal frames, drawers, and hooks. After the war, this design was replaced by the Dactylo table or the Flavigny leg type.",
+            image: TableRefectoire,
+    
+        }, 
+        {
+            name: "ENP Shelf",
+            year: "1936",
+            description: "The shelf created for the furnishing of the new university city in Nancy meets the criteria of solidity and economy outlined in the 1930 call for tenders. Like the other furniture pieces in this program, it consists of a dark red enameled metal frame and waxed solid wood elements. The folded-edge sheet metal uprights, connected at the back by two flat bars, have welded notches holding two slightly protruding shelves. This freestanding shelf was designed to be wall-mounted or placed directly on the floor.",
+            image: EtagereENP,
+    
+        }, 
+        {
             name: "Garden Armchair with Jacques Andre",
             year: "1937",
             description: "Jean Prouve and architect Jacques Andre presented an innovative garden furniture set for the Union of Modern Artists (UAM) pavilion, characterized by folded and perforated steel structures.",
@@ -131,6 +196,12 @@ export const furnitureList = {
             image: TabouretJardin,
         }, 
         {
+            name: "Garden table with Jacques Andre",
+            year: "1937",
+            description: "Jean Prouve and architect Jacques Andre presented an innovative garden furniture set for the Union of Modern Artists (UAM) pavilion, characterized by folded and perforated steel structures.",
+            image: TableJardin,
+        }, 
+        {
             name: "Sanatorium Lounge Chair",
             year: "1937",
             description: "Lounge chair with five positions for a sanatorium.",
@@ -141,10 +212,22 @@ export const furnitureList = {
             year: "1939",
             description: "Presented at the 1939 New York World's Fair.",
             image: FauteuilBas,
-        },    
+        },  
+        {
+            name: "S.A.M Table",
+            year: "1939",
+            description: "Dining table for the Solvay factory in Dombasle, with inclined solid wood legs and a welded tubular strut. During the war, the design was adapted to save metal and make the table detachable. After the war, this table, named S.A.M. and later TS 11 and TS 12, was produced in small series for the domestic market. Awarded the 'Meubles de France' label in 1947, it was improved for sturdiness and ease of assembly. In 1951, a wooden version was produced under the number 502, alongside a metal-legged version.",
+            image: TableSAM,
+        },      
     ], 
     1940:[
-         {
+        {
+            name: "SCAL Bed",
+            year: "1940",
+            description: "The simple tubular steel-framed bed by Ateliers Jean Prouvé was first explored in 1935 and appeared in a 1938 proposal for the Saint-Brévin-l’Océan health colony. During the war, it equipped SCAL factory dormitories in Issoire. The SCAL LS 11 bed, developed post-war, featured a metal slat frame, closed-section steel side rails, and 27 mm tubular legs. Wooden panels could be attached, as in the double version (LS 21) from 1946.",
+            image: LitSCAL,
+        }, 
+        {
             name: "lighting pole",
             year: "1940",
             description: "Originally made by Jean Prouvé for his personal use, the lamp support arm with a tube supported by a steel wire, mounted on the wall and pivoting on an axis, is an improvement on the principle developed with Pierre Jeanneret and Charlotte Perriand for the temporary SCAL pavilions in Issoire.",
@@ -155,6 +238,12 @@ export const furnitureList = {
             year: "1941",
             description: "In response to the metal shortage during the war, the Ateliers Jean Prouve developed an all-wood chair model to maintain production, applying their expertise in demountable constructions to furniture. They also explored a hybrid wood/metal version of this chair.",
             image: ChaiseN4,
+        },  
+        {
+            name: "S.A.M Wood Table",
+            year: "1941",
+            description: "Dining table for the Solvay factory in Dombasle, with inclined solid wood legs and a welded tubular strut. During the war, the design was adapted to save metal and make the table detachable. After the war, this table, named S.A.M. and later TS 11 and TS 12, was produced in small series for the domestic market. Awarded the 'Meubles de France' label in 1947, it was improved for sturdiness and ease of assembly. In 1951, a wooden version was produced under the number 502, alongside a metal-legged version.",
+            image: TableSAMBois,
         },  
         {
             name: "Standard Desk",
@@ -181,6 +270,30 @@ export const furnitureList = {
             image: BureauDactylo,
         }, 
         {
+            name: "Rack-mounted furniture",
+            year: "1941",
+            description: "Originally designed to hold shelving, the wall-mounted storage system in metal and wood, created in 1941, was quickly developed for use in offices, communal areas, or domestic spaces. This rack-mounted furniture is either hung on walls or held between the floor and ceiling by spring-loaded jacks, similar to the mobile partitions patented in the 1930s. The system consists of posts (made from stamped and spot-welded folded sheet metal) forming racks where sheet metal brackets fit to support wooden shelves and suspended cabinets of various sizes. These cabinets have sliding doors made of wood, glass, Plexiglas, stainless steel, or aluminum, equipped with wooden handles that also serve as stiffeners.",
+            image: MeubleCremailleres,
+        }, 
+        {
+            name: "BCC Table with Pierre Jeanneret",
+            year: "1942",
+            description: "This metal and wood table, designed by Jean Prouvé and Pierre Jeanneret with Éts Vauconsant, aligns with Prouvé's 1942 BCC design. It was part of the Solvay plant project in Dombasle-sur-Meurthe, featuring standard Prouvé elements like inclined triangular legs and metal consoles. Due to metal shortages, wood was primarily used, with metal reserved for essential joints. This prototype reflects wartime adaptations.",
+            image: TableBCC,
+        }, 
+        {
+            name: "Flavigny Table",
+            year: "1942",
+            description: "The table base with four folded sheet metal legs and tubular supports was developed during the war for Solvay in Dombasle. The vertical legs extend beyond the tabletop. Designed for a wooden tabletop, the frame can be reinforced for heavier tops. In 1945, tables were supplied to the Flavigny preventorium, giving the model its name, produced in small series with an artificial stone (Granito) top. In 1951, the Flavigny table No. 504 was offered with a double Y frame and a wooden top covered with plastic or aluminum.",
+            image: TableFlavigny,
+        }, 
+        {
+            name: "Low Gueridon",
+            year: "1942",
+            description: "During the war, a few low tables were produced, featuring a minimal metal triangular frame with grooved wooden legs. The design allowed for wood, marble, or glass tops. Initially offered in two heights (35 or 45 cm) and two diameters (80 or 95 cm), by 1949, it standardized to 35 cm height with tops from 80 to 120 cm. In 1951, 90 small tables (Ø 80 cm) and 30 large tables (Ø 95 cm) were made. By 1952, models n° 402 (80 cm) and n° 403 (95 cm) were produced until 1954.",
+            image: GueridonBas,
+        }, 
+        {
             name: "Lifting Table",
             year: "1943",
             description: "Lifting Table with drawer. Unique model for Mr. Labourier, 1943. Origin: Labourier factory, Mouchard, Jura.",
@@ -198,6 +311,18 @@ export const furnitureList = {
             description: "Made of folded steel sheet and wood. Easily demountable, it was invented for furnishing emergency housing before being marketed to individuals.",
             image: Bahut,
         },  
+        {
+            name: "Flavigny Bed",
+            year: "1945",
+            description: "A project for a metal frame with tapered sheet metal legs and a wooden headboard from the 1930s led to wooden models during the war. In 1945, the Flavigny model, combining metal and wood, was used in a preventorium in Flavigny and was produced in series from 1947. In 1951, 110 units were made in three widths (80, 90, 140 cm), including a double version. A Colonial variant with cast aluminum legs and a steel frame was also developed. The Flavigny bed was produced until 1953.",
+            image: LitFlavigny,
+        }, 
+        {
+            name: "Console Glass",
+            year: "1945",
+            description: "'AFF 679. Éditions Braun-Mulhouse' furniture for Éditions Braun in Mulhouse. ",
+            image: VitrineConsole,
+        }, 
         {
             name: "Reclining Rest Armchair",
             year: "1945",
@@ -250,7 +375,7 @@ export const furnitureList = {
             name: "Gueridon",
             year: "1949",
             description: "Consisting of a circular oak top resting on three oak legs; the fixing structure in folded and tubular steel sheet. It was created for the University of Paris.",
-            image: BureauPresidence,
+            image: Gueridon,
         },
         {
             name: "Export Visitor Armchair",
@@ -260,6 +385,18 @@ export const furnitureList = {
         },
     ], 
     1950:[
+        {
+            name: "Room divider",
+            year: "1950",
+            description: "Created from elements in the ATELIERS JEAN PROUVÉ catalog, this unique piece of furniture, with its exceptional dimensions (over 4 meters long), is based on a structure similar to that of Ferembal desks: 3 axial gantries distributed over a central beam supporting the whole. ",
+            image: MeubleSeparation,
+        },
+        {
+            name: "Cafeteria Gueridon",
+            year: "1950",
+            description: "metal-legged round table for the Arts et Métiers cafeteria in Paris. It featured four tapered, folded sheet metal legs, a tubular crosspiece, and a wooden top with linoleum and aluminum edging. About twenty tables were supplied and listed in the 1951 catalog as 'Cafétéria'. Variants included square tops and more curved legs. Model n° 511 was sold by Steph Simon from 1953, with some all-aluminum versions produced. This was part of a push to use aluminum in furniture.",
+            image: GueridonCafeteria,
+        },
         {
             name: "Metropole Chair No. 305",
             year: "1950",
@@ -285,6 +422,18 @@ export const furnitureList = {
             image: Banc,
         },
         {
+            name: "Rolling Stepladder",
+            year: "1951",
+            description: "Commissioned around 1950 by the Société Générale de Douai from Ateliers Jean Prouvé, this model of rolling stepladder was made for the bank's vault to improve working space and customer reception. This model is in the permanent collections of the Centre Georges Pompidou, Paris (AM 2007-1-113) and the Musée des Beaux-arts de Nancy.",
+            image: EscabeauRoulant,
+        },
+        {
+            name: "S.A.M Tropical Table",
+            year: "1951",
+            description: "The metal dining table base, developed in 1951, features detachable tube connectors joining folded sheet metal legs to the crosspiece. The design is similar to the wooden S.A.M. table n° 502. The top is often folded aluminum on a steel frame. The S.A.M. Tropique n° 503 model, made in 90 units in 1951, and the S.A.M. n° 506 model feature wood tops. An all-aluminum prototype was created in 1954. Jean Prouvé revisited aluminum base designs in 1980.",
+            image: TableSAMTropical,
+        },
+        {
             name: "Stool No. 306",
             year: "1951",
             description: "Designed to furnish the reception hall of the Maison du Mexique at the Cite internationale universitaire de Paris, it was eventually replaced by model No. 307 with an embossed aluminum seat and four-legged tubular base.",
@@ -294,7 +443,7 @@ export const furnitureList = {
             name: "Stool No. 307",
             year: "1951",
             description: "Experiments with three-legged models not being entirely satisfactory, a four-legged stool with wooden tips was developed and then marketed under No. 307.",
-            image: TabouretN306,
+            image: TabouretN307,
         },
         {
             name: "Amphitheater Armchair",
@@ -303,10 +452,34 @@ export const furnitureList = {
             image: FauteuilAmphitheatre,
         },
         {
+            name: "Central Table",
+            year: "1951",
+            description: "The trapezoidal folded sheet metal base, designed by Jean Prouvé in the 1930s, was adapted in 1949 for an EDF desk and later for a reading table at the Maison de l'étudiant in Paris, requested by Charlotte Perriand. Seven tables with wooden tops were made. This design was also used for conference tables, known as Centrale tables, featuring tubular legs and a central beam. Introduced in 1952, they were used for offices and meeting rooms, including the Cité Universitaire d’Antony in 1956.",
+            image: TableCentrale,
+        },
+        {
             name: "Kindergarten Chair No. 805",
             year: "1951",
             description: "This small kindergarten chair, No. 805, has a folded and tubular steel sheet base. The molded plywood seat and back are screwed to the structure, with their large heads visible. The continuous tube in a triangle supporting the back forms a slight curve. There are variants of this chair with arms.",
             image: ChaiseMaternelleN805,
+        },
+        {
+            name: "Table for the IX Triennale di Milano",
+            year: "1951",
+            description: "In spring 1951, Ateliers Jean Prouvé exhibited at the IX Triennale di Milano, including a large table with a wooden base and a frame of welded sheet metal plates, featuring a reversible laminated top. The design was based on a 1942 project for the Solvay factory. The table's oak legs had a curved profile and were fixed into metal sleeves. In summer 1951, two similar tables with tiled concrete tops were made for the Dollander villa in Saint-Clair.",
+            image: TableTriennale,
+        },
+        {
+            name: "Special Library",
+            year: "1951",
+            description: "In 1939, Jean Prouvé designed a simple, all-metal bookshelf for the aviation center of Briey: steel box posts with notches for shelves made of folded steel sheets. The project was halted by the war and revisited in 1951 for a bookstore-gallery. The updated design featured posts held between the floor and ceiling by springs, with regularly spaced holes for shelves, display racks, and consultation tables. The rise of the university market provided an opportunity for Ateliers Jean Prouvé to develop a new, lightweight, and economical storage model for university housing.",
+            image: BibliothequeSpeciale,
+        },
+        {
+            name: "Serving Table",
+            year: "1952",
+            description: "Serving table. Folded steel sheet, stainless steel, and alumilite aluminum sheet, 1952. Special order.",
+            image: TableDesserte,
         },
         {
             name: "Professor's Tribune",
@@ -321,10 +494,16 @@ export const furnitureList = {
             image: TabouretProto,
         },
         {
+            name: "Cafeteria Table No. 512, known as Compas Table",
+            year: "1953",
+            description: "The 1953 Compas base by Jean Prouvé, one of his most iconic designs, features tapered folded sheet metal legs welded to a thick tubular crossbar. The Cafeteria Table No. 512, with a symmetrical base, supports the top and hides leg joints. Available in various sizes, tops are made from solid wood, plywood, laminate, plastic, or Bulgomme, with solid wood or aluminum edges.",
+            image: BureauCompas,
+        },
+        {
             name: "Compass Base Desk",
             year: "1953",
             description: "The desks come in various sizes with wooden, metal, or plastic drawers and cabinets, and solid or laminated wood tops. A version with tubular legs furnished the rooms at the Antony university campus. Distributed by Steph Simon, the Compas-leg desks remained available until 1965.",
-            image: BureauCompas,
+            image: TableCafeteriaN512,
         },
         {
             name: "Light Bar",

@@ -118,7 +118,7 @@ function NavMobile() {
 
   const scrollToLink = useCallback((target) => {
     const targetElement = document.getElementById(target);
-    const offsetTarget = targetElement.offsetTop - (window.innerWidth * 0.17);
+    const offsetTarget = targetElement.offsetTop;
 
     gsap.to(window, {duration: 1, scrollTo: {y: offsetTarget, autoKill: false}});
     setToggleMenu(false);
