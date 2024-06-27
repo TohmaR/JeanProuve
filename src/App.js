@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import LoadingPage from './components/Loader/Loader';
 import Main from './components/Main/Main';
 import Nav from './components/Nav/Nav';
@@ -6,16 +6,31 @@ import Nav from './components/Nav/Nav';
 import './App.css';
 
 function App() {
-  useEffect(() => {
-    // Réinitialiser le défilement à 0
-    window.scrollTo(0, 0);
+  useLayoutEffect(() => {
+    // Fonction pour réinitialiser le scroll
+    const resetScroll = () => {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    };
 
-    // Pour les navigateurs qui supportent scrollRestoration
-    if ('scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
+    // Ajouter un écouteur pour l'événement 'load'
+    window.addEventListener('load', resetScroll);
 
-    // Nettoyage des écouteurs
+    // Utiliser un délai pour s'assurer que le DOM est complètement rendu
+    const timeoutId = setTimeout(() => {
+      resetScroll();
+    }, 100);
+
+    // Nettoyage des écouteurs et du délai
+    return () => {
+      window.removeEventListener('load', resetScroll);
+      clearTimeout(timeoutId);
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'auto';
+      }
+    };
   }, []);
 
   return (
