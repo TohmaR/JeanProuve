@@ -106,7 +106,28 @@ const MainDesktop = () => {
     const svgArrow = useRef(null);
 
     const onClickArrow = () => {
-        scrollTriggerRef.current.scroll(section1.current.offsetLeft);
+        if (section1.current) {
+            const containerOffset =
+                (horizontalContainer__sm.current.offsetTop + section1.current.offsetLeft) *
+                (horizontalContainer__sm.current.offsetWidth /
+                    (horizontalContainer__sm.current.offsetWidth - window.innerWidth)) - (window.innerWidth * 0.0416667);
+
+            const currentScrollPosition = window.scrollY;
+            const distance = Math.abs(containerOffset - currentScrollPosition);
+    
+            const speed = 1000; // Pixels per second
+            const duration = distance / speed; // Duration in seconds
+    
+            gsap.to(window, {
+                scrollTo: {
+                    y: containerOffset,
+                    autoKill: false
+                },
+                duration: 0.8
+            });
+        } else {
+            console.error(`Element with selector "${section1.current}" not found.`);
+        }
 
     };
 
@@ -261,21 +282,25 @@ const MainDesktop = () => {
                             }
                         }
                         else if(pxProgress >= offsetFurniture0){
+                            gsap.set(".furniture-overlay", { opacity: 1, pointerEvents: "all" });
                             gsap.to(".furniture-nav", { transform: "translate3d(0px, 0%, 0px)", duration : .6 });
                             gsap.to(".furniture-overlay-year", { transform: "translate3d(0px, 0%, 0px)", duration : .6 });
                         }
                         else if(pxProgress < offsetFurniture0){
                             gsap.to(".furniture-nav", { transform: "translate3d(0px, 100%, 0px)", duration : .6 });
-                            gsap.to(".furniture-overlay-year", { transform: "translate3d(0px, 100%, 0px)", duration : .6 });
+                            gsap.to(".furniture-overlay-year", { transform: "translate3d(0px, 100%, 0px)", duration : .6  ,onComplete: () => {
+                                gsap.set(".furniture-overlay", { opacity: 0, pointerEvents: "none" });
+                            }});
+                            
                         }
 
                         if(pxProgress >= offsetSection14){
-                            furnitureMenuItem.classList.add("active");
-                            biographyMenuItem.classList.remove("active");
+                            if (furnitureMenuItem) furnitureMenuItem.classList.add("active");
+                            if (biographyMenuItem) biographyMenuItem.classList.remove("active");
                         }
                         else if(pxProgress < offsetSection14){
-                            furnitureMenuItem.classList.remove("active");
-                            biographyMenuItem.classList.add("active");
+                            if (furnitureMenuItem) furnitureMenuItem.classList.remove("active");
+                            if (biographyMenuItem) biographyMenuItem.classList.add("active");
                         }
                     },
                     onRefresh: () => {

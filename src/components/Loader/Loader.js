@@ -26,11 +26,13 @@ function LoadingPage() {
       .to(".loader-date-item", { opacity: 0, display: "none"}, "<" )
       .to(".loader-title__item", {  stagger: 0.06, delay: -.2,duration: 0.5, transform: "translate3d(0px, 0%, 0px"})
       .to(".loader-bg", { duration: 0.7, transform: "translate3d(0px, -150%, 0px"})
+      .to(".loader-bg", { display: "none" }, "<")
       .fromTo(".hero-text__container p", {transform : "translate3d(0px, 100%, 0px)"}, { delay: .2, duration: 0.6, transform : "translate3d(0px, 0%, 0px)"}, "<")
       .to(".m-hero-text__item", { duration: 0.6, transform : "translate3d(0px, 0%, 0px"}, "<")
       .to(".loader-span", { duration: 0.3, opacity: 0, delay: isMobile ? -1 : 0}, "<")
       .to(".loader", { pointerEvents: "none"}, "<")
       .to(".loader-title", { delay: isMobile ? 1.25 : 0, opacity: 0}, "<")
+      .to(".nav__burger", { delay: -.25, pointerEvents: "all"}, ">")
       .to(".body", { delay: -.25, overflowY: "auto"}, ">")
   })
 

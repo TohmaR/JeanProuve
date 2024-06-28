@@ -40,6 +40,7 @@ nav{
     cursor: pointer;
     border-bottom: solid 1px rgba(255, 255, 255, 0.7);
     will-change: border;
+    pointer-events: none;
 }
 
 .nav__burger .burger{

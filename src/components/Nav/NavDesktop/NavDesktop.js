@@ -128,12 +128,12 @@ function NavDesktop () {
         const furnitureMenuItem = document.querySelector(".nav__menu-item:nth-child(2)");
         if (element && horizontalContainer) {
             if(target === "biography"){
-                furnitureMenuItem.classList.remove("active");
-                biographyMenuItem.classList.add("active");
+                if (furnitureMenuItem) furnitureMenuItem.classList.remove("active");
+                if (biographyMenuItem) biographyMenuItem.classList.add("active");
             }
             else if(target === "furniture"){
-                furnitureMenuItem.classList.add("active");
-                biographyMenuItem.classList.remove("active");
+                if (furnitureMenuItem) furnitureMenuItem.classList.add("active");
+                if (biographyMenuItem) biographyMenuItem.classList.remove("active");
             }
             const containerOffset =
                 (horizontalContainer.offsetTop + element.offsetLeft) *

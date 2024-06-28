@@ -951,6 +951,8 @@
     user-select: none;
     pointer-events: none;
     color: black;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .furniture-overlay-year-container{
