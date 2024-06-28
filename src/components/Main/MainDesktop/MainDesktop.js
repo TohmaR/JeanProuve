@@ -282,14 +282,14 @@ const MainDesktop = () => {
                             }
                         }
                         else if(pxProgress >= offsetFurniture0){
-                            gsap.set(".furniture-overlay", { opacity: 1, pointerEvents: "all" });
+                            gsap.set([".furniture-nav", ".furniture-overlay-year"], { opacity: 1, pointerEvents: "all" });
                             gsap.to(".furniture-nav", { transform: "translate3d(0px, 0%, 0px)", duration : .6 });
                             gsap.to(".furniture-overlay-year", { transform: "translate3d(0px, 0%, 0px)", duration : .6 });
                         }
                         else if(pxProgress < offsetFurniture0){
                             gsap.to(".furniture-nav", { transform: "translate3d(0px, 100%, 0px)", duration : .6 });
                             gsap.to(".furniture-overlay-year", { transform: "translate3d(0px, 100%, 0px)", duration : .6  ,onComplete: () => {
-                                gsap.set(".furniture-overlay", { opacity: 0, pointerEvents: "none" });
+                            
                             }});
                             
                         }

@@ -951,8 +951,6 @@
     user-select: none;
     pointer-events: none;
     color: black;
-    opacity: 0;
-    pointer-events: none;
 }
 
 .furniture-overlay-year-container{
@@ -965,6 +963,8 @@
     font-family: "MaelstromSansBold";
     font-size: 30vh;
     transform: translate3d(0px, 100%, 0px);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .furniture-nav-container{
@@ -982,6 +982,8 @@
     letter-spacing: .005em;
     pointer-events: all;
     transform: translate3d(0px, 100%, 0px);
+    opacity: 0;
+    pointer-events: none;
 }
 .furniture-nav ul{
   display: flex;
