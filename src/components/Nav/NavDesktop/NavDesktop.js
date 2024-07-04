@@ -4,7 +4,6 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import _ScrollTrigger, { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MorphSVGPlugin } from '../../../gsap/MorphSVGPlugin.min.js';
 import "./NavDesktop.css";
-import { transform } from 'lodash';
 
 
 

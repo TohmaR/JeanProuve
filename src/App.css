@@ -9,7 +9,7 @@ body{
   overflow: hidden;
 }
 
-/* body.no-scroll {
+body.no-scroll {
   overflow: hidden;
   touch-action: none;
-} */
+}

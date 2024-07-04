@@ -17,6 +17,7 @@ function MenuLink({ no, text, target, onClick }) {
     <li className="m-nav__menu-item" onClick={() => onClick(target)}>
       <div className="m-nav__menu-name">
         {text}
+        <div className="m-nav__menu-line"></div>
       </div>
       <div className="m-nav__menu-no">
         <div className="m-nav__menu-noc">{no}</div>
@@ -84,7 +85,6 @@ function NavMobile() {
         .to(".m-nav-menu__line", { duration: 0.5, width: "100%" }, "menu+=0.6")
         .to(".m-nav-menu__credits", { duration: 0.5, transform: "translate3d(0px, 0%, 0px"}, "menu+=0.6")
         .to(".m-nav-menu__compas", { duration: 0.5, transform: "translate3d(0px, 0%, 0px", opacity: 1}, "menu+=0.6");
-    
     }
 
     const toggleAnimation = () => {

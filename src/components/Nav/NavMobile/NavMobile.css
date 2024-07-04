@@ -144,6 +144,22 @@
     transform: translate3d(0px, 100%, 0px);
 }
 
+.m-nav__menu-item .m-nav__menu-name .m-nav__menu-line{
+    content: "";
+    position: absolute;
+    top: 51%;
+    right: 0;
+    background: white;
+    height: 2px;
+    width: 100%;
+    transition: all 0.5s;
+    transform: translate3d(-105%, 0px, 0px);
+    will-change: transform;
+}
+.m-nav__menu-item.active .m-nav__menu-name .m-nav__menu-line{
+    transform: translate3d(0%, 0px, 0px);
+}
+
 .m-nav__menu-no{
     pointer-events: none;
     position: absolute;
@@ -157,6 +173,10 @@
 
 .m-nav__menu-noc{
     transform: translate3d(0px, 100%, 0px);
+}
+
+.m-nav__menu-item.active .m-nav__menu-no{
+    color: white;
 }
 
 .m-nav-menu__texte{

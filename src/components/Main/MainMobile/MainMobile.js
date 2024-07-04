@@ -83,6 +83,8 @@ const MainMobile = () => {
 
         const handleScroll = () => {
             const scrollY = window.scrollY + (window.innerWidth * 0.1813333);
+            const biographyMenuItem = document.querySelector(".m-nav__menu-item:nth-child(1)");
+            const furnitureMenuItem = document.querySelector(".m-nav__menu-item:nth-child(2)");
 
             //timeline background white
             if (((scrollY >= offsetSection1 && scrollY <= offsetSection3) || (scrollY > offsetSection7 && scrollY < offsetSection9) || (scrollY > offsetSection11 && scrollY < offsetSection13) || (scrollY > offsetSection14)) && !navTimelineWhite.current.isActive()) {
@@ -97,6 +99,15 @@ const MainMobile = () => {
              //timeline background black
             else if (((scrollY > offsetSection5 && scrollY < offsetSection7 ) || (scrollY > offsetSection9 && scrollY < offsetSection11)) && !navTimelineBlack.current.isActive()){
                 navTimelineBlack.current.invalidate().seek(0).play();
+            }
+
+            if(scrollY >= offsetSection14){
+                if (furnitureMenuItem) furnitureMenuItem.classList.add("active");
+                if (biographyMenuItem) biographyMenuItem.classList.remove("active");
+            }
+            else if(scrollY < offsetSection14){
+                if (furnitureMenuItem) furnitureMenuItem.classList.remove("active");
+                if (biographyMenuItem) biographyMenuItem.classList.add("active");
             }
           };
 
