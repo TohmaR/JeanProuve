@@ -247,7 +247,7 @@ const MainMobile = () => {
             <p className='texte-b'>Jean Prouve began his apprenticeship in ironwork in 1916 with Emile Robert in Enghien, where he acquired the basics of the trade. He continued his training with Adalbert Szabo in Paris, perfecting his skills in the traditional techniques of artistic metalwork. In 1921, he returned to Nancy and worked for the artistic ironworker Emile Brandt, where he refined his know-how and developed a personal style. These experiences allow him to master artisanal techniques while promoting innovation and quality in his work.</p>
             <div className="cap">
                 <div>BELOW</div>
-                <div>'Jean Prouvé at the workshop of Émile Robert'</div>
+                <div>'Jean Prouve at the workshop of emile Robert'</div>
                 <div>c. 1917.</div>
             </div>
             <div className='image-container'>
@@ -276,22 +276,22 @@ const MainMobile = () => {
             <div className='image-container'>
                 <img className="image" src={s7CiteUniversitaire} ref={el => zoomOutEffectRefs.current[4] = el}/>
             </div>
-            <p className='texte'>Alongside his collaborations, Jean Prouvé focuses on technical innovation, particularly in the field of modular construction. He developed manufacturing techniques using industrial materials such as aluminum and steel, pioneers at the time. One of its major innovations is the development of modular metal panels which make it possible to create light, strong and easily transportable structures. These panels can be assembled quickly on site, reducing construction time and costs.</p>
+            <p className='texte'>Alongside his collaborations, Jean Prouve focuses on technical innovation, particularly in the field of modular construction. He developed manufacturing techniques using industrial materials such as aluminum and steel, pioneers at the time. One of its major innovations is the development of modular metal panels which make it possible to create light, strong and easily transportable structures. These panels can be assembled quickly on site, reducing construction time and costs.</p>
             <div className='image-container'>
                 <img className="image" src={s7MetalDoor} ref={el => zoomOutEffectRefs.current[5] = el}/>
             </div>
             <div className="cap">
                 <div>ABOVE</div>
-                <div>“Chamberlain I Prouvé” exhibition at the Gagosian Gallery</div>
+                <div>“Chamberlain I Prouve” exhibition at the Gagosian Gallery</div>
                 <div>New York, c. 2015.</div>
             </div>
-            <p className='texte'>These advances opened the way to prefabrication and the industrialization of construction, concepts which would become pillars of his work. Prouvé applies these techniques in various projects, such as the Maison du Peuple in Clichy and schools in Africa, demonstrating the effectiveness and flexibility of his methods. Prefabrication not only makes it possible to respond quickly to housing and infrastructure needs, but also to ensure consistent quality and savings in resources.</p>
+            <p className='texte'>These advances opened the way to prefabrication and the industrialization of construction, concepts which would become pillars of his work. Prouve applies these techniques in various projects, such as the Maison du Peuple in Clichy and schools in Africa, demonstrating the effectiveness and flexibility of his methods. Prefabrication not only makes it possible to respond quickly to housing and infrastructure needs, but also to ensure consistent quality and savings in resources.</p>
             <div className='image-container'>
                 <img className="image" src={s7maisondupeuple} ref={el => zoomOutEffectRefs.current[6] = el}/>
             </div>
             <div className="cap">
                 <div>ABOVE</div>
-                <div>'Maison du peuple (Jean Prouvé, with E. Beaudouin and M. Lods, arch., V. Bodiansky, ing.)'</div>
+                <div>'Maison du peuple (Jean Prouve, with E. Beaudouin and M. Lods, arch., V. Bodiansky, ing.)'</div>
                 <div>Clichy, 1935-1939.</div>
             </div>
             <p className='texte-b'>Prouve's innovations have greatly influenced construction, making it more accessible and sustainable, and aligned with current needs for speed, mobility, and functionality. He foresaw future developments in architecture, inspiring many generations of architects and designers. His modular construction techniques are now recognized as essential to the development of modern architecture, demonstrating his creative genius and vision.</p>
@@ -300,16 +300,16 @@ const MainMobile = () => {
         <img className="m-s-image" src={s8habitattropical} />
 
         <section className="m-s9" ref={section9}>
-            <p className='texte'>In 1947, Jean Prouvé transferred his workshops to Maxéville, near Nancy. This place is quickly becoming a nerve center for innovation in metallurgy and architectural design. The workshops are distinguished by their ability to produce not only furniture, but also complex metal structures for architecture. Jean Prouvé develops metal facades, partitions, doors and windows, while continuing to create furniture that combines aesthetics and functionality.Prouvé’s approach is based on industrialization and prefabrication, using materials like steel and aluminum to create modular parts. This method makes it possible to standardize and streamline production, reducing costs and manufacturing times while ensuring high quality. Its innovations in modular construction open up new perspectives in the field of architecture, notably by facilitating the rapid and efficient construction of buildings.</p>
+            <p className='texte'>In 1947, Jean Prouve transferred his workshops to Maxeville, near Nancy. This place is quickly becoming a nerve center for innovation in metallurgy and architectural design. The workshops are distinguished by their ability to produce not only furniture, but also complex metal structures for architecture. Jean Prouve develops metal facades, partitions, doors and windows, while continuing to create furniture that combines aesthetics and functionality.Prouve’s approach is based on industrialization and prefabrication, using materials like steel and aluminum to create modular parts. This method makes it possible to standardize and streamline production, reducing costs and manufacturing times while ensuring high quality. Its innovations in modular construction open up new perspectives in the field of architecture, notably by facilitating the rapid and efficient construction of buildings.</p>
             <div className='image-container'>
                 <img className="image" src={s9bureauMaxeville} ref={el => zoomOutEffectRefs.current[7] = el}/>
             </div>
             <div className="cap">
                 <div>ABOVE</div>
-                <div>'Design office of Ateliers Jean Prouvé'</div>
-                <div>Maxéville, c. 1952.</div>
+                <div>'Design office of Ateliers Jean Prouve'</div>
+                <div>Maxeville, c. 1952.</div>
             </div>
-            <p className='texte-b'>With the Second World War, the Ateliers Jean Prouvé adapted their production to military needs, manufacturing bicycles, components for aircraft and military equipment. This reconversion demonstrates the flexibility and innovation of the workshops. Despite material shortages, Jean Prouvé continues to experiment and perfect his construction techniques, maintaining his commitment to functional and accessible architecture. This period reinforces his pragmatic approach and humanist vision of architecture, highlighting his ability to adapt and innovate under pressure.</p>
+            <p className='texte-b'>With the Second World War, the Ateliers Jean Prouve adapted their production to military needs, manufacturing bicycles, components for aircraft and military equipment. This reconversion demonstrates the flexibility and innovation of the workshops. Despite material shortages, Jean Prouve continues to experiment and perfect his construction techniques, maintaining his commitment to functional and accessible architecture. This period reinforces his pragmatic approach and humanist vision of architecture, highlighting his ability to adapt and innovate under pressure.</p>
 
             <div className="cap">
                 <div>BELOW</div>
@@ -339,7 +339,7 @@ const MainMobile = () => {
             <p className='texte'>True architectural performances that can be transported and dismantled, these “barracks” were made exclusively of wood and metal (taking into account the shortage of metal). They were directly transported in spare parts to the villages devastated by the bombings. They could be assembled in one day by 3 people on the very site of the destruction, thus allowing populations deprived of roofs to stay in their villages</p>
             <div className="cap">
                 <div>BELOW</div>
-                <div>'Construction methods, types of housing created by the Ateliers Jean Prouvé”. Advertising brochure for the Ateliers Jean Prouvé Studal'</div>
+                <div>'Construction methods, types of housing created by the Ateliers Jean Prouve”. Advertising brochure for the Ateliers Jean Prouve Studal'</div>
                 <div>Paris, c. 1950.</div>
             </div>
             <div className='image-container'>   
@@ -349,16 +349,16 @@ const MainMobile = () => {
         </section>
         <img className="m-s-image" src={s12maison6x6} />
         <section className="m-s13" ref={section13}>
-            <p className='texte'>In 1957, Jean Prouvé was appointed professor at the National School of Decorative Arts (ENSAD) in Paris. This position allows him to pass on his vast experience and innovative ideas to a new generation of designers and architects. At ENSAD, Prouvé does not just teach construction techniques; he inspires his students to rethink architecture and design in terms of functionality, sustainability and social responsibility. It encourages a holistic approach, where aesthetics and technique are inseparable, and where each project must respond to real needs while being accessible and ethical.</p>
+            <p className='texte'>In 1957, Jean Prouve was appointed professor at the National School of Decorative Arts (ENSAD) in Paris. This position allows him to pass on his vast experience and innovative ideas to a new generation of designers and architects. At ENSAD, Prouve does not just teach construction techniques; he inspires his students to rethink architecture and design in terms of functionality, sustainability and social responsibility. It encourages a holistic approach, where aesthetics and technique are inseparable, and where each project must respond to real needs while being accessible and ethical.</p>
             <div className='image-container'>
                 <img className="image" src={s13academic} ref={el => zoomOutEffectRefs.current[12] = el}/>
             </div>
             <div className="cap">
                 <div>BELOW</div>
-                <div>'Construction methods, types of housing created by the Ateliers Jean Prouvé”. Advertising brochure for the Ateliers Jean Prouvé Studal'</div>
+                <div>'Construction methods, types of housing created by the Ateliers Jean Prouve”. Advertising brochure for the Ateliers Jean Prouve Studal'</div>
                 <div>Paris, c. 1950.</div>
             </div>
-            <p className='texte'>His influence as a teacher is considerable. He trained several generations of creators who would carry his avant-garde ideas into their own work. Many of Prouvé's students would go on to become influential figures in the world of architecture and design, continuing his legacy. In recognition of his exceptional contributions to architecture and design, Prouvé received several prestigious honors. In 1981, he was honored with the Grand Prix National de l'Architecture, recognition of his lasting impact and pioneering role. His works are exhibited in world-renowned museums, and he is regularly invited to give lectures, actively participating in architectural competition juries and sharing his expertise within the international design community.</p>
+            <p className='texte'>His influence as a teacher is considerable. He trained several generations of creators who would carry his avant-garde ideas into their own work. Many of Prouve's students would go on to become influential figures in the world of architecture and design, continuing his legacy. In recognition of his exceptional contributions to architecture and design, Prouve received several prestigious honors. In 1981, he was honored with the Grand Prix National de l'Architecture, recognition of his lasting impact and pioneering role. His works are exhibited in world-renowned museums, and he is regularly invited to give lectures, actively participating in architectural competition juries and sharing his expertise within the international design community.</p>
         </section>
         <img className="m-s-image" src={s14croquis} />
         <section className="m-s14" ref={section14} id="furniture">

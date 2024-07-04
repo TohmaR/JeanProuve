@@ -8,7 +8,7 @@ main{
 .m-hero{
     position: relative;
     width: 100vw;
-    min-height: 100svh;
+    height: 100svh;
     background-image: url("../../../assets/images/hero-banner.webp");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */

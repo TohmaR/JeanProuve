@@ -146,7 +146,7 @@ export const furnitureList = {
         {
             name: "Ocean liner cabin",
             year: "1934",
-            description: "Prototype de cabine de paquebot en acier inoxydable présenté par les Ateliers Jean Prouvé (avec M. Gascoin, décorateur) au Salon d’automne, Paris, 1934 (section organisée par l’OTUA et l’UAM). ",
+            description: "Prototype of a liner cabin in stainless steel presented by Ateliers Jean Prouvé (with M. Gascoin, decorator) at the Salon d'Automne, Paris, 1934 (section organized by OTUA and UAM).",
             image: LitPaquebot,
         },
         {
