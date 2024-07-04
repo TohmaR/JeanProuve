@@ -32,6 +32,7 @@ import s11maisondemontable2 from "../../../assets/images/s11maisondemountable6x6
 import s11maisondemontableplan from "../../../assets/images/s11maisondemountableplan.webp";
 import s12maison6x6 from "../../../assets/images/s12Maison6x6.webp";
 import s13academic from "../../../assets/images/s13academic.webp"
+import s14croquis from "../../../assets/images/s14croquis.webp"
 
 gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin, Draggable, InertiaPlugin, ScrollToPlugin);
 
@@ -882,6 +883,17 @@ const MainDesktop = () => {
                         <span>I</span>
                         <span>C</span>
                     </h2>
+                </section>
+
+                <section className="s14 parallax">
+                    <div className="parallax-image__container" ref={el => containerParallaxRefs.current[6] = el} >
+                        <img className="parallax-image" ref={el => imageParallaxRefs.current[6] = el} src={s14croquis} alt="Image Parallaxe"/>
+                    </div>
+                    <div className="parallax-caption">
+                        <div>IMAGE</div>
+                        <div>'Sketches by Jean Prouvé for his lectures at the CNAM'</div>
+                        <div>1957-1971.</div>
+                    </div>
                 </section>
                 
                 <section className="p p2" id="furniture" ref={section14}>

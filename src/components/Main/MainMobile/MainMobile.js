@@ -15,18 +15,19 @@ import s3VictorProuve2 from "../../../assets/images/s3VictorProuve2.webp";
 import s5Atelier from "../../../assets/images/s5atelier.webp";
 import s6Atelier from "../../../assets/images/s6atelier.webp";
 import s7Collab from "../../../assets/images/s7Collab.webp";
-import s7CiteUniversitaire from "../../../assets/images/s7citeUniversitaire.webp"
-import s7MetalDoor from "../../../assets/images/s7metaldoor.webp"
+import s7CiteUniversitaire from "../../../assets/images/s7citeUniversitaire.webp";
+import s7MetalDoor from "../../../assets/images/s7metaldoor.webp";
 import s7maisondupeuple from "../../../assets/images/s7maisondupeuple.webp";
 import s8habitattropical from "../../../assets/images/s8HabitatTropical.webp";
 import s9bureauMaxeville from "../../../assets/images/s9BureauxdetudesMaxeville.webp";
 import s9maison10x12indoor from "../../../assets/images/s9maison10x12indoor.webp";
-import s10baraquemilitaire from "../../../assets/images/s10baraquemilitaire.webp"
-import s11maisondemontable from "../../../assets/images/s11maisondemountable6x6.webp"
-import s11maisondemontable2 from "../../../assets/images/s11maisondemountable6x62.webp"
-import s11maisondemontableplan from "../../../assets/images/s11maisondemountableplan.webp"
+import s10baraquemilitaire from "../../../assets/images/s10baraquemilitaire.webp";
+import s11maisondemontable from "../../../assets/images/s11maisondemountable6x6.webp";
+import s11maisondemontable2 from "../../../assets/images/s11maisondemountable6x62.webp";
+import s11maisondemontableplan from "../../../assets/images/s11maisondemountableplan.webp";
 import s12maison6x6 from "../../../assets/images/s12Maison6x6.webp";
 import s13academic from "../../../assets/images/s13academic.webp";
+import s14croquis from "../../../assets/images/s14croquis.webp";
 
 gsap.registerPlugin(MorphSVGPlugin);
 
@@ -143,11 +144,15 @@ const MainMobile = () => {
 
        
 
-        window.addEventListener('scroll', handleScroll);
+        const onScroll = () => {
+            requestAnimationFrame(handleScroll);
+        };
+
+        window.addEventListener('scroll', onScroll);
 
         return () => {
             ctx.revert();
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', onScroll);
         };
     })
 
@@ -355,7 +360,7 @@ const MainMobile = () => {
             </div>
             <p className='texte'>His influence as a teacher is considerable. He trained several generations of creators who would carry his avant-garde ideas into their own work. Many of Prouvé's students would go on to become influential figures in the world of architecture and design, continuing his legacy. In recognition of his exceptional contributions to architecture and design, Prouvé received several prestigious honors. In 1981, he was honored with the Grand Prix National de l'Architecture, recognition of his lasting impact and pioneering role. His works are exhibited in world-renowned museums, and he is regularly invited to give lectures, actively participating in architectural competition juries and sharing his expertise within the international design community.</p>
         </section>
-
+        <img className="m-s-image" src={s14croquis} />
         <section className="m-s14" ref={section14} id="furniture">
             <div className="m-s14__no">2</div>
             <div className="m-s14-line"> </div>
