@@ -7,10 +7,10 @@ function Nav() {
   const isDesktop = useMediaQuery({ query: '(min-width: 1025px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
 	return(
-		<div>
+		<>
 			{isDesktop && <NavDesktop />}
 			{isMobile && <NavMobile/>}
-    </div>
+    	</>
 	);
 }
 

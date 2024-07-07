@@ -32,7 +32,7 @@ function LoadingPage() {
       .to(".loader-span", { duration: 0.3, opacity: 0, delay: isMobile ? -1 : 0}, "<")
       .to(".loader", { pointerEvents: "none"}, "<")
       .to(".loader-title", { delay: isMobile ? 1.25 : 0, opacity: 0}, "<")
-      .to(".nav__burger", { delay: -.25, pointerEvents: "all"}, ">")
+      .fromTo(".nav__burger", { pointerEvents: "none"}, { delay: -.25, pointerEvents: "all"}, ">")
       .to(".body", { delay: -.25, overflowY: "auto"}, ">")
   })
 

@@ -31,8 +31,12 @@ import s11maisondemontable from "../../../assets/images/s11maisondemountable6x6.
 import s11maisondemontable2 from "../../../assets/images/s11maisondemountable6x62.webp";
 import s11maisondemontableplan from "../../../assets/images/s11maisondemountableplan.webp";
 import s12maison6x6 from "../../../assets/images/s12Maison6x6.webp";
-import s13academic from "../../../assets/images/s13academic.webp"
-import s14croquis from "../../../assets/images/s14croquis.webp"
+import s13academic from "../../../assets/images/s13academic.webp";
+import s14croquis from "../../../assets/images/s14croquis.webp";
+import s15retrospective from "../../../assets/images/s15retrospective.webp";
+import s15modularBuild from "../../../assets/images/s15modularBuild.webp"
+import s15modularGif from "../../../assets/images/s15mudularGif.gif"
+import s17chambreAntony from "../../../assets/images/s17chambreAntony.webp";
 
 gsap.registerPlugin(ScrollTrigger, MorphSVGPlugin, Draggable, InertiaPlugin, ScrollToPlugin);
 
@@ -78,7 +82,8 @@ const MainDesktop = () => {
     const section9 = useRef(null);
     const section11 = useRef(null);
     const section13 = useRef(null);
-    const section14 = useRef(null);
+    const section15 = useRef(null);
+    const section16 = useRef(null);
 
     //Furniture Effect
     const FurnitureContainer = useRef()
@@ -162,7 +167,8 @@ const MainDesktop = () => {
         const offsetSection9 = section9.current.getBoundingClientRect().left;
         const offsetSection11 = section11.current.getBoundingClientRect().left;
         const offsetSection13 = section13.current.getBoundingClientRect().left;
-        const offsetSection14 = section14.current.getBoundingClientRect().left;
+        const offsetSection15 = section15.current.getBoundingClientRect().left;
+        const offsetSection16 = section16.current.getBoundingClientRect().left;
         const offsetFurniture0 = FurnitureSectionRef.current[0].getBoundingClientRect().left;
         const offsetFurniture1 = FurnitureSectionRef.current[1].getBoundingClientRect().left;
         const offsetFurniture2 = FurnitureSectionRef.current[2].getBoundingClientRect().left;
@@ -233,7 +239,7 @@ const MainDesktop = () => {
                         const biographyMenuItem = document.querySelector(".nav__menu-item:nth-child(1)");
                         const furnitureMenuItem = document.querySelector(".nav__menu-item:nth-child(2)");
                         //timeline background white
-                        if (((pxProgress >= offsetSection1 && pxProgress <= offsetSection3) || (pxProgress > offsetSection7 && pxProgress < offsetSection9) || (pxProgress > offsetSection11 && pxProgress < offsetSection13 ) || (pxProgress > offsetSection14 && pxProgress < offsetFurniture1) || (pxProgress > offsetFurniture3)) && !navTimelineWhite.current.isActive()) {
+                        if (((pxProgress >= offsetSection1 && pxProgress <= offsetSection3) || (pxProgress > offsetSection7 && pxProgress < offsetSection9) || (pxProgress > offsetSection11 && pxProgress < offsetSection13 ) || (pxProgress > offsetSection16 && pxProgress < offsetFurniture1 ) || (pxProgress > offsetFurniture3)) && !navTimelineWhite.current.isActive()) {
                             navTimelineWhite.current.invalidate().seek(0).play();
                             if((pxProgress < offsetFurniture1) || (pxProgress > offsetFurniture3)){
                                 gsap.to(FurnitureContainer.current, { backgroundColor: "white", color: "black", duration : .25 });
@@ -258,7 +264,7 @@ const MainDesktop = () => {
                         }
                     
                         //timeline background green
-                        else if (((pxProgress > offsetSection3 && pxProgress < offsetSection5) || (pxProgress > offsetSection13 && pxProgress < offsetSection14) || (pxProgress > offsetFurniture2 && pxProgress < offsetFurniture3)) && !navTimelineGreen.current.isActive()) {
+                        else if (((pxProgress > offsetSection3 && pxProgress < offsetSection5) || (pxProgress > offsetSection13 && pxProgress < offsetSection15) || (pxProgress > offsetFurniture2 && pxProgress < offsetFurniture3)) && !navTimelineGreen.current.isActive()) {
                             navTimelineGreen.current.invalidate().seek(0).play();
                             if(pxProgress > offsetFurniture2 && pxProgress < offsetFurniture3){
                                 gsap.to(FurnitureContainer.current, { backgroundColor: "#678846", color: "black", duration : .25 });
@@ -271,7 +277,7 @@ const MainDesktop = () => {
                         }
                     
                         //timeline background black
-                        else if (((pxProgress > offsetSection5 && pxProgress < offsetSection7 ) || (pxProgress > offsetSection9 && pxProgress < offsetSection11) || (pxProgress > offsetFurniture1 && pxProgress < offsetFurniture2 )) && !navTimelineBlack.current.isActive()){
+                        else if (((pxProgress > offsetSection5 && pxProgress < offsetSection7 ) || (pxProgress > offsetSection9 && pxProgress < offsetSection11) || (pxProgress > offsetSection15 && pxProgress < offsetSection16) || (pxProgress > offsetFurniture1 && pxProgress < offsetFurniture2 )) && !navTimelineBlack.current.isActive()){
                             navTimelineBlack.current.invalidate().seek(0).play();
                             if(pxProgress > offsetFurniture1 && pxProgress < offsetFurniture2){
                                 gsap.to(FurnitureContainer.current, { backgroundColor: "black", color: "white", duration : .25 });
@@ -295,11 +301,11 @@ const MainDesktop = () => {
                             
                         }
 
-                        if(pxProgress >= offsetSection14){
+                        if(pxProgress >= offsetSection16){
                             if (furnitureMenuItem) furnitureMenuItem.classList.add("active");
                             if (biographyMenuItem) biographyMenuItem.classList.remove("active");
                         }
-                        else if(pxProgress < offsetSection14){
+                        else if(pxProgress < offsetSection16){
                             if (furnitureMenuItem) furnitureMenuItem.classList.remove("active");
                             if (biographyMenuItem) biographyMenuItem.classList.add("active");
                         }
@@ -476,7 +482,7 @@ const MainDesktop = () => {
     }, [isShownArrow]);
     
     return (  
-        <div className="horizontalContainer" ref={horizontalContainer}>
+        <main className="horizontalContainer" ref={horizontalContainer}>
             <div className="horizontalContainer__sm" ref={horizontalContainer__sm}>
                 <section className="hero">
                     <div className="hero-title__container">
@@ -895,8 +901,68 @@ const MainDesktop = () => {
                         <div>1957-1971.</div>
                     </div>
                 </section>
-                
-                <section className="p p2" id="furniture" ref={section14}>
+                <section className="s15" ref={section15}>
+                    <div className="s15-container">
+                        <div className='s15-texte__container'>
+                            <div className='s15-texte'>Jean Prouve died on March 23, 1984, but his legacy remains deeply rooted in the fields of architecture and industrial design. His innovative concepts of modularity, prefabrication and the use of industrial materials continue to influence contemporary practice. The principles he established - notably the idea that form should follow function and that materials should be used honestly and efficiently - remain fundamental pillars for modern architects and designers. Prouvé's creations, such as his metal furniture and demountable houses, are today icons of 20th-century design. They are highly sought-after and appreciated, not only for their functionality and aesthetics, but also for the technical innovation they represent. Design and contemporary art museums around the world exhibit his work, and retrospectives dedicated to his work are regularly organized, enabling the public to rediscover and appreciate the breadth of his influence.</div>
+                        </div>
+                        <div className='s15-image__container'>
+                            <img className="s15-image__maxevilleBureaux" ref={el => zoomOutEffectRefs.current[8] = el} src={s15retrospective} alt="The Jean Prouve Collection at the Vitra Design Museum"/>
+                        </div>
+                        <div className='s15-texte__container'>
+                            <div className='s15-texte-b'>Prouve's influence extends far beyond his physical works. He inspired generations of architects and designers to adopt a more holistic and humanistic approach to their craft. His commitment to socially responsible and accessible architecture continues to inspire those seeking to create spaces that are both beautiful and functional for all. Prouve's ideas on prefabrication and modularity paved the way for new construction methods that are now widely used around the world.</div>
+                            <div className='s15-caption__container-b'>
+                                <div className="s15-caption">
+                                    <div>RIGHT</div>
+                                    <div>'The Jean Prouve Collection at the Vitra Design Museum'</div>
+                                </div>
+                                <div className="s15-caption">
+                                    <div>RIGHT</div>
+                                    <div>'The "B2" project in Brooklyn is a 32-story building entirely made up of prefabricated modules, inspired by the efficiency and modularity cherished by Prouvé. It includes 350 units of various sizes, half of which were designated to meet the urgent needs for affordable housing in New York City.'</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='s15-image__container2'>
+                            <img className="s15-image__maison" ref={el => zoomOutEffectRefs.current[9] = el} src={s15modularBuild} alt="B2 Building"/>
+                        </div>
+                        <div className='s15-texte__container nomargin'>
+                            <div className='s15-texte'>Jean Prouve's legacy lives on, embodying the essence of innovation, social commitment and functional aesthetics in architectural design. His ability to marry art and industry, while remaining true to his principles of simplicity and efficiency, makes him an icon whose influence endures, inspiring designers to conceive built environments that meet the needs of modern society.</div>
+                            <div className="s15-caption">
+                                <div>LEFT</div>
+                                <div>'Example of a B2 module being transported by truck.'</div>
+                            </div>
+                        </div>
+                        <img className="s15-image__maisonindoor" src={s15modularGif} alt="Example of a B2 module being transported by truck."/>
+                    </div>
+                    <h2 className="bottom-title" ref={el => revealTextEffectRefs.current[6] = el}>
+                        <span>H</span>
+                        <span>E</span>
+                        <span>R</span>
+                        <span>I</span>
+                        <span>T</span>
+                        <span>A</span>
+                        <span>G</span>
+                        <span>E</span>
+                        <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                        <span>A</span>
+                        <span>N</span>
+                        <span>D</span>
+                        <span>&nbsp;</span>
+                        <span>&nbsp;</span>
+                        <span>I</span>
+                        <span>N</span>
+                        <span>F</span>
+                        <span>L</span>
+                        <span>U</span>
+                        <span>E</span>
+                        <span>N</span>
+                        <span>C</span>
+                        <span>E</span>
+                        <span>S</span>
+                    </h2>
+                </section>
+                <section className="p p2" id="furniture" ref={section16}>
                     <div className="p-container">
                         <h2 className="p-title">
                             <span ref={el => titleTranformEffectRefs.current[1] = el} >Furnitures</span>
@@ -906,6 +972,16 @@ const MainDesktop = () => {
                                 <path d="M686,1829.5c0-402.2,68.9-669.4,462.8-774.1l154.3-41.3c316.8-85.4,482.1-146,482.1-402.2c0-341.6-297.5-611.6-826.5-611.6C383,0.3,27.6,333.6,27.6,826.7h11c0-192.8,101.9-209.4,195.6-209.4h1250.7c137.7,0,198.3,44.1,198.3,135c0,132.2-129.5,181.8-374.7,247.9l-165.3,44.1C512.4,1212.4,0,1352.9,0,1956.2h1785.1v-11H790.7C710.8,1945.2,686,1906.6,686,1829.5z"></path>
                             </svg>
                         </div>
+                    </div>
+                </section>
+                <section className="s17 parallax">
+                    <div className="parallax-image__container" ref={el => containerParallaxRefs.current[7] = el} >
+                        <img className="parallax-image" ref={el => imageParallaxRefs.current[7] = el} src={s17chambreAntony} alt="Image Parallaxe"/>
+                    </div>
+                    <div className="parallax-caption">
+                        <div>IMAGE</div>
+                        <div>'Reproduction of a room from the Jean Zay University Campus, Antony (1955)'</div>
+                        <div>Gallery Patrick Seguin</div>
                     </div>
                 </section>
                 <div className="furniture" id="furniture" ref={FurnitureContainer}>
@@ -926,22 +1002,22 @@ const MainDesktop = () => {
                     </div>
                 </div>
             </div>
-            <div className="furniture-overlay" ref={FurnitureOverlay}>
-                <div className="furniture-nav-container">
-                    <div className="furniture-nav">
-                        <div>— Decades</div>
-                        <ul>
-                        {FurnitureNavList.map((decade, index) => (
-                            <li className="furniture-nav-item" ref={el => FurnitureNavItems.current[index] = el} key={index} onClick={() => scrollToDecade(decade.text)}>{decade.text}</li>
-                        ))}
-                        </ul>
-                    </div> 
-                </div>
-                <div className="furniture-overlay-year-container"> 
-                    <div className="furniture-overlay-year">{FurnitureYear}</div>
-                </div>
+        <div className="furniture-overlay" ref={FurnitureOverlay}>
+            <div className="furniture-nav-container">
+                <div className="furniture-nav">
+                    <div>— Decades</div>
+                    <ul>
+                    {FurnitureNavList.map((decade, index) => (
+                        <li className="furniture-nav-item" ref={el => FurnitureNavItems.current[index] = el} key={index} onClick={() => scrollToDecade(decade.text)}>{decade.text}</li>
+                    ))}
+                    </ul>
+                </div> 
             </div>
-    </div>  
+            <div className="furniture-overlay-year-container"> 
+                <div className="furniture-overlay-year">{FurnitureYear}</div>
+            </div>
+        </div>
+    </main>  
     );
 };
 

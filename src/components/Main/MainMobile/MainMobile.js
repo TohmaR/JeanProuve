@@ -28,6 +28,9 @@ import s11maisondemontableplan from "../../../assets/images/s11maisondemountable
 import s12maison6x6 from "../../../assets/images/s12Maison6x6.webp";
 import s13academic from "../../../assets/images/s13academic.webp";
 import s14croquis from "../../../assets/images/s14croquis.webp";
+import s15retrospective from "../../../assets/images/s15retrospective.webp";
+import s15modularBuild from "../../../assets/images/s15modularBuild.webp"
+import s17chambreAntony from "../../../assets/images/s17chambreAntony.webp"
 
 gsap.registerPlugin(MorphSVGPlugin);
 
@@ -53,7 +56,8 @@ const MainMobile = () => {
     const section9 = useRef(null);
     const section11 = useRef(null);
     const section13 = useRef(null);
-    const section14 = useRef(null);
+    const section16 = useRef(null);
+    const section15 = useRef(null);
 
     const zoomOutEffectRefs = useRef([]);
 
@@ -79,7 +83,9 @@ const MainMobile = () => {
         const offsetSection9 = section9.current.offsetTop;
         const offsetSection11 = section11.current.offsetTop;
         const offsetSection13 = section13.current.offsetTop;
-        const offsetSection14 = section14.current.offsetTop ;
+        const offsetSection15 = section15.current.offsetTop;
+        const offsetSection16 = section16.current.offsetTop;
+    
 
         const handleScroll = () => {
             const scrollY = window.scrollY + (window.innerWidth * 0.1813333);
@@ -87,25 +93,25 @@ const MainMobile = () => {
             const furnitureMenuItem = document.querySelector(".m-nav__menu-item:nth-child(2)");
 
             //timeline background white
-            if (((scrollY >= offsetSection1 && scrollY <= offsetSection3) || (scrollY > offsetSection7 && scrollY < offsetSection9) || (scrollY > offsetSection11 && scrollY < offsetSection13) || (scrollY > offsetSection14)) && !navTimelineWhite.current.isActive()) {
+            if (((scrollY >= offsetSection1 && scrollY <= offsetSection3) || (scrollY > offsetSection7 && scrollY < offsetSection9) || (scrollY > offsetSection11 && scrollY < offsetSection13) || (scrollY > offsetSection16)) && !navTimelineWhite.current.isActive()) {
                 navTimelineWhite.current.invalidate().seek(0).play();
             }
 
             //timeline background green
-            else if (((scrollY > offsetSection3 && scrollY < offsetSection5) || (scrollY > offsetSection13 && scrollY < offsetSection14)) && !navTimelineGreen.current.isActive()) {
+            else if (((scrollY > offsetSection3 && scrollY < offsetSection5) || (scrollY > offsetSection13 && scrollY < offsetSection16)) && !navTimelineGreen.current.isActive()) {
                 navTimelineGreen.current.invalidate().seek(0).play();
             }
 
              //timeline background black
-            else if (((scrollY > offsetSection5 && scrollY < offsetSection7 ) || (scrollY > offsetSection9 && scrollY < offsetSection11)) && !navTimelineBlack.current.isActive()){
+            else if (((scrollY > offsetSection5 && scrollY < offsetSection7 ) || (scrollY > offsetSection9 && scrollY < offsetSection11) || (scrollY > offsetSection15 && scrollY < offsetSection16)) && !navTimelineBlack.current.isActive()){
                 navTimelineBlack.current.invalidate().seek(0).play();
             }
 
-            if(scrollY >= offsetSection14){
+            if(scrollY >= offsetSection16){
                 if (furnitureMenuItem) furnitureMenuItem.classList.add("active");
                 if (biographyMenuItem) biographyMenuItem.classList.remove("active");
             }
-            else if(scrollY < offsetSection14){
+            else if(scrollY < offsetSection16){
                 if (furnitureMenuItem) furnitureMenuItem.classList.remove("active");
                 if (biographyMenuItem) biographyMenuItem.classList.add("active");
             }
@@ -186,7 +192,7 @@ const MainMobile = () => {
     }, [isShownArrow]);
 
   return (
-    <main className="m">
+    <main className="m-main">
         <section className="m-hero">
             <div className="m-hero-title">PROUVE</div>
             <div className="m-hero-text">
@@ -372,12 +378,32 @@ const MainMobile = () => {
             <p className='texte'>His influence as a teacher is considerable. He trained several generations of creators who would carry his avant-garde ideas into their own work. Many of Prouve's students would go on to become influential figures in the world of architecture and design, continuing his legacy. In recognition of his exceptional contributions to architecture and design, Prouve received several prestigious honors. In 1981, he was honored with the Grand Prix National de l'Architecture, recognition of his lasting impact and pioneering role. His works are exhibited in world-renowned museums, and he is regularly invited to give lectures, actively participating in architectural competition juries and sharing his expertise within the international design community.</p>
         </section>
         <img className="m-s-image" src={s14croquis} />
-        <section className="m-s14" ref={section14} id="furniture">
+        <section className="m-s15" ref={section15}>
+            <p className='texte'>Jean Prouve died on March 23, 1984, but his legacy remains deeply rooted in the fields of architecture and industrial design. His innovative concepts of modularity, prefabrication and the use of industrial materials continue to influence contemporary practice. The principles he established - notably the idea that form should follow function and that materials should be used honestly and efficiently - remain fundamental pillars for modern architects and designers. Prouvé's creations, such as his metal furniture and demountable houses, are today icons of 20th-century design. They are highly sought-after and appreciated, not only for their functionality and aesthetics, but also for the technical innovation they represent. Design and contemporary art museums around the world exhibit his work, and retrospectives dedicated to his work are regularly organized, enabling the public to rediscover and appreciate the breadth of his influence.</p>
+            <div className='image-container'>
+                <img className="image" src={s15retrospective} ref={el => zoomOutEffectRefs.current[13] = el}/>
+            </div>
+            <div className="cap">
+                <div>ABOVE</div>
+                <div>'The Jean Prouve Collection at the Vitra Design Museum'</div>
+            </div>
+            <p className='texte-b'>Prouve's influence extends far beyond his physical works. He inspired generations of architects and designers to adopt a more holistic and humanistic approach to their craft. His commitment to socially responsible and accessible architecture continues to inspire those seeking to create spaces that are both beautiful and functional for all. Prouve's ideas on prefabrication and modularity paved the way for new construction methods that are now widely used around the world.</p>
+
+            <div className="cap">
+                <div>BELOW</div>
+                <div>'The "B2" project in Brooklyn is a 32-story building entirely made up of prefabricated modules, inspired by the efficiency and modularity cherished by Prouvé. It includes 350 units of various sizes, half of which were designated to meet the urgent needs for affordable housing in New York City.'</div>
+            </div>
+            <div className='image-container'>
+                <img className="image" src={s15modularBuild} ref={el => zoomOutEffectRefs.current[14] = el}/>
+            </div>
+            <p className='texte'>Jean Prouve's legacy lives on, embodying the essence of innovation, social commitment and functional aesthetics in architectural design. His ability to marry art and industry, while remaining true to his principles of simplicity and efficiency, makes him an icon whose influence endures, inspiring designers to conceive built environments that meet the needs of modern society.</p>
+        </section>
+        <section className="m-s14" ref={section16} id="furniture">
             <div className="m-s14__no">2</div>
             <div className="m-s14-line"> </div>
             <div className="m-s14-title">Furniture</div>
         </section>
-
+        <img className="m-s-image" src={s17chambreAntony} />
         <div className='m-furniture'>
             {Object.entries(furnitureList).map(([decade, items], index) => (
                 <section className="m-furniture-section" id={decade} key={decade}>

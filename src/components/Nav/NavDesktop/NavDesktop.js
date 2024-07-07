@@ -12,8 +12,6 @@ gsap.registerPlugin(ScrollToPlugin, MorphSVGPlugin, ScrollTrigger);
 const menuList = [
     { no: "1", text: "BIOGRAPHY", target: "biography" },
     { no: "2", text: "FURNITURE", target: "furniture" },
-    // { no: "3", text: "FURNITURE", target: "furniture" },
-    // { no: "4", text: "ARCHITECTURE", target: "architecture" },
 ];
 
 function MenuLink({ no, text, target, onClick }) {

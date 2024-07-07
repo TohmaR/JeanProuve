@@ -626,6 +626,7 @@
     bottom: 0;
     left: 0 !important;
 }
+
 .s9{
     position: relative;
     width: fit-content;
@@ -733,7 +734,6 @@
 
 .s9-caption div:nth-child(2){
     font-family: "GraphikRegularItalic";
-
 }
 
 .s10{
@@ -950,16 +950,155 @@
 
 .s14 .parallax-image{
     min-width: 100vh;
-    max-height: 100vh;
+    min-height: 100vh;
     width: auto;
     height: auto;
     position: absolute; 
-    bottom: 0;
+    top: 0;
     left: 0 !important;
 }
 
 .s14 .parallax-caption div:nth-child(2), .s14 .parallax-caption div:nth-child(3){
     color: black;
+}
+
+.s15{
+    position: relative;
+    width: fit-content;
+    padding: 4.21296vh 14.81481vh;
+    background-color: black;
+}
+
+.s15-container{
+    position: relative;
+    display: flex;
+}
+
+.s15-texte__container{
+    position: relative;
+    margin: 0 10vh;
+}
+
+.s15-texte__container.nomargin{
+    margin-right: 0;
+}
+
+.s15-texte__container:first-child{
+    position: relative;
+    margin-left: 0;
+}
+
+.s15-texte{
+    width: 30vh;
+    color: white;
+    font-size: 1.6vh;
+    line-height: 2.66667vh;
+    font-family: "GraphikRegular";
+}
+
+
+.s15-texte-b{
+    color: white;
+    width: 85vh;
+    text-indent: 2.68519vh;
+    font-family: "GrifinitoL";
+    font-size: 5.55556vh;
+    line-height: 4.90741vh;
+}
+
+.s15-image__container{
+    min-width: 110vh;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.s15-image__maxevilleBureaux{
+    width: 115vh;
+    height: fit-content;
+}
+.s15-image__container2{
+    min-width: 130vh;
+    height: fit-content;
+    overflow: hidden;
+}
+
+.s15-image__maison{
+  width: 130vh;
+}
+
+
+.s15-image__maisonindoor{
+    position: absolute;
+    top: 4vh;
+    right: 36vh;
+    width: 60vh;
+    overflow: hidden;
+    transform: rotate(10deg);
+}
+
+.s15 .bottom-title{
+    color: #678846;
+}
+
+.s15-caption__container-b{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.s15-caption{
+    margin-top: 5vh;
+   color: white;
+   width: 50%;
+}
+
+.s15-caption div{
+    font-size: 1.16667vh;
+    line-height: 2.2vh;
+    font-family: "GraphikRegular";
+}
+
+.s15-caption div:nth-child(1){
+    letter-spacing: .16em;
+    color: #678846;
+}
+
+.s15-caption div:nth-child(2){
+    font-family: "GraphikRegularItalic";
+}
+
+.s17{
+    position: relative;
+    width: 110vh;
+    min-width: 110vh;
+    height: 100vh;
+}
+
+.s17 .parallax-image__container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.s17 .parallax-image{
+    min-width: 100vh;
+    max-height: 100vh;
+    width: auto;
+    height: auto;
+    position: absolute; 
+    top: 0;
+    left: 0 !important;
+}
+
+.s17 .parallax-caption div:nth-of-type(1){
+    color: #678846!important;
+}
+
+.s17 .parallax-caption div{
+    color: black!important;
 }
 
 .furniture{
@@ -980,6 +1119,7 @@
     user-select: none;
     pointer-events: none;
     color: black;
+    z-index: 10000;
 }
 
 .furniture-overlay-year-container{
