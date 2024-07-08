@@ -238,6 +238,8 @@ const MainDesktop = () => {
                         const pxProgress = (progress * scrollableWidth) + (window.innerWidth * 0.0416667); // Progression en pixels
                         const biographyMenuItem = document.querySelector(".nav__menu-item:nth-child(1)");
                         const furnitureMenuItem = document.querySelector(".nav__menu-item:nth-child(2)");
+                        const section3Elements = document.querySelectorAll('.furniture-section:nth-child(3) .furniture-ld');
+                        const section4Elements = document.querySelectorAll('.furniture-section:nth-child(4) .furniture-ld');
                         //timeline background white
                         if (((pxProgress >= offsetSection1 && pxProgress <= offsetSection3) || (pxProgress > offsetSection7 && pxProgress < offsetSection9) || (pxProgress > offsetSection11 && pxProgress < offsetSection13 ) || (pxProgress > offsetSection16 && pxProgress < offsetFurniture1 ) || (pxProgress > offsetFurniture3)) && !navTimelineWhite.current.isActive()) {
                             navTimelineWhite.current.invalidate().seek(0).play();
@@ -254,6 +256,14 @@ const MainDesktop = () => {
                                     const activeItem = document.querySelector('.furniture-nav-item.active');
                                     if (activeItem) activeItem.classList.remove('active');
                                     if (FurnitureNavItems.current[3]) FurnitureNavItems.current[3].classList.add('active');
+
+                                    section3Elements.forEach(element => element.classList.remove('white-color'));
+                                    section4Elements.forEach((element, index) => {
+                                        if (index < 2) {
+                                            element.classList.remove('white-color');
+                                        }
+                                    });
+
                                 }
                             }
                         }
@@ -273,6 +283,15 @@ const MainDesktop = () => {
                                 const activeItem = document.querySelector('.furniture-nav-item.active');
                                 if (activeItem) activeItem.classList.remove('active');
                                 if (FurnitureNavItems.current[2]) FurnitureNavItems.current[2].classList.add('active');
+
+                                section3Elements.forEach(element => element.classList.add('white-color'));
+                                section4Elements.forEach((element, index) => {
+                                    if (index < 2) {
+                                        element.classList.add('white-color');
+                                    }
+                                });
+
+                               
                             }
                         }
                     
@@ -286,6 +305,16 @@ const MainDesktop = () => {
                                 const activeItem = document.querySelector('.furniture-nav-item.active');
                                 if (activeItem) activeItem.classList.remove('active');
                                 if (FurnitureNavItems.current[1]) FurnitureNavItems.current[1].classList.add('active');
+
+                                section3Elements.forEach(element => element.classList.remove('white-color'));
+                                section4Elements.forEach((element, index) => {
+                                    if (index < 2) {
+                                        element.classList.remove('white-color');
+                                    }
+                                });
+
+                                
+
                             }
                         }
                         else if(pxProgress >= offsetFurniture0){
@@ -298,9 +327,8 @@ const MainDesktop = () => {
                             gsap.to(".furniture-overlay-year", { transform: "translate3d(0px, 100%, 0px)", duration : .6  ,onComplete: () => {
                             
                             }});
-                            
                         }
-
+                            
                         if(pxProgress >= offsetSection16){
                             if (furnitureMenuItem) furnitureMenuItem.classList.add("active");
                             if (biographyMenuItem) biographyMenuItem.classList.remove("active");

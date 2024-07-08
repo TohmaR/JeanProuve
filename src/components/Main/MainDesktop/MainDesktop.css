@@ -1169,6 +1169,10 @@
     color: white;
 }
 
+.furniture-ld.white-color {
+    color: white;
+}
+
 .furniture-nav-item::after{
    content: '';
    position: absolute;
