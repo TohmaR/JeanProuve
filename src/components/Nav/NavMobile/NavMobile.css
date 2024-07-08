@@ -58,6 +58,7 @@
 
 .m-nav__burger .burger__toggleBtn span{
     width: 100%;
+    max-width: 61px;
     height: 2px;
     transition: transform .4s ease-in-out;
     background-color: black;

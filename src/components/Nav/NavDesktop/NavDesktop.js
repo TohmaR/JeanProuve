@@ -174,7 +174,7 @@ function NavDesktop () {
                     <div className="nav__vertical-credits">
 
                         <div>
-                            BY&nbsp;
+                            BY&nbsp;&nbsp;
                         </div>
                         <a href="">THOMAS ROUX</a>
                     </div>
