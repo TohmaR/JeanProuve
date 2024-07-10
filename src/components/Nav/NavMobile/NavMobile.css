@@ -42,7 +42,6 @@
     height: 17.77778vw;
 }
 
-
 .m-nav__burger .burger__toggleBtn {
     display: flex;
     align-items: center;
@@ -72,7 +71,6 @@
 .m-nav__burger .burger__toggleBtn span:nth-child(2) {
     transform:translateX(8px);
 }
-
 
 .m-nav__burger .burger__toggleBtn.open span:nth-child(1) {
     transform:rotate(45deg)translate(5px,5px);
@@ -157,6 +155,7 @@
     transform: translate3d(-105%, 0px, 0px);
     will-change: transform;
 }
+
 .m-nav__menu-item.active .m-nav__menu-name .m-nav__menu-line{
     transform: translate3d(0%, 0px, 0px);
 }
@@ -184,6 +183,7 @@
     position: relative;
     width: 100%;
 }
+
 .m-nav-menu__line{
     margin: 3.53488vh 0 4.65116vh;
     width: 0%;
@@ -196,6 +196,7 @@
     overflow: hidden;
     padding-left: 13.77778vw;
 }
+
 .m-nav-menu__credits{
     font-size: 1.5vh;
     line-height: 1.86047vh;
