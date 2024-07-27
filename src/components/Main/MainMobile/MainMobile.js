@@ -98,7 +98,9 @@ const MainMobile = () => {
             }
 
             //timeline background green
-            else if (((scrollY > offsetSection3 && scrollY < offsetSection5) || (scrollY > offsetSection13 && scrollY < offsetSection15)) && !navTimelineGreen.current.isActive()) {
+            else if (((scrollY > offsetSection3 && scrollY < offsetSection5) || (scrollY > offsetSection13 && scrollY < offsetSection15
+                
+            )) && !navTimelineGreen.current.isActive()) {
                 navTimelineGreen.current.invalidate().seek(0).play();
             }
 
